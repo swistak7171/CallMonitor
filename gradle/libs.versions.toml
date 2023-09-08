@@ -1,0 +1,80 @@
+[versions]
+kotlin = "1.9.10"
+androidGradlePlugin = "8.1.1"
+kotlinx_coroutines = "1.7.3"
+kotlinx_dateTime = "0.4.0"
+kotlinx_serialization = "1.5.1"
+androidx_appCompat = "1.6.1"
+androidx_appStartup = "1.1.1"
+androidx_annotation = "1.6.0"
+androidx_core = "1.10.1"
+androidx_activity = "1.7.2"
+androidx_lifecycle = "2.6.1"
+androidx_work = "2.8.1"
+androidx_dataStore = "1.0.0"
+sqlDelight = "1.5.5"
+ktor = "2.3.2"
+koin_core = "3.4.2"
+koin_android = "3.4.2"
+jUnit = "4.13.2"
+androidx_test_core = "1.5.0"
+androidx_test_extJUnit = "1.1.5"
+kotest_core = "5.6.2"
+kotest_extensionsRobolectric = "0.5.0"
+mockK = "1.13.5"
+robolectric = "4.10.3"
+
+[libraries]
+kotlin_standardLibrary = { module = "org.jetbrains.kotlin:kotlin-stdlib", version.ref = "kotlin" }
+kotlinx_coroutines_core = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core", version.ref = "kotlinx_coroutines" }
+kotlinx_coroutines_android = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-android", version.ref = "kotlinx_coroutines" }
+kotlinx_dateTime = { module = "org.jetbrains.kotlinx:kotlinx-datetime", version.ref = "kotlinx_dateTime" }
+kotlinx_serialization_core = { module = "org.jetbrains.kotlin:kotlin-serialization", version.ref = "kotlinx_serialization" }
+kotlinx_serialization_json = { module = "org.jetbrains.kotlinx:kotlinx-serialization-json", version.ref = "kotlinx_serialization" }
+androidx_appCompat_core = { module = "androidx.appcompat:appcompat", version.ref = "androidx_appCompat" }
+androidx_appCompat_resources = { module = "androidx.appcompat:appcompat", version.ref = "androidx_appCompat" }
+androidx_appStartup = { module = "androidx.startup:startup-runtime", version.ref = "androidx_appStartup" }
+androidx_lifecycle_runtime = { module = "androidx.lifecycle:lifecycle-service", version.ref = "androidx_lifecycle" }
+androidx_lifecycle_process = { module = "androidx.lifecycle:lifecycle-process", version.ref = "androidx_lifecycle" }
+androidx_core = { module = "androidx.core:core-ktx", version.ref = "androidx_core" }
+androidx_annotation = { module = "androidx.annotation:annotation", version.ref = "androidx_annotation" }
+androidx_activity = { module = "androidx.activity:activity", version.ref = "androidx_activity" }
+androidx_work = { module = "androidx.work:work-runtime-ktx", version.ref = "androidx_work" }
+androidx_dataStore_core = { module = "androidx.datastore:datastore", version.ref = "androidx_dataStore" }
+androidx_dataStore_preferences = { module = "androidx.datastore:datastore-preferences", version.ref = "androidx_dataStore" }
+androidx_test_core = { module = "androidx.test:core-ktx", version.ref = "androidx_test_core" }
+androidx_test_ext_jUnit = { module = "androidx.test.ext:junit-ktx", version.ref = "androidx_test_extJUnit" }
+androidx_test_ext_truth = { module = "androidx.test.ext:truth", version.ref = "androidx_test_core" }
+androidx_test_runner = { module = "androidx.test:runner", version.ref = "androidx_test_core" }
+androidx_test_rules = { module = "androidx.test:rules", version.ref = "androidx_test_core" }
+koin_core = { module = "io.insert-koin:koin-core", version.ref = "koin_core" }
+koin_android_core = { module = "io.insert-koin:koin-android", version.ref = "koin_android" }
+koin_android_workManager = { module = "io.insert-koin:koin-androidx-workmanager", version.ref = "koin_android" }
+koin_test_core = { module = "io.insert-koin:koin-test", version.ref = "koin_core" }
+koin_test_jUnit4 = { module = "io.insert-koin:koin-test-junit4", version.ref = "koin_core" }
+sqlDelight_androidDriver = { module = "com.squareup.sqldelight:android-driver", version.ref = "sqlDelight" }
+sqlDelight_coroutinesExtensions = { module = "com.squareup.sqldelight:coroutines-extensions", version.ref = "sqlDelight" }
+ktor_client_core = { module = "io.ktor:ktor-client-core", version.ref = "ktor" }
+ktor_client_android = { module = "io.ktor:ktor-client-android", version.ref = "ktor" }
+ktor_client_cio = { module = "io.ktor:ktor-client-cio", version.ref = "ktor" }
+ktor_client_logging = { module = "io.ktor:ktor-client-logging", version.ref = "ktor" }
+ktor_client_contentNegotation = { module = "io.ktor:ktor-client-content-negotiation", version.ref = "ktor" }
+ktor_client_auth = { module = "io.ktor:ktor-client-auth", version.ref = "ktor" }
+ktor_serialization = { module = "io.ktor:ktor-serialization-kotlinx-json", version.ref = "ktor" }
+kotest_runner_jUnit5 = { module = "io.kotest:kotest-runner-junit5", version.ref = "kotest_core" }
+kotest_runner_jUnit5Jvm = { module = "io.kotest:kotest-runner-junit5-jvm", version.ref = "kotest_core" }
+kotest_assertions_core = { module = "io.kotest:kotest-assertions-core", version.ref = "kotest_core" }
+kotest_assertions_coreJvm = { module = "io.kotest:kotest-assertions-core-jvm", version.ref = "kotest_core" }
+kotest_property = { module = "io.kotest:kotest-property", version.ref = "kotest_core" }
+kotest_extensionsRobolectric = { module = "io.kotest.extensions:kotest-extensions-robolectric", version.ref = "kotest_extensionsRobolectric" }
+mockk_core = { module = "io.mockk:mockk", version.ref = "mockK" }
+mockk_agentJvm = { module = "io.mockk:mockk-agent-jvm", version.ref = "mockK" }
+jUnit = { module = "junit:junit", version.ref = "jUnit" }
+robolectric = { module = "org.robolectric:robolectric", version.ref = "robolectric" }
+
+[plugins]
+androidApplication = { id = "com.android.application", version.ref = "androidGradlePlugin" }
+kotlinAndroid = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
+
+[bundles]
+
