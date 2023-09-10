@@ -4,12 +4,15 @@ androidGradlePlugin = "8.1.1"
 kotlinx_coroutines = "1.7.3"
 kotlinx_dateTime = "0.4.1"
 kotlinx_serialization = "1.6.0"
+androidx_compose_bom = "2023.09.00"
+androidx_compose_compiler = "1.5.3"
 androidx_appCompat = "1.6.1"
 androidx_appStartup = "1.1.1"
 androidx_annotation = "1.7.0"
 androidx_core = "1.12.0"
 androidx_activity = "1.7.2"
 androidx_lifecycle = "2.6.2"
+androidx_savedState = "1.2.1"
 androidx_work = "2.8.1"
 androidx_dataStore = "1.0.0"
 sqlDelight = "2.0.0"
@@ -19,6 +22,8 @@ koin_android = "3.4.3"
 jUnit = "4.13.2"
 androidx_test_core = "1.5.2"
 androidx_test_extJUnit = "1.1.5"
+androidx_espresso = "3.5.1"
+dokka = "1.8.10"
 kotest_core = "5.7.1"
 kotest_extensionsRobolectric = "0.5.0"
 mockK = "1.13.7"
@@ -31,17 +36,38 @@ kotlinx_coroutines_android = { module = "org.jetbrains.kotlinx:kotlinx-coroutine
 kotlinx_dateTime = { module = "org.jetbrains.kotlinx:kotlinx-datetime", version.ref = "kotlinx_dateTime" }
 kotlinx_serialization_core = { module = "org.jetbrains.kotlin:kotlin-serialization", version.ref = "kotlinx_serialization" }
 kotlinx_serialization_json = { module = "org.jetbrains.kotlinx:kotlinx-serialization-json", version.ref = "kotlinx_serialization" }
+androidx_compose_bom = { module = "androidx.compose:compose-bom", version.ref = "androidx_compose_bom" }
+androidx_compose_runtime = { module = "androidx.compose.runtime:runtime" }
+androidx_compose_ui = { module = "androidx.compose.ui:ui" }
+androidx_compose_uiToolingPreview = { module = "androidx.compose.ui:ui-tooling-preview" }
+androidx_compose_uiTooling = { module = "androidx.compose.ui:ui-tooling" }
+androidx_compose_foundation = { module = "androidx.compose.foundation:foundation" }
+androidx_compose_foundationLayout = { module = "androidx.compose.foundation:foundation-layout" }
+androidx_compose_material3 = { module = "androidx.compose.material3:material3" }
+androidx_compose_materialIconsExtended = { module = "androidx.compose.material:material-icons-extended" }
+androidx_compose_uiTestJunit4 = { module = "androidx.compose.ui:ui-test-junit4" }
+androidx_compose_uiTestManifest = { module = "androidx.compose.ui:ui-test-manifest" }
 androidx_appCompat_core = { module = "androidx.appcompat:appcompat", version.ref = "androidx_appCompat" }
 androidx_appCompat_resources = { module = "androidx.appcompat:appcompat", version.ref = "androidx_appCompat" }
 androidx_appStartup = { module = "androidx.startup:startup-runtime", version.ref = "androidx_appStartup" }
+androidx_lifecycle_viewModel = { module = "androidx.lifecycle:lifecycle-viewmodel-ktx", version.ref = "androidx_lifecycle" }
+androidx_lifecycle_viewModelSavedState = { module = "androidx.lifecycle:lifecycle-viewmodel-savedstate", version.ref = "androidx_lifecycle" }
 androidx_lifecycle_runtime = { module = "androidx.lifecycle:lifecycle-service", version.ref = "androidx_lifecycle" }
 androidx_lifecycle_process = { module = "androidx.lifecycle:lifecycle-process", version.ref = "androidx_lifecycle" }
+androidx_lifecycle_viewModelCompose = { module = "androidx.lifecycle:lifecycle-viewmodel-compose", version.ref = "androidx_lifecycle" }
 androidx_core = { module = "androidx.core:core-ktx", version.ref = "androidx_core" }
 androidx_annotation = { module = "androidx.annotation:annotation", version.ref = "androidx_annotation" }
-androidx_activity = { module = "androidx.activity:activity", version.ref = "androidx_activity" }
+androidx_activity_compose = { module = "androidx.activity:activity-compose", version.ref = "androidx_activity" }
+androidx_savedState = { module = "androidx.savedstate:savedstate-ktx", version.ref = "androidx_savedState" }
 androidx_work = { module = "androidx.work:work-runtime-ktx", version.ref = "androidx_work" }
 androidx_dataStore_core = { module = "androidx.datastore:datastore", version.ref = "androidx_dataStore" }
 androidx_dataStore_preferences = { module = "androidx.datastore:datastore-preferences", version.ref = "androidx_dataStore" }
+androidx_espresso_core = { module = "androidx.test.espresso:espresso-core", version.ref = "androidx_espresso" }
+androidx_espresso_contrib = { module = "androidx.test.espresso:espresso-contrib", version.ref = "androidx_espresso" }
+androidx_espresso_intents = { module = "androidx.test.espresso:espresso-intents", version.ref = "androidx_espresso" }
+androidx_espresso_accessibility = { module = "androidx.test.espresso:espresso-accessibility", version.ref = "androidx_espresso" }
+androidx_espresso_idlingResource = { module = "androidx.test.espresso:espresso-idling-resource", version.ref = "androidx_espresso" }
+androidx_espresso_idlingConcurrent = { module = "androidx.test.espresso.idling:idling-concurrent", version.ref = "androidx_espresso" }
 androidx_test_core = { module = "androidx.test:core-ktx", version.ref = "androidx_test_core" }
 androidx_test_ext_jUnit = { module = "androidx.test.ext:junit-ktx", version.ref = "androidx_test_extJUnit" }
 androidx_test_ext_truth = { module = "androidx.test.ext:truth", version.ref = "androidx_test_core" }

@@ -5,12 +5,12 @@ plugins {
 
 android {
     namespace = "pl.kamilszustak.callmonitor"
-    compileSdk = 33
+    compileSdk = 34
 
     defaultConfig {
         applicationId = "pl.kamilszustak.callmonitor"
         minSdk = 23
-        targetSdk = 33
+        targetSdk = 34
         versionCode = 1
         versionName = "1.0"
 
@@ -27,13 +27,16 @@ android {
         }
     }
 
-    compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_17
-        targetCompatibility = JavaVersion.VERSION_17
+    kotlin {
+        jvmToolchain(17)
     }
 
-    kotlinOptions {
-        jvmTarget = "17"
+    buildFeatures {
+        compose = true
+    }
+
+    composeOptions {
+        kotlinCompilerExtensionVersion = libs.versions.androidx.compose.compiler.get()
     }
 
     packaging {
@@ -44,5 +47,16 @@ android {
 }
 
 dependencies {
-    implementation(libs.androidx.activity)
+    implementation(libs.androidx.appStartup)
+    implementation(libs.koin.android.core)
+
+    implementation(platform(libs.androidx.compose.bom))
+    implementation(libs.androidx.compose.runtime)
+    implementation(libs.androidx.compose.ui)
+    implementation(libs.androidx.compose.uiToolingPreview)
+    implementation(libs.androidx.compose.foundation)
+    implementation(libs.androidx.compose.foundationLayout)
+    implementation(libs.androidx.compose.material3)
+    implementation(libs.androidx.compose.materialIconsExtended)
+    implementation(libs.androidx.activity.compose)
 }
