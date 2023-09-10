@@ -1,20 +1,27 @@
 package pl.kamilszustak.callmonitor.datasource
 
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.update
 import pl.kamilszustak.callmonitor.model.PhoneCallLogEntry
 
 class PhoneCallLogDataSourceImpl : PhoneCallLogDataSource {
 
-    private val lock: Any = Any()
-    private val calls: MutableList<PhoneCallLogEntry> = mutableListOf()
+    private val logEntries: MutableStateFlow<List<PhoneCallLogEntry>> =
+        MutableStateFlow(emptyList())
 
     override fun add(entry: PhoneCallLogEntry) {
-        synchronized(lock) {
-            calls.add(entry)
+        logEntries.update { entries ->
+            entries + entry
         }
     }
 
     override fun getAll(): List<PhoneCallLogEntry> {
-        return calls
+        return logEntries.value
+    }
+
+    override fun getAllRx(): Flow<List<PhoneCallLogEntry>> {
+        return logEntries
     }
 
 }

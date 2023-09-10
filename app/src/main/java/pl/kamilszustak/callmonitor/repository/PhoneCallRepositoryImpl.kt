@@ -1,5 +1,6 @@
 package pl.kamilszustak.callmonitor.repository
 
+import kotlinx.coroutines.flow.Flow
 import pl.kamilszustak.callmonitor.datasource.ContactNameDataSource
 import pl.kamilszustak.callmonitor.datasource.OngoingPhoneCallDataSource
 import pl.kamilszustak.callmonitor.datasource.PhoneCallLogDataSource
@@ -32,6 +33,14 @@ class PhoneCallRepositoryImpl(
             contactName = contactName
         )
         phoneCallLogDataSource.add(logEntry)
+    }
+
+    override suspend fun getAll(): List<PhoneCallLogEntry> {
+        return phoneCallLogDataSource.getAll()
+    }
+
+    override fun getAllRx(): Flow<List<PhoneCallLogEntry>> {
+        return phoneCallLogDataSource.getAllRx()
     }
 
 }

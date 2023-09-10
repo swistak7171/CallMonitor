@@ -49,6 +49,9 @@ android {
 dependencies {
     implementation(libs.androidx.appStartup)
     implementation(libs.koin.android.core)
+    implementation(libs.koin.android.compose)
+    implementation(libs.androidx.lifecycle.compose)
+    implementation(libs.androidx.lifecycle.viewModelCompose)
 
     implementation(platform(libs.androidx.compose.bom))
     implementation(libs.androidx.compose.runtime)
