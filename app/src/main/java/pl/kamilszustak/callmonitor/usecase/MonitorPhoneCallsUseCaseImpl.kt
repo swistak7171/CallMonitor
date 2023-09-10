@@ -15,11 +15,11 @@ class MonitorPhoneCallsUseCaseImpl(
                 .collect { state ->
                     when (state) {
                         is PhoneCallState.Started -> {
-                            setPhoneCallStartedUseCase.execute(state.phoneNumber)
+                            setPhoneCallStartedUseCase.execute(state.phoneNumber, state.timestamp)
                         }
 
                         is PhoneCallState.Ended -> {
-                            setPhoneCallEndedUseCase.execute(state.phoneNumber)
+                            setPhoneCallEndedUseCase.execute(state.phoneNumber, state.timestamp)
                         }
                     }
                 }

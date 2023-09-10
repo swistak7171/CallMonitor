@@ -3,8 +3,8 @@ package pl.kamilszustak.callmonitor.datasource
 import kotlinx.coroutines.flow.Flow
 
 interface OngoingPhoneCallDataSource {
-    fun get(): String?
-    fun getRx(): Flow<String?>
-    fun setStarted(phoneNumber: String)
+    fun get(): Pair<String, Long>?
+    fun getRx(): Flow<Pair<String, Long>?>
+    fun setStarted(phoneNumber: String, timestamp: Long)
     fun setEnded()
 }

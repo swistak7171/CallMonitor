@@ -17,16 +17,9 @@ class PhoneCallStateDataSourceImpl(
 
     override fun getRx(): Flow<PhoneCallState> {
         return callbackFlow {
-            val receiver = createBroadcastReceiver(
-                onStarted = { phoneNumber ->
-                    val state = PhoneCallState.Started(phoneNumber)
-                    trySend(state)
-                },
-                onEnded = { phoneNumber ->
-                    val state = PhoneCallState.Ended(phoneNumber)
-                    trySend(state)
-                }
-            )
+            val receiver = createBroadcastReceiver { state ->
+                trySend(state)
+            }
             registerBroadcastReceiver(receiver)
 
             awaitClose {
@@ -36,8 +29,7 @@ class PhoneCallStateDataSourceImpl(
     }
 
     private fun createBroadcastReceiver(
-        onStarted: (phoneNumber: String) -> Unit,
-        onEnded: (phoneNumber: String) -> Unit
+        onStateChange: (state: PhoneCallState) -> Unit,
     ): BroadcastReceiver {
         return object : BroadcastReceiver() {
 
@@ -54,11 +46,19 @@ class PhoneCallStateDataSourceImpl(
 
                 when (state) {
                     TelephonyManager.EXTRA_STATE_OFFHOOK -> {
-                        onStarted(phoneNumber)
+                        val state = PhoneCallState.Started(
+                            phoneNumber = phoneNumber,
+                            timestamp = System.currentTimeMillis()
+                        )
+                        onStateChange(state)
                     }
 
                     TelephonyManager.EXTRA_STATE_IDLE -> {
-                        onEnded(phoneNumber)
+                        val state = PhoneCallState.Ended(
+                            phoneNumber = phoneNumber,
+                            timestamp = System.currentTimeMillis()
+                        )
+                        onStateChange(state)
                     }
                 }
             }

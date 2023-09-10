@@ -6,18 +6,18 @@ import kotlinx.coroutines.flow.update
 
 class OngoingPhoneCallDataSourceImpl : OngoingPhoneCallDataSource {
 
-    private val callFlow: MutableStateFlow<String?> = MutableStateFlow(null)
+    private val callFlow: MutableStateFlow<Pair<String, Long>?> = MutableStateFlow(null)
 
-    override fun get(): String? {
+    override fun get(): Pair<String, Long>? {
         return callFlow.value
     }
 
-    override fun getRx(): Flow<String?> {
+    override fun getRx(): Flow<Pair<String, Long>?> {
         return callFlow
     }
 
-    override fun setStarted(phoneNumber: String) {
-        callFlow.update { phoneNumber }
+    override fun setStarted(phoneNumber: String, timestamp: Long) {
+        callFlow.update { phoneNumber to timestamp }
     }
 
     override fun setEnded() {

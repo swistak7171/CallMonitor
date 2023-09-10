@@ -6,8 +6,8 @@ class SetPhoneCallStartedUseCaseImpl(
     private val phoneCallRepository: PhoneCallRepository,
 ) : SetPhoneCallStartedUseCase {
 
-    override suspend fun execute(phoneNumber: String) {
-        phoneCallRepository.setStarted(phoneNumber)
+    override suspend fun execute(phoneNumber: String, timestamp: Long) {
+        phoneCallRepository.setStarted(phoneNumber, timestamp)
     }
 
 }

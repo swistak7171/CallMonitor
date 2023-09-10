@@ -2,14 +2,15 @@ package pl.kamilszustak.callmonitor.model
 
 sealed interface PhoneCallState {
 
-    @JvmInline
-    value class Started(
+    data class Started(
         val phoneNumber: String,
+        val timestamp: Long,
     ) : PhoneCallState
 
-    @JvmInline
-    value class Ended(
+    data class Ended(
         val phoneNumber: String,
+        val timestamp: Long,
     ) : PhoneCallState
+
 
 }

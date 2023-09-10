@@ -23,6 +23,7 @@ import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.core.content.ContextCompat
@@ -50,8 +51,7 @@ class MainActivity : ComponentActivity() {
             registerForActivityResult(ActivityResultContracts.RequestMultiplePermissions()) { permissions ->
                 val allGranted = permissions.values.all { it }
                 if (allGranted) {
-                    val serviceIntent = Intent(application, PhoneCallMonitorService::class.java)
-                    ContextCompat.startForegroundService(application, serviceIntent)
+                    startPhoneCallMonitorService()
                 } else {
                     Toast.makeText(
                         this,
@@ -64,6 +64,8 @@ class MainActivity : ComponentActivity() {
 
         if (!arePermissionsGranted) {
             requestMultiplePermissionsLauncher.launch(requiredPermissions)
+        } else {
+            startPhoneCallMonitorService()
         }
 
         setContent {
@@ -80,6 +82,11 @@ class MainActivity : ComponentActivity() {
                 }
             }
         }
+    }
+
+    private fun startPhoneCallMonitorService() {
+        val serviceIntent = Intent(application, PhoneCallMonitorService::class.java)
+        ContextCompat.startForegroundService(application, serviceIntent)
     }
 }
 
@@ -111,11 +118,12 @@ private fun PhoneCallLogEntry(logEntry: LogEntryViewState) {
     Row(
         modifier = Modifier
             .fillMaxWidth()
-            .height(64.dp)
-            .padding(16.dp)
+            .height(48.dp),
+        verticalAlignment = Alignment.CenterVertically
     ) {
         Text(
             text = logEntry.text,
+            modifier = Modifier.weight(1f),
             style = MaterialTheme.typography.bodyLarge
         )
 

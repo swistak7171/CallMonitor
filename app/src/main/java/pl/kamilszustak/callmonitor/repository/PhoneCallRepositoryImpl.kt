@@ -5,7 +5,7 @@ import pl.kamilszustak.callmonitor.datasource.ContactNameDataSource
 import pl.kamilszustak.callmonitor.datasource.OngoingPhoneCallDataSource
 import pl.kamilszustak.callmonitor.datasource.PhoneCallLogDataSource
 import pl.kamilszustak.callmonitor.model.PhoneCallLogEntry
-import kotlin.time.Duration.Companion.seconds
+import kotlin.time.Duration.Companion.milliseconds
 
 class PhoneCallRepositoryImpl(
     private val ongoingPhoneCallDataSource: OngoingPhoneCallDataSource,
@@ -13,13 +13,13 @@ class PhoneCallRepositoryImpl(
     private val contactNameDataSource: ContactNameDataSource,
 ) : PhoneCallRepository {
 
-    override suspend fun setStarted(phoneNumber: String) {
-        ongoingPhoneCallDataSource.setStarted(phoneNumber)
+    override suspend fun setStarted(phoneNumber: String, timestamp: Long) {
+        ongoingPhoneCallDataSource.setStarted(phoneNumber, timestamp)
     }
 
-    override suspend fun setEnded(phoneNumber: String) {
+    override suspend fun setEnded(phoneNumber: String, timestamp: Long) {
         val ongoingCallPhoneNumber = ongoingPhoneCallDataSource.get()
-        if (phoneNumber != ongoingCallPhoneNumber) {
+        if (ongoingCallPhoneNumber == null || phoneNumber != ongoingCallPhoneNumber.first) {
             return
         }
 
@@ -28,7 +28,7 @@ class PhoneCallRepositoryImpl(
         val contactName = contactNameDataSource.get(phoneNumber)
         val logEntry = PhoneCallLogEntry(
             beginningTimestamp = System.currentTimeMillis(),
-            duration = 10.seconds,
+            duration = (timestamp - ongoingCallPhoneNumber.second).milliseconds,
             phoneNumber = phoneNumber,
             contactName = contactName
         )
