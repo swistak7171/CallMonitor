@@ -1,6 +1,7 @@
 plugins {
     alias(libs.plugins.androidApplication)
-    alias(libs.plugins.kotlinAndroid)
+    alias(libs.plugins.kotlin.android)
+    alias(libs.plugins.kotlin.serialization)
 }
 
 android {
@@ -48,12 +49,16 @@ android {
 
 dependencies {
     implementation(libs.androidx.appStartup)
-    implementation(libs.koin.android.core)
-    implementation(libs.koin.android.compose)
     implementation(libs.androidx.lifecycle.compose)
     implementation(libs.androidx.lifecycle.viewModelCompose)
+
+    implementation(libs.koin.android.core)
+    implementation(libs.koin.android.compose)
+    implementation(libs.koin.ktor)
+
     implementation(libs.ktor.server.core)
     implementation(libs.ktor.server.cio)
+    implementation(libs.ktor.server.contentNegotiation)
     implementation(libs.ktor.serialization)
 
     implementation(platform(libs.androidx.compose.bom))

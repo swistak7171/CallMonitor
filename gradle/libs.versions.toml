@@ -78,12 +78,14 @@ koin_core = { module = "io.insert-koin:koin-core", version.ref = "koin_core" }
 koin_android_core = { module = "io.insert-koin:koin-android", version.ref = "koin_android" }
 koin_android_compose = { module = "io.insert-koin:koin-androidx-compose", version.ref = "koin_android" }
 koin_android_workManager = { module = "io.insert-koin:koin-androidx-workmanager", version.ref = "koin_android" }
+koin_ktor = { module = "io.insert-koin:koin-ktor", version.ref = "koin_core" }
 koin_test_core = { module = "io.insert-koin:koin-test", version.ref = "koin_core" }
 koin_test_jUnit4 = { module = "io.insert-koin:koin-test-junit4", version.ref = "koin_core" }
 sqlDelight_androidDriver = { module = "com.squareup.sqldelight:android-driver", version.ref = "sqlDelight" }
 sqlDelight_coroutinesExtensions = { module = "com.squareup.sqldelight:coroutines-extensions", version.ref = "sqlDelight" }
 ktor_server_core = { module = "io.ktor:ktor-server-core", version.ref = "ktor" }
 ktor_server_cio = { module = "io.ktor:ktor-server-cio", version.ref = "ktor" }
+ktor_server_contentNegotiation = { module = "io.ktor:ktor-server-content-negotiation", version.ref = "ktor" }
 ktor_serialization = { module = "io.ktor:ktor-serialization-kotlinx-json", version.ref = "ktor" }
 kotest_runner_jUnit5 = { module = "io.kotest:kotest-runner-junit5", version.ref = "kotest_core" }
 kotest_runner_jUnit5Jvm = { module = "io.kotest:kotest-runner-junit5-jvm", version.ref = "kotest_core" }
@@ -98,7 +100,8 @@ robolectric = { module = "org.robolectric:robolectric", version.ref = "robolectr
 
 [plugins]
 androidApplication = { id = "com.android.application", version.ref = "androidGradlePlugin" }
-kotlinAndroid = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
+kotlin_android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
+kotlin_serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
 
 [bundles]
 
