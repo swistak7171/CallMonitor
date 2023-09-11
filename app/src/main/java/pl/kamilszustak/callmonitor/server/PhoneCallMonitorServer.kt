@@ -7,6 +7,7 @@ import io.ktor.server.engine.embeddedServer
 import io.ktor.server.plugins.contentnegotiation.ContentNegotiation
 import io.ktor.server.routing.routing
 import pl.kamilszustak.callmonitor.server.route.logRoute
+import pl.kamilszustak.callmonitor.server.route.rootRoute
 import pl.kamilszustak.callmonitor.server.route.statusRoute
 
 fun startPhoneCallMonitorServer() {
@@ -18,7 +19,11 @@ fun startPhoneCallMonitorServer() {
             json()
         }
 
+        applicationStartedMonitor()
+        applicationStoppedMonitor()
+
         routing {
+            rootRoute()
             statusRoute()
             logRoute()
         }
