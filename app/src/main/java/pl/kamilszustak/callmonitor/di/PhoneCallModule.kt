@@ -1,5 +1,6 @@
 package pl.kamilszustak.callmonitor.di
 
+import kotlinx.datetime.Clock
 import org.koin.androidx.viewmodel.dsl.viewModelOf
 import org.koin.core.module.Module
 import org.koin.core.module.dsl.factoryOf
@@ -58,5 +59,9 @@ val phoneCallModule: Module = module {
         .bind<PhoneCallLogDataSource>()
     factoryOf(::ContactNameDataSourceImpl)
         .bind<ContactNameDataSource>()
+
+    factory<Clock> {
+        Clock.System
+    }
 
 }

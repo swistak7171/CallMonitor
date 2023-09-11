@@ -1,10 +1,10 @@
 package pl.kamilszustak.callmonitor.datasource
 
 import kotlinx.coroutines.flow.Flow
-import pl.kamilszustak.callmonitor.model.PhoneCallLogEntry
+import pl.kamilszustak.callmonitor.model.PhoneCallLogEntryDataModel
 
 interface PhoneCallLogDataSource {
-    fun add(entry: PhoneCallLogEntry)
-    fun getAll(): List<PhoneCallLogEntry>
-    fun getAllRx(): Flow<List<PhoneCallLogEntry>>
+    fun add(entry: PhoneCallLogEntryDataModel)
+    fun getAll(): List<PhoneCallLogEntryDataModel>
+    fun getAllRx(): Flow<List<PhoneCallLogEntryDataModel>>
 }

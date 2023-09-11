@@ -48,6 +48,9 @@ android {
 }
 
 dependencies {
+    implementation(libs.kotlinx.coroutines.android)
+    implementation(libs.kotlinx.dateTime)
+
     implementation(libs.androidx.appStartup)
     implementation(libs.androidx.lifecycle.compose)
     implementation(libs.androidx.lifecycle.viewModelCompose)

@@ -1,11 +1,14 @@
 package pl.kamilszustak.callmonitor.repository
 
 import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.map
+import kotlinx.datetime.Instant
 import pl.kamilszustak.callmonitor.datasource.ContactNameDataSource
 import pl.kamilszustak.callmonitor.datasource.OngoingPhoneCallDataSource
 import pl.kamilszustak.callmonitor.datasource.PhoneCallLogDataSource
-import pl.kamilszustak.callmonitor.model.PhoneCallLogEntry
-import kotlin.time.Duration.Companion.milliseconds
+import pl.kamilszustak.callmonitor.model.PhoneCallLogEntryDataModel
+import pl.kamilszustak.callmonitor.model.PhoneCallLogEntryDomainModel
+import java.util.UUID
 
 class PhoneCallRepositoryImpl(
     private val ongoingPhoneCallDataSource: OngoingPhoneCallDataSource,
@@ -13,11 +16,11 @@ class PhoneCallRepositoryImpl(
     private val contactNameDataSource: ContactNameDataSource,
 ) : PhoneCallRepository {
 
-    override suspend fun setStarted(phoneNumber: String, timestamp: Long) {
+    override suspend fun setStarted(phoneNumber: String, timestamp: Instant) {
         ongoingPhoneCallDataSource.setStarted(phoneNumber, timestamp)
     }
 
-    override suspend fun setEnded(phoneNumber: String, timestamp: Long) {
+    override suspend fun setEnded(phoneNumber: String, timestamp: Instant) {
         val ongoingCallPhoneNumber = ongoingPhoneCallDataSource.get()
         if (ongoingCallPhoneNumber == null || phoneNumber != ongoingCallPhoneNumber.first) {
             return
@@ -25,22 +28,45 @@ class PhoneCallRepositoryImpl(
 
         ongoingPhoneCallDataSource.setEnded()
 
-        val contactName = contactNameDataSource.get(phoneNumber)
-        val logEntry = PhoneCallLogEntry(
-            beginningTimestamp = System.currentTimeMillis(),
-            duration = (timestamp - ongoingCallPhoneNumber.second).milliseconds,
+        val logEntry = PhoneCallLogEntryDataModel(
+            id = UUID.randomUUID(),
+            startTimestamp = ongoingCallPhoneNumber.second,
+            endTimestamp = timestamp,
             phoneNumber = phoneNumber,
-            contactName = contactName
         )
         phoneCallLogDataSource.add(logEntry)
     }
 
-    override suspend fun getAll(): List<PhoneCallLogEntry> {
+    override suspend fun getAll(): List<PhoneCallLogEntryDomainModel> {
         return phoneCallLogDataSource.getAll()
+            .map { entry ->
+                val contactName = contactNameDataSource.get(entry.phoneNumber)
+
+                PhoneCallLogEntryDomainModel(
+                    id = entry.id,
+                    startTimestamp = entry.startTimestamp,
+                    endTimestamp = entry.endTimestamp,
+                    phoneNumber = entry.phoneNumber,
+                    contactName = contactName,
+                )
+            }
     }
 
-    override fun getAllRx(): Flow<List<PhoneCallLogEntry>> {
+    override fun getAllRx(): Flow<List<PhoneCallLogEntryDomainModel>> {
         return phoneCallLogDataSource.getAllRx()
+            .map { entries ->
+                entries.map { entry ->
+                    val contactName = contactNameDataSource.get(entry.phoneNumber)
+
+                    PhoneCallLogEntryDomainModel(
+                        id = entry.id,
+                        startTimestamp = entry.startTimestamp,
+                        endTimestamp = entry.endTimestamp,
+                        phoneNumber = entry.phoneNumber,
+                        contactName = contactName,
+                    )
+                }
+            }
     }
 
 }

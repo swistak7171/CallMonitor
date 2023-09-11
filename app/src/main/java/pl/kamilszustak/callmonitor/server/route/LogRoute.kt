@@ -15,8 +15,8 @@ fun Route.logRoute() {
         val entries = getAllPhoneCallLogEntriesUC.execute()
             .map { entry ->
                 PhoneCallLogEntryRemoteModel(
-                    beginningTimestamp = entry.beginningTimestamp,
-                    duration = entry.duration,
+                    beginningTimestamp = entry.startTimestamp,
+                    duration = entry.duration.inWholeSeconds.toInt(),
                     phoneNumber = entry.phoneNumber,
                     contactName = entry.contactName
                 )

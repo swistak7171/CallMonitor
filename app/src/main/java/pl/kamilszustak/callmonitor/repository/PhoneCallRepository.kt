@@ -1,11 +1,12 @@
 package pl.kamilszustak.callmonitor.repository
 
 import kotlinx.coroutines.flow.Flow
-import pl.kamilszustak.callmonitor.model.PhoneCallLogEntry
+import kotlinx.datetime.Instant
+import pl.kamilszustak.callmonitor.model.PhoneCallLogEntryDomainModel
 
 interface PhoneCallRepository {
-    suspend fun setStarted(phoneNumber: String, timestamp: Long)
-    suspend fun setEnded(phoneNumber: String, timestamp: Long)
-    suspend fun getAll(): List<PhoneCallLogEntry>
-    fun getAllRx(): Flow<List<PhoneCallLogEntry>>
+    suspend fun setStarted(phoneNumber: String, timestamp: Instant)
+    suspend fun setEnded(phoneNumber: String, timestamp: Instant)
+    suspend fun getAll(): List<PhoneCallLogEntryDomainModel>
+    fun getAllRx(): Flow<List<PhoneCallLogEntryDomainModel>>
 }

@@ -9,10 +9,12 @@ import androidx.core.content.ContextCompat
 import kotlinx.coroutines.channels.awaitClose
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.callbackFlow
+import kotlinx.datetime.Clock
 import pl.kamilszustak.callmonitor.model.PhoneCallState
 
 class PhoneCallStateDataSourceImpl(
     private val context: Context,
+    private val clock: Clock,
 ) : PhoneCallStateDataSource {
 
     override fun getRx(): Flow<PhoneCallState> {
@@ -48,7 +50,7 @@ class PhoneCallStateDataSourceImpl(
                     TelephonyManager.EXTRA_STATE_OFFHOOK -> {
                         val state = PhoneCallState.Started(
                             phoneNumber = phoneNumber,
-                            timestamp = System.currentTimeMillis()
+                            timestamp = clock.now()
                         )
                         onStateChange(state)
                     }
@@ -56,7 +58,7 @@ class PhoneCallStateDataSourceImpl(
                     TelephonyManager.EXTRA_STATE_IDLE -> {
                         val state = PhoneCallState.Ended(
                             phoneNumber = phoneNumber,
-                            timestamp = System.currentTimeMillis()
+                            timestamp = clock.now()
                         )
                         onStateChange(state)
                     }
