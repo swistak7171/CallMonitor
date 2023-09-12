@@ -14,6 +14,8 @@ import pl.kamilszustak.callmonitor.datasource.OngoingPhoneCallDataSource
 import pl.kamilszustak.callmonitor.datasource.OngoingPhoneCallDataSourceImpl
 import pl.kamilszustak.callmonitor.datasource.PhoneCallLogDataSource
 import pl.kamilszustak.callmonitor.datasource.PhoneCallLogDataSourceImpl
+import pl.kamilszustak.callmonitor.datasource.PhoneCallMetadataDataSource
+import pl.kamilszustak.callmonitor.datasource.PhoneCallMetadataDataSourceImpl
 import pl.kamilszustak.callmonitor.datasource.PhoneCallStateDataSource
 import pl.kamilszustak.callmonitor.datasource.PhoneCallStateDataSourceImpl
 import pl.kamilszustak.callmonitor.repository.PhoneCallRepository
@@ -63,6 +65,8 @@ val phoneCallModule: Module = module {
         .bind<PhoneCallLogDataSource>()
     factoryOf(::ContactNameDataSourceImpl)
         .bind<ContactNameDataSource>()
+    singleOf(::PhoneCallMetadataDataSourceImpl)
+        .bind<PhoneCallMetadataDataSource>()
 
     factory<Clock> {
         Clock.System

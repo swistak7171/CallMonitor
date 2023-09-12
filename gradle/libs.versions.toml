@@ -4,6 +4,7 @@ androidGradlePlugin = "8.1.1"
 kotlinx_coroutines = "1.7.3"
 kotlinx_dateTime = "0.4.1"
 kotlinx_serialization = "1.6.0"
+desugarJdkLibs = "2.0.3"
 androidx_compose_bom = "2023.09.00"
 androidx_compose_compiler = "1.5.3"
 androidx_appCompat = "1.6.1"
@@ -36,6 +37,7 @@ kotlinx_coroutines_android = { module = "org.jetbrains.kotlinx:kotlinx-coroutine
 kotlinx_dateTime = { module = "org.jetbrains.kotlinx:kotlinx-datetime", version.ref = "kotlinx_dateTime" }
 kotlinx_serialization_core = { module = "org.jetbrains.kotlin:kotlin-serialization", version.ref = "kotlinx_serialization" }
 kotlinx_serialization_json = { module = "org.jetbrains.kotlinx:kotlinx-serialization-json", version.ref = "kotlinx_serialization" }
+desugarJdkLibs = { module = "com.android.tools:desugar_jdk_libs_nio", version.ref = "desugarJdkLibs" }
 androidx_compose_bom = { module = "androidx.compose:compose-bom", version.ref = "androidx_compose_bom" }
 androidx_compose_runtime = { module = "androidx.compose.runtime:runtime" }
 androidx_compose_ui = { module = "androidx.compose.ui:ui" }

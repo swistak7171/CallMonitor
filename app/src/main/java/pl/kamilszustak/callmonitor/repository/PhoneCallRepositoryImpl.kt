@@ -6,6 +6,7 @@ import kotlinx.coroutines.flow.map
 import pl.kamilszustak.callmonitor.datasource.ContactNameDataSource
 import pl.kamilszustak.callmonitor.datasource.OngoingPhoneCallDataSource
 import pl.kamilszustak.callmonitor.datasource.PhoneCallLogDataSource
+import pl.kamilszustak.callmonitor.datasource.PhoneCallMetadataDataSource
 import pl.kamilszustak.callmonitor.mapper.toOngoingPhoneCallDataModel
 import pl.kamilszustak.callmonitor.model.OngoingPhoneCallDomainModel
 import pl.kamilszustak.callmonitor.model.PhoneCallLogEntryDataModel
@@ -16,6 +17,7 @@ class PhoneCallRepositoryImpl(
     private val ongoingPhoneCallDataSource: OngoingPhoneCallDataSource,
     private val phoneCallLogDataSource: PhoneCallLogDataSource,
     private val contactNameDataSource: ContactNameDataSource,
+    private val phoneCallMetadataDataSource: PhoneCallMetadataDataSource,
 ) : PhoneCallRepository {
 
     override suspend fun setStarted(state: PhoneCallStateDomainModel.StartedPhoneCall) {
@@ -53,6 +55,7 @@ class PhoneCallRepositoryImpl(
         val ongoingPhoneCall = ongoingPhoneCallDataSource.get()
 
         return if (ongoingPhoneCall != null) {
+            phoneCallMetadataDataSource.incrementTimesQueried(ongoingPhoneCall.id)
             val contactName = contactNameDataSource.get(ongoingPhoneCall.phoneNumber)
 
             OngoingPhoneCallDomainModel(

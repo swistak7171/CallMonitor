@@ -48,6 +48,8 @@ android {
 }
 
 dependencies {
+    coreLibraryDesugaring(libs.desugarJdkLibs)
+
     implementation(libs.kotlinx.coroutines.android)
     implementation(libs.kotlinx.dateTime)
 
