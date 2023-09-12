@@ -6,6 +6,7 @@ import kotlin.time.Duration
 
 data class PhoneCallLogEntryDomainModel(
     val id: UUID,
+    val metadata: PhoneCallMetadataDomainModel,
     val startTimestamp: Instant,
     val endTimestamp: Instant,
     val phoneNumber: String,

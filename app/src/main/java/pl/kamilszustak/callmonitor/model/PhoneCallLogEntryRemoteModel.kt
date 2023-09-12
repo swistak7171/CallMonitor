@@ -14,4 +14,6 @@ data class PhoneCallLogEntryRemoteModel(
     val phoneNumber: String,
     @SerialName("name")
     val contactName: String?,
+    @SerialName("timesQueried")
+    val timesQueried: Int,
 )

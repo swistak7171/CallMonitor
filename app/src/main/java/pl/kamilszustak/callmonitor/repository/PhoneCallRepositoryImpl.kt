@@ -7,6 +7,7 @@ import pl.kamilszustak.callmonitor.datasource.ContactNameDataSource
 import pl.kamilszustak.callmonitor.datasource.OngoingPhoneCallDataSource
 import pl.kamilszustak.callmonitor.datasource.PhoneCallLogDataSource
 import pl.kamilszustak.callmonitor.datasource.PhoneCallMetadataDataSource
+import pl.kamilszustak.callmonitor.mapper.toDomainModel
 import pl.kamilszustak.callmonitor.mapper.toOngoingPhoneCallDataModel
 import pl.kamilszustak.callmonitor.model.OngoingPhoneCallDomainModel
 import pl.kamilszustak.callmonitor.model.PhoneCallLogEntryDataModel
@@ -69,30 +70,20 @@ class PhoneCallRepositoryImpl(
 
     override suspend fun getAll(): List<PhoneCallLogEntryDomainModel> {
         return phoneCallLogDataSource.getAll().map { entry ->
+            val metadata = phoneCallMetadataDataSource.getOrCreate(entry.id)
             val contactName = contactNameDataSource.get(entry.phoneNumber)
 
-            PhoneCallLogEntryDomainModel(
-                id = entry.id,
-                startTimestamp = entry.startTimestamp,
-                endTimestamp = entry.endTimestamp,
-                phoneNumber = entry.phoneNumber,
-                contactName = contactName,
-            )
+            entry.toDomainModel(metadata, contactName)
         }
     }
 
     override fun getAllRx(): Flow<List<PhoneCallLogEntryDomainModel>> {
         return phoneCallLogDataSource.getAllRx().map { entries ->
             entries.map { entry ->
+                val metadata = phoneCallMetadataDataSource.getOrCreate(entry.id)
                 val contactName = contactNameDataSource.get(entry.phoneNumber)
 
-                PhoneCallLogEntryDomainModel(
-                    id = entry.id,
-                    startTimestamp = entry.startTimestamp,
-                    endTimestamp = entry.endTimestamp,
-                    phoneNumber = entry.phoneNumber,
-                    contactName = contactName,
-                )
+                entry.toDomainModel(metadata, contactName)
             }
         }
     }
