@@ -20,13 +20,12 @@ sqlDelight = "2.0.0"
 ktor = "2.3.4"
 koin_core = "3.4.3"
 koin_android = "3.4.3"
+logcat = "0.1"
 jUnit = "4.13.2"
 androidx_test_core = "1.5.2"
 androidx_test_extJUnit = "1.1.5"
 androidx_espresso = "3.5.1"
 dokka = "1.8.10"
-kotest_core = "5.7.1"
-kotest_extensionsRobolectric = "0.5.0"
 mockK = "1.13.7"
 robolectric = "4.10.3"
 
@@ -89,12 +88,7 @@ ktor_server_core = { module = "io.ktor:ktor-server-core", version.ref = "ktor" }
 ktor_server_cio = { module = "io.ktor:ktor-server-cio", version.ref = "ktor" }
 ktor_server_contentNegotiation = { module = "io.ktor:ktor-server-content-negotiation", version.ref = "ktor" }
 ktor_serialization = { module = "io.ktor:ktor-serialization-kotlinx-json", version.ref = "ktor" }
-kotest_runner_jUnit5 = { module = "io.kotest:kotest-runner-junit5", version.ref = "kotest_core" }
-kotest_runner_jUnit5Jvm = { module = "io.kotest:kotest-runner-junit5-jvm", version.ref = "kotest_core" }
-kotest_assertions_core = { module = "io.kotest:kotest-assertions-core", version.ref = "kotest_core" }
-kotest_assertions_coreJvm = { module = "io.kotest:kotest-assertions-core-jvm", version.ref = "kotest_core" }
-kotest_property = { module = "io.kotest:kotest-property", version.ref = "kotest_core" }
-kotest_extensionsRobolectric = { module = "io.kotest.extensions:kotest-extensions-robolectric", version.ref = "kotest_extensionsRobolectric" }
+logcat = { module = "com.squareup.logcat:logcat", version.ref = "logcat" }
 mockk_core = { module = "io.mockk:mockk", version.ref = "mockK" }
 mockk_agentJvm = { module = "io.mockk:mockk-agent-jvm", version.ref = "mockK" }
 jUnit = { module = "junit:junit", version.ref = "jUnit" }

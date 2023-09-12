@@ -41,6 +41,10 @@
             tools:node="merge">
 
             <meta-data
+                android:name="pl.kamilszustak.callmonitor.initializer.LogcatInitializer"
+                android:value="androidx.startup" />
+
+            <meta-data
                 android:name="pl.kamilszustak.callmonitor.initializer.KoinInitializer"
                 android:value="androidx.startup" />
 

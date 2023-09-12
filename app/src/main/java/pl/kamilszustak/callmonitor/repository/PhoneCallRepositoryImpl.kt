@@ -1,8 +1,9 @@
 package pl.kamilszustak.callmonitor.repository
 
-import android.util.Log
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
+import logcat.LogPriority.WARN
+import logcat.logcat
 import pl.kamilszustak.callmonitor.datasource.ContactNameDataSource
 import pl.kamilszustak.callmonitor.datasource.OngoingPhoneCallDataSource
 import pl.kamilszustak.callmonitor.datasource.PhoneCallLogDataSource
@@ -29,15 +30,12 @@ class PhoneCallRepositoryImpl(
     override suspend fun setEnded(state: PhoneCallStateDomainModel.EndedPhoneCall) {
         val ongoingPhoneCall = ongoingPhoneCallDataSource.get()
         if (ongoingPhoneCall == null) {
-            Log.w(PhoneCallRepositoryImpl::class.qualifiedName, "Cannot find an ongoing phone call")
+            logcat(WARN) { "Cannot find an ongoing phone call" }
             return
         }
 
         if (ongoingPhoneCall.phoneNumber != state.phoneNumber) {
-            Log.w(
-                PhoneCallRepositoryImpl::class.qualifiedName,
-                "The ongoing phone call has a different phone number than the ended one"
-            )
+            logcat(WARN) { "The ongoing phone call has a different phone number than the ended one" }
             return
         }
 
