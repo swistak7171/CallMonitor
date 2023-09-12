@@ -10,14 +10,15 @@ import kotlinx.coroutines.channels.awaitClose
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.callbackFlow
 import kotlinx.datetime.Clock
-import pl.kamilszustak.callmonitor.model.PhoneCallState
+import pl.kamilszustak.callmonitor.model.PhoneCallStateDataModel
+import java.util.UUID
 
 class PhoneCallStateDataSourceImpl(
     private val context: Context,
     private val clock: Clock,
 ) : PhoneCallStateDataSource {
 
-    override fun getRx(): Flow<PhoneCallState> {
+    override fun getRx(): Flow<PhoneCallStateDataModel> {
         return callbackFlow {
             val receiver = createBroadcastReceiver { state ->
                 trySend(state)
@@ -31,7 +32,7 @@ class PhoneCallStateDataSourceImpl(
     }
 
     private fun createBroadcastReceiver(
-        onStateChange: (state: PhoneCallState) -> Unit,
+        onStateChange: (state: PhoneCallStateDataModel) -> Unit,
     ): BroadcastReceiver {
         return object : BroadcastReceiver() {
 
@@ -48,7 +49,8 @@ class PhoneCallStateDataSourceImpl(
 
                 when (state) {
                     TelephonyManager.EXTRA_STATE_OFFHOOK -> {
-                        val state = PhoneCallState.Started(
+                        val state = PhoneCallStateDataModel.StartedPhoneCall(
+                            id = UUID.randomUUID(),
                             phoneNumber = phoneNumber,
                             timestamp = clock.now()
                         )
@@ -56,7 +58,7 @@ class PhoneCallStateDataSourceImpl(
                     }
 
                     TelephonyManager.EXTRA_STATE_IDLE -> {
-                        val state = PhoneCallState.Ended(
+                        val state = PhoneCallStateDataModel.EndedPhoneCall(
                             phoneNumber = phoneNumber,
                             timestamp = clock.now()
                         )

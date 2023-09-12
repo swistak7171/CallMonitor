@@ -1,11 +1,11 @@
 package pl.kamilszustak.callmonitor.datasource
 
 import kotlinx.coroutines.flow.Flow
-import kotlinx.datetime.Instant
+import pl.kamilszustak.callmonitor.model.OngoingPhoneCallDataModel
 
 interface OngoingPhoneCallDataSource {
-    fun get(): Pair<String, Instant>?
-    fun getRx(): Flow<Pair<String, Instant>?>
-    fun setStarted(phoneNumber: String, timestamp: Instant)
+    fun get(): OngoingPhoneCallDataModel?
+    fun getRx(): Flow<OngoingPhoneCallDataModel?>
+    fun setStarted(model: OngoingPhoneCallDataModel)
     fun setEnded()
 }

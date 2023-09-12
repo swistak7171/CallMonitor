@@ -3,26 +3,27 @@ package pl.kamilszustak.callmonitor.datasource
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.update
-import kotlinx.datetime.Instant
+import pl.kamilszustak.callmonitor.model.OngoingPhoneCallDataModel
 
 class OngoingPhoneCallDataSourceImpl : OngoingPhoneCallDataSource {
 
-    private val callFlow: MutableStateFlow<Pair<String, Instant>?> = MutableStateFlow(null)
+    private val ongoingPhoneCall: MutableStateFlow<OngoingPhoneCallDataModel?> =
+        MutableStateFlow(null)
 
-    override fun get(): Pair<String, Instant>? {
-        return callFlow.value
+    override fun get(): OngoingPhoneCallDataModel? {
+        return ongoingPhoneCall.value
     }
 
-    override fun getRx(): Flow<Pair<String, Instant>?> {
-        return callFlow
+    override fun getRx(): Flow<OngoingPhoneCallDataModel?> {
+        return ongoingPhoneCall
     }
 
-    override fun setStarted(phoneNumber: String, timestamp: Instant) {
-        callFlow.update { phoneNumber to timestamp }
+    override fun setStarted(model: OngoingPhoneCallDataModel) {
+        ongoingPhoneCall.update { model }
     }
 
     override fun setEnded() {
-        callFlow.update { null }
+        ongoingPhoneCall.update { null }
     }
 
 }

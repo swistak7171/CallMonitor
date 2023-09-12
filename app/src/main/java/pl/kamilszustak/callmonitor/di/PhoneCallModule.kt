@@ -22,6 +22,8 @@ import pl.kamilszustak.callmonitor.repository.PhoneCallStateRepository
 import pl.kamilszustak.callmonitor.repository.PhoneCallStateRepositoryImpl
 import pl.kamilszustak.callmonitor.usecase.GetAllPhoneCallLogEntriesUC
 import pl.kamilszustak.callmonitor.usecase.GetAllPhoneCallLogEntriesUCImpl
+import pl.kamilszustak.callmonitor.usecase.GetOngoingPhoneCallUseCase
+import pl.kamilszustak.callmonitor.usecase.GetOngoingPhoneCallUseCaseImpl
 import pl.kamilszustak.callmonitor.usecase.GetPhoneCallStateUseCase
 import pl.kamilszustak.callmonitor.usecase.GetPhoneCallStateUseCaseImpl
 import pl.kamilszustak.callmonitor.usecase.MonitorPhoneCallsUseCase
@@ -45,6 +47,8 @@ val phoneCallModule: Module = module {
         .bind<MonitorPhoneCallsUseCase>()
     factoryOf(::GetAllPhoneCallLogEntriesUCImpl)
         .bind<GetAllPhoneCallLogEntriesUC>()
+    factoryOf(::GetOngoingPhoneCallUseCaseImpl)
+        .bind<GetOngoingPhoneCallUseCase>()
 
     factoryOf(::PhoneCallStateRepositoryImpl)
         .bind<PhoneCallStateRepository>()

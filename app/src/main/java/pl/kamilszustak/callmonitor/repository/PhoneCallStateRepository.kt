@@ -1,8 +1,8 @@
 package pl.kamilszustak.callmonitor.repository
 
 import kotlinx.coroutines.flow.Flow
-import pl.kamilszustak.callmonitor.model.PhoneCallState
+import pl.kamilszustak.callmonitor.model.PhoneCallStateDataModel
 
 interface PhoneCallStateRepository {
-    fun getRx(): Flow<PhoneCallState>
+    fun getRx(): Flow<PhoneCallStateDataModel>
 }

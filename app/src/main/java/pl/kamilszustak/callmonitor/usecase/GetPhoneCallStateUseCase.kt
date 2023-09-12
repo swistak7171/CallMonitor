@@ -1,8 +1,8 @@
 package pl.kamilszustak.callmonitor.usecase
 
 import kotlinx.coroutines.flow.Flow
-import pl.kamilszustak.callmonitor.model.PhoneCallState
+import pl.kamilszustak.callmonitor.model.PhoneCallStateDomainModel
 
 interface GetPhoneCallStateUseCase {
-    fun executeRx(): Flow<PhoneCallState>
+    fun executeRx(): Flow<PhoneCallStateDomainModel>
 }

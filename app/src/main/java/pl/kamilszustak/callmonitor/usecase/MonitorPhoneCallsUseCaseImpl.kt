@@ -1,7 +1,7 @@
 package pl.kamilszustak.callmonitor.usecase
 
 import kotlinx.coroutines.coroutineScope
-import pl.kamilszustak.callmonitor.model.PhoneCallState
+import pl.kamilszustak.callmonitor.model.PhoneCallStateDomainModel
 
 class MonitorPhoneCallsUseCaseImpl(
     private val getPhoneCallStateUseCase: GetPhoneCallStateUseCase,
@@ -14,12 +14,12 @@ class MonitorPhoneCallsUseCaseImpl(
             getPhoneCallStateUseCase.executeRx()
                 .collect { state ->
                     when (state) {
-                        is PhoneCallState.Started -> {
-                            setPhoneCallStartedUseCase.execute(state.phoneNumber, state.timestamp)
+                        is PhoneCallStateDomainModel.StartedPhoneCall -> {
+                            setPhoneCallStartedUseCase.execute(state)
                         }
 
-                        is PhoneCallState.Ended -> {
-                            setPhoneCallEndedUseCase.execute(state.phoneNumber, state.timestamp)
+                        is PhoneCallStateDomainModel.EndedPhoneCall -> {
+                            setPhoneCallEndedUseCase.execute(state)
                         }
                     }
                 }

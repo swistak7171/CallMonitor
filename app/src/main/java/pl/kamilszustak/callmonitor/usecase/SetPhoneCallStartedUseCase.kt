@@ -1,7 +1,7 @@
 package pl.kamilszustak.callmonitor.usecase
 
-import kotlinx.datetime.Instant
+import pl.kamilszustak.callmonitor.model.PhoneCallStateDomainModel
 
 interface SetPhoneCallStartedUseCase {
-    suspend fun execute(phoneNumber: String, timestamp: Instant)
+    suspend fun execute(state: PhoneCallStateDomainModel.StartedPhoneCall)
 }
