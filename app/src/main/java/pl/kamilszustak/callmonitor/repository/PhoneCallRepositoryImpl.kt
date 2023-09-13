@@ -11,9 +11,9 @@ import pl.kamilszustak.callmonitor.datasource.PhoneCallMetadataDataSource
 import pl.kamilszustak.callmonitor.mapper.toDomainModel
 import pl.kamilszustak.callmonitor.mapper.toOngoingPhoneCallDataModel
 import pl.kamilszustak.callmonitor.model.OngoingPhoneCallDomainModel
+import pl.kamilszustak.callmonitor.model.PhoneCallEventDomainModel
 import pl.kamilszustak.callmonitor.model.PhoneCallLogEntryDataModel
 import pl.kamilszustak.callmonitor.model.PhoneCallLogEntryDomainModel
-import pl.kamilszustak.callmonitor.model.PhoneCallStateDomainModel
 
 class PhoneCallRepositoryImpl(
     private val ongoingPhoneCallDataSource: OngoingPhoneCallDataSource,
@@ -22,12 +22,12 @@ class PhoneCallRepositoryImpl(
     private val phoneCallMetadataDataSource: PhoneCallMetadataDataSource,
 ) : PhoneCallRepository {
 
-    override suspend fun setStarted(state: PhoneCallStateDomainModel.StartedPhoneCall) {
+    override suspend fun setStarted(state: PhoneCallEventDomainModel.PhoneCallStart) {
         val ongoingPhoneCall = state.toOngoingPhoneCallDataModel()
         ongoingPhoneCallDataSource.setStarted(ongoingPhoneCall)
     }
 
-    override suspend fun setEnded(state: PhoneCallStateDomainModel.EndedPhoneCall) {
+    override suspend fun setEnded(state: PhoneCallEventDomainModel.PhoneCallEnd) {
         val ongoingPhoneCall = ongoingPhoneCallDataSource.get()
         if (ongoingPhoneCall == null) {
             logcat(WARN) { "Cannot find an ongoing phone call" }
@@ -43,7 +43,7 @@ class PhoneCallRepositoryImpl(
 
         val logEntry = PhoneCallLogEntryDataModel(
             id = ongoingPhoneCall.id,
-            startTimestamp = ongoingPhoneCall.timestamp,
+            startTimestamp = ongoingPhoneCall.startTimestamp,
             endTimestamp = state.timestamp,
             phoneNumber = state.phoneNumber,
         )

@@ -3,17 +3,17 @@ package pl.kamilszustak.callmonitor.model
 import kotlinx.datetime.Instant
 import java.util.UUID
 
-sealed interface PhoneCallStateDomainModel {
+sealed interface PhoneCallEventDataModel {
 
-    data class StartedPhoneCall(
+    data class PhoneCallStart(
         val id: UUID,
         val timestamp: Instant,
         val phoneNumber: String,
-    ) : PhoneCallStateDomainModel
+    ) : PhoneCallEventDataModel
 
-    data class EndedPhoneCall(
+    data class PhoneCallEnd(
         val timestamp: Instant,
         val phoneNumber: String,
-    ) : PhoneCallStateDomainModel
+    ) : PhoneCallEventDataModel
 
 }

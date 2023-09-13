@@ -1,12 +1,12 @@
 package pl.kamilszustak.callmonitor.mapper
 
 import pl.kamilszustak.callmonitor.model.OngoingPhoneCallDataModel
-import pl.kamilszustak.callmonitor.model.PhoneCallStateDomainModel
+import pl.kamilszustak.callmonitor.model.PhoneCallEventDomainModel
 
-fun PhoneCallStateDomainModel.StartedPhoneCall.toOngoingPhoneCallDataModel(): OngoingPhoneCallDataModel {
+fun PhoneCallEventDomainModel.PhoneCallStart.toOngoingPhoneCallDataModel(): OngoingPhoneCallDataModel {
     return OngoingPhoneCallDataModel(
         id = id,
-        timestamp = timestamp,
+        startTimestamp = timestamp,
         phoneNumber = phoneNumber,
     )
 }

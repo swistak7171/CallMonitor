@@ -2,12 +2,12 @@ package pl.kamilszustak.callmonitor.repository
 
 import kotlinx.coroutines.flow.Flow
 import pl.kamilszustak.callmonitor.model.OngoingPhoneCallDomainModel
+import pl.kamilszustak.callmonitor.model.PhoneCallEventDomainModel
 import pl.kamilszustak.callmonitor.model.PhoneCallLogEntryDomainModel
-import pl.kamilszustak.callmonitor.model.PhoneCallStateDomainModel
 
 interface PhoneCallRepository {
-    suspend fun setStarted(state: PhoneCallStateDomainModel.StartedPhoneCall)
-    suspend fun setEnded(state: PhoneCallStateDomainModel.EndedPhoneCall)
+    suspend fun setStarted(event: PhoneCallEventDomainModel.PhoneCallStart)
+    suspend fun setEnded(state: PhoneCallEventDomainModel.PhoneCallEnd)
     suspend fun getOngoing(): OngoingPhoneCallDomainModel?
     suspend fun getAll(): List<PhoneCallLogEntryDomainModel>
     fun getAllRx(): Flow<List<PhoneCallLogEntryDomainModel>>

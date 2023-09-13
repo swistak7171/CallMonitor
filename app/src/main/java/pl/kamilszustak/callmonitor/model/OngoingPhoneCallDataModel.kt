@@ -5,6 +5,6 @@ import java.util.UUID
 
 data class OngoingPhoneCallDataModel(
     val id: UUID,
-    val timestamp: Instant,
+    val startTimestamp: Instant,
     val phoneNumber: String,
 )

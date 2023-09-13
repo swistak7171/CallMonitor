@@ -10,15 +10,15 @@ import kotlinx.coroutines.channels.awaitClose
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.callbackFlow
 import kotlinx.datetime.Clock
-import pl.kamilszustak.callmonitor.model.PhoneCallStateDataModel
+import pl.kamilszustak.callmonitor.model.PhoneCallEventDataModel
 import java.util.UUID
 
-class PhoneCallStateDataSourceImpl(
+class PhoneCallEventDataSourceImpl(
     private val context: Context,
     private val clock: Clock,
-) : PhoneCallStateDataSource {
+) : PhoneCallEventDataSource {
 
-    override fun getRx(): Flow<PhoneCallStateDataModel> {
+    override fun getRx(): Flow<PhoneCallEventDataModel> {
         return callbackFlow {
             val receiver = createBroadcastReceiver { state ->
                 trySend(state)
@@ -32,7 +32,7 @@ class PhoneCallStateDataSourceImpl(
     }
 
     private fun createBroadcastReceiver(
-        onStateChange: (state: PhoneCallStateDataModel) -> Unit,
+        onEvent: (event: PhoneCallEventDataModel) -> Unit,
     ): BroadcastReceiver {
         return object : BroadcastReceiver() {
 
@@ -49,20 +49,20 @@ class PhoneCallStateDataSourceImpl(
 
                 when (state) {
                     TelephonyManager.EXTRA_STATE_OFFHOOK -> {
-                        val state = PhoneCallStateDataModel.StartedPhoneCall(
+                        val event = PhoneCallEventDataModel.PhoneCallStart(
                             id = UUID.randomUUID(),
                             phoneNumber = phoneNumber,
                             timestamp = clock.now()
                         )
-                        onStateChange(state)
+                        onEvent(event)
                     }
 
                     TelephonyManager.EXTRA_STATE_IDLE -> {
-                        val state = PhoneCallStateDataModel.EndedPhoneCall(
+                        val event = PhoneCallEventDataModel.PhoneCallEnd(
                             phoneNumber = phoneNumber,
                             timestamp = clock.now()
                         )
-                        onStateChange(state)
+                        onEvent(event)
                     }
                 }
             }

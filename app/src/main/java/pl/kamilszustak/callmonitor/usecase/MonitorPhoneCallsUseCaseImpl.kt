@@ -1,25 +1,25 @@
 package pl.kamilszustak.callmonitor.usecase
 
 import kotlinx.coroutines.coroutineScope
-import pl.kamilszustak.callmonitor.model.PhoneCallStateDomainModel
+import pl.kamilszustak.callmonitor.model.PhoneCallEventDomainModel
+import pl.kamilszustak.callmonitor.repository.PhoneCallRepository
 
 class MonitorPhoneCallsUseCaseImpl(
-    private val getPhoneCallStateUseCase: GetPhoneCallStateUseCase,
-    private val setPhoneCallStartedUseCase: SetPhoneCallStartedUseCase,
-    private val setPhoneCallEndedUseCase: SetPhoneCallEndedUseCase,
+    private val getPhoneCallEventUseCase: GetPhoneCallEventUseCase,
+    private val phoneCallRepository: PhoneCallRepository,
 ) : MonitorPhoneCallsUseCase {
 
     override suspend fun execute() {
         coroutineScope {
-            getPhoneCallStateUseCase.executeRx()
-                .collect { state ->
-                    when (state) {
-                        is PhoneCallStateDomainModel.StartedPhoneCall -> {
-                            setPhoneCallStartedUseCase.execute(state)
+            getPhoneCallEventUseCase.executeRx()
+                .collect { event ->
+                    when (event) {
+                        is PhoneCallEventDomainModel.PhoneCallStart -> {
+                            phoneCallRepository.setStarted(event)
                         }
 
-                        is PhoneCallStateDomainModel.EndedPhoneCall -> {
-                            setPhoneCallEndedUseCase.execute(state)
+                        is PhoneCallEventDomainModel.PhoneCallEnd -> {
+                            phoneCallRepository.setEnded(event)
                         }
                     }
                 }

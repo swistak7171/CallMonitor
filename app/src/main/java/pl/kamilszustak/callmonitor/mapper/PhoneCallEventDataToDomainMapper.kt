@@ -3,18 +3,18 @@ package pl.kamilszustak.callmonitor.mapper
 import pl.kamilszustak.callmonitor.model.PhoneCallEventDataModel
 import pl.kamilszustak.callmonitor.model.PhoneCallEventDomainModel
 
-fun PhoneCallEventDomainModel.toDataModel(): PhoneCallEventDataModel {
+fun PhoneCallEventDataModel.toDomainModel(): PhoneCallEventDomainModel {
     return when (this) {
-        is PhoneCallEventDomainModel.PhoneCallStart -> {
-            PhoneCallEventDataModel.PhoneCallStart(
+        is PhoneCallEventDataModel.PhoneCallStart -> {
+            PhoneCallEventDomainModel.PhoneCallStart(
                 id = id,
                 timestamp = timestamp,
                 phoneNumber = phoneNumber
             )
         }
 
-        is PhoneCallEventDomainModel.PhoneCallEnd -> {
-            PhoneCallEventDataModel.PhoneCallEnd(
+        is PhoneCallEventDataModel.PhoneCallEnd -> {
+            PhoneCallEventDomainModel.PhoneCallEnd(
                 timestamp = timestamp,
                 phoneNumber = phoneNumber
             )
