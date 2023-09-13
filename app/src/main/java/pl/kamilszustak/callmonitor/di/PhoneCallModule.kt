@@ -20,12 +20,16 @@ import pl.kamilszustak.callmonitor.datasource.PhoneCallMetadataDataSource
 import pl.kamilszustak.callmonitor.datasource.PhoneCallMetadataDataSourceImpl
 import pl.kamilszustak.callmonitor.datasource.ServerConfigurationDataSource
 import pl.kamilszustak.callmonitor.datasource.ServerConfigurationDataSourceImpl
+import pl.kamilszustak.callmonitor.datasource.ServerStatusDataSource
+import pl.kamilszustak.callmonitor.datasource.ServerStatusDataSourceImpl
 import pl.kamilszustak.callmonitor.repository.PhoneCallEventRepository
 import pl.kamilszustak.callmonitor.repository.PhoneCallEventRepositoryImpl
 import pl.kamilszustak.callmonitor.repository.PhoneCallRepository
 import pl.kamilszustak.callmonitor.repository.PhoneCallRepositoryImpl
 import pl.kamilszustak.callmonitor.repository.ServerConfigurationRepository
 import pl.kamilszustak.callmonitor.repository.ServerConfigurationRepositoryImpl
+import pl.kamilszustak.callmonitor.repository.ServerStatusRepository
+import pl.kamilszustak.callmonitor.repository.ServerStatusRepositoryImpl
 import pl.kamilszustak.callmonitor.usecase.GetAllPhoneCallLogEntriesUseCase
 import pl.kamilszustak.callmonitor.usecase.GetAllPhoneCallLogEntriesUseCaseImpl
 import pl.kamilszustak.callmonitor.usecase.GetOngoingPhoneCallUseCase
@@ -34,8 +38,12 @@ import pl.kamilszustak.callmonitor.usecase.GetPhoneCallEventUseCase
 import pl.kamilszustak.callmonitor.usecase.GetPhoneCallEventUseCaseImpl
 import pl.kamilszustak.callmonitor.usecase.GetServerConfigurationUseCase
 import pl.kamilszustak.callmonitor.usecase.GetServerConfigurationUseCaseImpl
+import pl.kamilszustak.callmonitor.usecase.GetServerStatusUseCase
+import pl.kamilszustak.callmonitor.usecase.GetServerStatusUseCaseImpl
 import pl.kamilszustak.callmonitor.usecase.MonitorPhoneCallsUseCase
 import pl.kamilszustak.callmonitor.usecase.MonitorPhoneCallsUseCaseImpl
+import pl.kamilszustak.callmonitor.usecase.SetServerStatusUseCase
+import pl.kamilszustak.callmonitor.usecase.SetServerStatusUseCaseImpl
 
 val phoneCallModule: Module = module {
 
@@ -51,6 +59,10 @@ val phoneCallModule: Module = module {
         .bind<GetOngoingPhoneCallUseCase>()
     factoryOf(::GetServerConfigurationUseCaseImpl)
         .bind<GetServerConfigurationUseCase>()
+    factoryOf(::GetServerStatusUseCaseImpl)
+        .bind<GetServerStatusUseCase>()
+    factoryOf(::SetServerStatusUseCaseImpl)
+        .bind<SetServerStatusUseCase>()
 
     factoryOf(::PhoneCallEventRepositoryImpl)
         .bind<PhoneCallEventRepository>()
@@ -58,6 +70,8 @@ val phoneCallModule: Module = module {
         .bind<PhoneCallRepository>()
     factoryOf(::ServerConfigurationRepositoryImpl)
         .bind<ServerConfigurationRepository>()
+    factoryOf(::ServerStatusRepositoryImpl)
+        .bind<ServerStatusRepository>()
 
     factoryOf(::PhoneCallEventDataSourceImpl)
         .bind<PhoneCallEventDataSource>()
@@ -71,6 +85,8 @@ val phoneCallModule: Module = module {
         .bind<PhoneCallMetadataDataSource>()
     factoryOf(::ServerConfigurationDataSourceImpl)
         .bind<ServerConfigurationDataSource>()
+    singleOf(::ServerStatusDataSourceImpl)
+        .bind<ServerStatusDataSource>()
 
     factory<Clock> {
         Clock.System
