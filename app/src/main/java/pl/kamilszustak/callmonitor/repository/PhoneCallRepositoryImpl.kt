@@ -27,14 +27,14 @@ class PhoneCallRepositoryImpl(
         ongoingPhoneCallDataSource.setStarted(ongoingPhoneCall)
     }
 
-    override suspend fun setEnded(state: PhoneCallEventDomainModel.PhoneCallEnd) {
+    override suspend fun setEnded(event: PhoneCallEventDomainModel.PhoneCallEnd) {
         val ongoingPhoneCall = ongoingPhoneCallDataSource.get()
         if (ongoingPhoneCall == null) {
             logcat(WARN) { "Cannot find an ongoing phone call" }
             return
         }
 
-        if (ongoingPhoneCall.phoneNumber != state.phoneNumber) {
+        if (ongoingPhoneCall.phoneNumber != event.phoneNumber) {
             logcat(WARN) { "The ongoing phone call has a different phone number than the ended one" }
             return
         }
@@ -44,8 +44,8 @@ class PhoneCallRepositoryImpl(
         val logEntry = PhoneCallLogEntryDataModel(
             id = ongoingPhoneCall.id,
             startTimestamp = ongoingPhoneCall.startTimestamp,
-            endTimestamp = state.timestamp,
-            phoneNumber = state.phoneNumber,
+            endTimestamp = event.timestamp,
+            phoneNumber = event.phoneNumber,
         )
         phoneCallLogDataSource.add(logEntry)
     }
@@ -67,22 +67,21 @@ class PhoneCallRepositoryImpl(
     }
 
     override suspend fun getAll(): List<PhoneCallLogEntryDomainModel> {
-        return phoneCallLogDataSource.getAll().map { entry ->
+        return phoneCallLogDataSource.getAll()
+            .toDomainModels()
+    }
+
+    override fun getAllRx(): Flow<List<PhoneCallLogEntryDomainModel>> {
+        return phoneCallLogDataSource.getAllRx()
+            .map { it.toDomainModels() }
+    }
+
+    private suspend fun List<PhoneCallLogEntryDataModel>.toDomainModels(): List<PhoneCallLogEntryDomainModel> {
+        return map { entry ->
             val metadata = phoneCallMetadataDataSource.getOrCreate(entry.id)
             val contactName = contactNameDataSource.get(entry.phoneNumber)
 
             entry.toDomainModel(metadata, contactName)
-        }
-    }
-
-    override fun getAllRx(): Flow<List<PhoneCallLogEntryDomainModel>> {
-        return phoneCallLogDataSource.getAllRx().map { entries ->
-            entries.map { entry ->
-                val metadata = phoneCallMetadataDataSource.getOrCreate(entry.id)
-                val contactName = contactNameDataSource.get(entry.phoneNumber)
-
-                entry.toDomainModel(metadata, contactName)
-            }
         }
     }
 

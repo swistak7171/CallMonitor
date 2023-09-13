@@ -78,7 +78,19 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-                    PhoneCallLog(state.logEntries)
+                    Column(
+                        modifier = Modifier
+                            .fillMaxSize()
+                            .padding(16.dp)
+                    ) {
+                        state.serverHost?.let { serverHost ->
+                            ServerHost(serverHost)
+                        }
+                        state.serverPort?.let { serverPort ->
+                            ServerPort(serverPort)
+                        }
+                        PhoneCallLog(state.logEntries)
+                    }
                 }
             }
         }
@@ -91,11 +103,27 @@ class MainActivity : ComponentActivity() {
 }
 
 @Composable
+private fun ServerHost(host: String) {
+    Text(
+        text = "Server host: $host",
+        modifier = Modifier.fillMaxWidth(),
+        style = MaterialTheme.typography.bodyLarge
+    )
+}
+
+@Composable
+private fun ServerPort(port: Int) {
+    Text(
+        text = "Server port: $port",
+        modifier = Modifier.fillMaxWidth(),
+        style = MaterialTheme.typography.bodyLarge
+    )
+}
+
+@Composable
 private fun PhoneCallLog(logEntries: List<LogEntryViewState>) {
     Column(
-        modifier = Modifier
-            .fillMaxSize()
-            .padding(16.dp)
+        modifier = Modifier.fillMaxSize()
     ) {
         Text(
             text = "Phone call log",

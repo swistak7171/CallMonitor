@@ -7,7 +7,7 @@ import pl.kamilszustak.callmonitor.model.PhoneCallLogEntryDomainModel
 
 interface PhoneCallRepository {
     suspend fun setStarted(event: PhoneCallEventDomainModel.PhoneCallStart)
-    suspend fun setEnded(state: PhoneCallEventDomainModel.PhoneCallEnd)
+    suspend fun setEnded(event: PhoneCallEventDomainModel.PhoneCallEnd)
     suspend fun getOngoing(): OngoingPhoneCallDomainModel?
     suspend fun getAll(): List<PhoneCallLogEntryDomainModel>
     fun getAllRx(): Flow<List<PhoneCallLogEntryDomainModel>>

@@ -3,6 +3,8 @@ package pl.kamilszustak.callmonitor.model
 import kotlin.time.Duration
 
 data class MainViewState(
+    val serverHost: String? = null,
+    val serverPort: Int? = null,
     val logEntries: List<LogEntryViewState> = emptyList(),
 )
 

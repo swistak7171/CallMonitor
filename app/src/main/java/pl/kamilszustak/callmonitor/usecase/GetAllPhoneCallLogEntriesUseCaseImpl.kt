@@ -4,9 +4,9 @@ import kotlinx.coroutines.flow.Flow
 import pl.kamilszustak.callmonitor.model.PhoneCallLogEntryDomainModel
 import pl.kamilszustak.callmonitor.repository.PhoneCallRepository
 
-class GetAllPhoneCallLogEntriesUCImpl(
+class GetAllPhoneCallLogEntriesUseCaseImpl(
     private val phoneCallRepository: PhoneCallRepository,
-) : GetAllPhoneCallLogEntriesUC {
+) : GetAllPhoneCallLogEntriesUseCase {
 
     override suspend fun execute(): List<PhoneCallLogEntryDomainModel> {
         return phoneCallRepository.getAll()

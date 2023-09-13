@@ -7,13 +7,13 @@ import io.ktor.server.routing.get
 import org.koin.ktor.ext.inject
 import pl.kamilszustak.callmonitor.mapper.toRemoteModel
 import pl.kamilszustak.callmonitor.model.PhoneCallLogEntryDomainModel
-import pl.kamilszustak.callmonitor.usecase.GetAllPhoneCallLogEntriesUC
+import pl.kamilszustak.callmonitor.usecase.GetAllPhoneCallLogEntriesUseCase
 
 fun Route.logRoute() {
-    val getAllPhoneCallLogEntriesUC by inject<GetAllPhoneCallLogEntriesUC>()
+    val getAllPhoneCallLogEntriesUseCase by inject<GetAllPhoneCallLogEntriesUseCase>()
 
     get("/log") {
-        val entries = getAllPhoneCallLogEntriesUC.execute()
+        val entries = getAllPhoneCallLogEntriesUseCase.execute()
             .map(PhoneCallLogEntryDomainModel::toRemoteModel)
         call.respond(entries)
     }

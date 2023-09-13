@@ -9,18 +9,28 @@ import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 import pl.kamilszustak.callmonitor.model.LogEntryViewState
 import pl.kamilszustak.callmonitor.model.MainViewState
-import pl.kamilszustak.callmonitor.usecase.GetAllPhoneCallLogEntriesUC
+import pl.kamilszustak.callmonitor.usecase.GetAllPhoneCallLogEntriesUseCase
+import pl.kamilszustak.callmonitor.usecase.GetServerConfigurationUseCase
 
 class MainViewModel(
-    private val getAllPhoneCallLogEntriesUC: GetAllPhoneCallLogEntriesUC,
+    getServerConfigurationUseCase: GetServerConfigurationUseCase,
+    private val getAllPhoneCallLogEntriesUseCase: GetAllPhoneCallLogEntriesUseCase,
 ) : ViewModel() {
 
     private val _viewState: MutableStateFlow<MainViewState> = MutableStateFlow(MainViewState())
     val viewState: StateFlow<MainViewState> = _viewState.asStateFlow()
 
     init {
+        val configuration = getServerConfigurationUseCase.execute()
+        _viewState.update { state ->
+            state.copy(
+                serverHost = configuration.host,
+                serverPort = configuration.port,
+            )
+        }
+
         viewModelScope.launch {
-            getAllPhoneCallLogEntriesUC.executeRx()
+            getAllPhoneCallLogEntriesUseCase.executeRx()
                 .collect { logEntries ->
                     val viewStates = logEntries.map { logEntry ->
                         LogEntryViewState(
