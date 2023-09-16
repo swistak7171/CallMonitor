@@ -49,6 +49,7 @@ kotlin {
 dependencies {
     implementation(projects.logger)
     implementation(projects.phonecallmonitor.server)
+    implementation(projects.phonecallmonitor.ui)
     implementation(projects.phonecallmonitor.presentation)
     implementation(projects.phonecallmonitor.domain)
     implementation(projects.phonecallmonitor.data)

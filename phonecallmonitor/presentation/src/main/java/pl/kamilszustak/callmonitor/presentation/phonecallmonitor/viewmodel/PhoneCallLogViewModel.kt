@@ -1,4 +1,4 @@
-package pl.kamilszustak.callmonitor.presentation.viewmodel
+package pl.kamilszustak.callmonitor.presentation.phonecallmonitor.viewmodel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -9,8 +9,8 @@ import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 import pl.kamilszustak.callmonitor.domain.phonecallmonitor.usecase.GetAllPhoneCallLogEntriesUseCase
 import pl.kamilszustak.callmonitor.domain.phonecallmonitor.usecase.GetServerConfigurationUseCase
-import pl.kamilszustak.callmonitor.presentation.model.LogEntryViewState
-import pl.kamilszustak.callmonitor.presentation.model.MainViewState
+import pl.kamilszustak.callmonitor.presentation.phonecallmonitor.model.LogEntryViewState
+import pl.kamilszustak.callmonitor.presentation.phonecallmonitor.model.MainViewState
 
 class PhoneCallLogViewModel(
     getServerConfigurationUseCase: GetServerConfigurationUseCase,

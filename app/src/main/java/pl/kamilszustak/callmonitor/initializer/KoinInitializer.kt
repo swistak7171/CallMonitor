@@ -7,6 +7,7 @@ import org.koin.android.ext.koin.androidLogger
 import org.koin.core.KoinApplication
 import org.koin.core.context.startKoin
 import org.koin.core.logger.Level
+import pl.kamilszustak.callmonitor.di.loggerModule
 import pl.kamilszustak.callmonitor.di.phoneCallModule
 
 class KoinInitializer : Initializer<KoinApplication> {
@@ -17,6 +18,7 @@ class KoinInitializer : Initializer<KoinApplication> {
             androidContext(context)
 
             modules(
+                loggerModule,
                 phoneCallModule,
             )
         }
