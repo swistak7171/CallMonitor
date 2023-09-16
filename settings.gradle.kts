@@ -1,10 +1,8 @@
 import java.nio.file.FileSystems
 
-include(":phonecallmonitor:data")
+rootProject.name = "CallMonitor"
 
-
-include(":phonecallmonitor:domain")
-
+enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")
 
 pluginManagement {
     repositories {
@@ -20,10 +18,6 @@ dependencyResolutionManagement {
         mavenCentral()
     }
 }
-
-enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")
-
-rootProject.name = "CallMonitor"
 
 rootDir.walk()
     .maxDepth(2)

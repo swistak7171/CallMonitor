@@ -48,6 +48,7 @@ android {
 }
 
 dependencies {
+    implementation(projects.logger)
     implementation(projects.phonecallmonitor.domain)
     implementation(projects.phonecallmonitor.data)
 
@@ -79,4 +80,6 @@ dependencies {
     implementation(libs.androidx.compose.material3)
     implementation(libs.androidx.compose.materialIconsExtended)
     implementation(libs.androidx.activity.compose)
+
+    implementation(libs.logcat)
 }

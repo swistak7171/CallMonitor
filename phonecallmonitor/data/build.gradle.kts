@@ -4,6 +4,7 @@ plugins {
 
 dependencies {
     implementation(projects.phonecallmonitor.domain)
+    implementation(projects.logger)
 
     implementation(libs.kotlinx.coroutines.android)
     implementation(libs.kotlinx.dateTime)

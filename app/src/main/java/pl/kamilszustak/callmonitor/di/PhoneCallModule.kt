@@ -22,6 +22,8 @@ import pl.kamilszustak.callmonitor.datasource.PhoneCallLogDataSourceImpl
 import pl.kamilszustak.callmonitor.datasource.PhoneCallMetadataDataSourceImpl
 import pl.kamilszustak.callmonitor.datasource.ServerConfigurationDataSourceImpl
 import pl.kamilszustak.callmonitor.datasource.ServerStatusDataSourceImpl
+import pl.kamilszustak.callmonitor.logger.Logger
+import pl.kamilszustak.callmonitor.logger.LoggerImpl
 
 val phoneCallModule: Module = module {
 
@@ -41,6 +43,9 @@ val phoneCallModule: Module = module {
         .bind<ServerConfigurationDataSource>()
     singleOf(::ServerStatusDataSourceImpl)
         .bind<ServerStatusDataSource>()
+
+    factoryOf(::LoggerImpl)
+        .bind<Logger>()
 
     factory<Clock> {
         Clock.System
