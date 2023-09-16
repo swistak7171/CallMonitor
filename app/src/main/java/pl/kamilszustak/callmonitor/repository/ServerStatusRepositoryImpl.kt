@@ -2,7 +2,8 @@ package pl.kamilszustak.callmonitor.repository
 
 import pl.kamilszustak.callmonitor.datasource.ServerStatusDataSource
 import pl.kamilszustak.callmonitor.mapper.toDomainModel
-import pl.kamilszustak.callmonitor.model.ServerStatusDomainModel
+import pl.kamilszustak.callmonitor.domain.phonecallmonitor.model.ServerStatusDomainModel
+import pl.kamilszustak.callmonitor.domain.phonecallmonitor.repository.ServerStatusRepository
 
 class ServerStatusRepositoryImpl(
     private val serverStatusDataSource: ServerStatusDataSource,

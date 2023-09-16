@@ -12,7 +12,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.cancel
 import kotlinx.coroutines.launch
 import org.koin.android.ext.android.inject
-import pl.kamilszustak.callmonitor.usecase.MonitorPhoneCallsUseCase
+import pl.kamilszustak.callmonitor.domain.phonecallmonitor.usecase.MonitorPhoneCallsUseCase
 
 private const val SERVICE_ID: Int = 7171
 private const val NOTIFICATION_CHANNEL_ID = "phone-call-monitor"

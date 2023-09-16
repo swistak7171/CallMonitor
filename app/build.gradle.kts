@@ -48,6 +48,8 @@ android {
 }
 
 dependencies {
+    implementation(projects.phonecallmonitor.domain)
+
     coreLibraryDesugaring(libs.desugarJdkLibs)
 
     implementation(libs.kotlinx.coroutines.android)

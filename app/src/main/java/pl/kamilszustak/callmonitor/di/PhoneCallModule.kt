@@ -22,47 +22,18 @@ import pl.kamilszustak.callmonitor.datasource.ServerConfigurationDataSource
 import pl.kamilszustak.callmonitor.datasource.ServerConfigurationDataSourceImpl
 import pl.kamilszustak.callmonitor.datasource.ServerStatusDataSource
 import pl.kamilszustak.callmonitor.datasource.ServerStatusDataSourceImpl
-import pl.kamilszustak.callmonitor.repository.PhoneCallEventRepository
+import pl.kamilszustak.callmonitor.domain.phonecallmonitor.repository.PhoneCallEventRepository
+import pl.kamilszustak.callmonitor.domain.phonecallmonitor.repository.PhoneCallRepository
+import pl.kamilszustak.callmonitor.domain.phonecallmonitor.repository.ServerConfigurationRepository
+import pl.kamilszustak.callmonitor.domain.phonecallmonitor.repository.ServerStatusRepository
 import pl.kamilszustak.callmonitor.repository.PhoneCallEventRepositoryImpl
-import pl.kamilszustak.callmonitor.repository.PhoneCallRepository
 import pl.kamilszustak.callmonitor.repository.PhoneCallRepositoryImpl
-import pl.kamilszustak.callmonitor.repository.ServerConfigurationRepository
 import pl.kamilszustak.callmonitor.repository.ServerConfigurationRepositoryImpl
-import pl.kamilszustak.callmonitor.repository.ServerStatusRepository
 import pl.kamilszustak.callmonitor.repository.ServerStatusRepositoryImpl
-import pl.kamilszustak.callmonitor.usecase.GetAllPhoneCallLogEntriesUseCase
-import pl.kamilszustak.callmonitor.usecase.GetAllPhoneCallLogEntriesUseCaseImpl
-import pl.kamilszustak.callmonitor.usecase.GetOngoingPhoneCallUseCase
-import pl.kamilszustak.callmonitor.usecase.GetOngoingPhoneCallUseCaseImpl
-import pl.kamilszustak.callmonitor.usecase.GetPhoneCallEventUseCase
-import pl.kamilszustak.callmonitor.usecase.GetPhoneCallEventUseCaseImpl
-import pl.kamilszustak.callmonitor.usecase.GetServerConfigurationUseCase
-import pl.kamilszustak.callmonitor.usecase.GetServerConfigurationUseCaseImpl
-import pl.kamilszustak.callmonitor.usecase.GetServerStatusUseCase
-import pl.kamilszustak.callmonitor.usecase.GetServerStatusUseCaseImpl
-import pl.kamilszustak.callmonitor.usecase.MonitorPhoneCallsUseCase
-import pl.kamilszustak.callmonitor.usecase.MonitorPhoneCallsUseCaseImpl
-import pl.kamilszustak.callmonitor.usecase.SetServerStatusUseCase
-import pl.kamilszustak.callmonitor.usecase.SetServerStatusUseCaseImpl
 
 val phoneCallModule: Module = module {
 
     viewModelOf(::MainViewModel)
-
-    factoryOf(::GetPhoneCallEventUseCaseImpl)
-        .bind<GetPhoneCallEventUseCase>()
-    factoryOf(::MonitorPhoneCallsUseCaseImpl)
-        .bind<MonitorPhoneCallsUseCase>()
-    factoryOf(::GetAllPhoneCallLogEntriesUseCaseImpl)
-        .bind<GetAllPhoneCallLogEntriesUseCase>()
-    factoryOf(::GetOngoingPhoneCallUseCaseImpl)
-        .bind<GetOngoingPhoneCallUseCase>()
-    factoryOf(::GetServerConfigurationUseCaseImpl)
-        .bind<GetServerConfigurationUseCase>()
-    factoryOf(::GetServerStatusUseCaseImpl)
-        .bind<GetServerStatusUseCase>()
-    factoryOf(::SetServerStatusUseCaseImpl)
-        .bind<SetServerStatusUseCase>()
 
     factoryOf(::PhoneCallEventRepositoryImpl)
         .bind<PhoneCallEventRepository>()

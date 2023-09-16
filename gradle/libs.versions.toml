@@ -27,6 +27,7 @@ androidx_espresso = "3.5.1"
 dokka = "1.8.10"
 mockK = "1.13.7"
 robolectric = "4.10.3"
+org-jetbrains-kotlin-jvm = "1.9.10"
 
 [libraries]
 kotlin_standardLibrary = { module = "org.jetbrains.kotlin:kotlin-stdlib", version.ref = "kotlin" }
@@ -98,6 +99,7 @@ robolectric = { module = "org.robolectric:robolectric", version.ref = "robolectr
 androidApplication = { id = "com.android.application", version.ref = "androidGradlePlugin" }
 kotlin_android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 kotlin_serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
+org-jetbrains-kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "org-jetbrains-kotlin-jvm" }
 
 [bundles]
 

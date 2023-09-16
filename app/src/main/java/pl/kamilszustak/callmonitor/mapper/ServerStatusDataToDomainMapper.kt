@@ -1,7 +1,7 @@
 package pl.kamilszustak.callmonitor.mapper
 
 import pl.kamilszustak.callmonitor.model.ServerStatusDataModel
-import pl.kamilszustak.callmonitor.model.ServerStatusDomainModel
+import pl.kamilszustak.callmonitor.domain.phonecallmonitor.model.ServerStatusDomainModel
 
 fun ServerStatusDataModel.toDomainModel(): ServerStatusDomainModel {
     return when (this) {

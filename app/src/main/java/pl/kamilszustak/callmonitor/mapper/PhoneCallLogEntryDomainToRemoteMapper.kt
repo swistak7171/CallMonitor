@@ -1,6 +1,6 @@
 package pl.kamilszustak.callmonitor.mapper
 
-import pl.kamilszustak.callmonitor.model.PhoneCallLogEntryDomainModel
+import pl.kamilszustak.callmonitor.domain.phonecallmonitor.model.PhoneCallLogEntryDomainModel
 import pl.kamilszustak.callmonitor.model.PhoneCallLogEntryRemoteModel
 
 fun PhoneCallLogEntryDomainModel.toRemoteModel(): PhoneCallLogEntryRemoteModel =

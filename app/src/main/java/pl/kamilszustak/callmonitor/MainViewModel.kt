@@ -9,8 +9,8 @@ import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 import pl.kamilszustak.callmonitor.model.LogEntryViewState
 import pl.kamilszustak.callmonitor.model.MainViewState
-import pl.kamilszustak.callmonitor.usecase.GetAllPhoneCallLogEntriesUseCase
-import pl.kamilszustak.callmonitor.usecase.GetServerConfigurationUseCase
+import pl.kamilszustak.callmonitor.domain.phonecallmonitor.usecase.GetAllPhoneCallLogEntriesUseCase
+import pl.kamilszustak.callmonitor.domain.phonecallmonitor.usecase.GetServerConfigurationUseCase
 
 class MainViewModel(
     getServerConfigurationUseCase: GetServerConfigurationUseCase,

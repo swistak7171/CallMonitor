@@ -12,7 +12,7 @@ import pl.kamilszustak.callmonitor.server.plugin.ServerStatusMonitoringPlugin
 import pl.kamilszustak.callmonitor.server.route.logRoute
 import pl.kamilszustak.callmonitor.server.route.rootRoute
 import pl.kamilszustak.callmonitor.server.route.statusRoute
-import pl.kamilszustak.callmonitor.usecase.GetServerConfigurationUseCase
+import pl.kamilszustak.callmonitor.domain.phonecallmonitor.usecase.GetServerConfigurationUseCase
 
 fun KoinComponent.startPhoneCallMonitorServer() {
     val getServerConfigurationUseCase = get<GetServerConfigurationUseCase>()

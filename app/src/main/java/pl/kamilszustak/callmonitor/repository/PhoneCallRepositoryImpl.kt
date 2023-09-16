@@ -10,10 +10,11 @@ import pl.kamilszustak.callmonitor.datasource.PhoneCallLogDataSource
 import pl.kamilszustak.callmonitor.datasource.PhoneCallMetadataDataSource
 import pl.kamilszustak.callmonitor.mapper.toDomainModel
 import pl.kamilszustak.callmonitor.mapper.toOngoingPhoneCallDataModel
-import pl.kamilszustak.callmonitor.model.OngoingPhoneCallDomainModel
-import pl.kamilszustak.callmonitor.model.PhoneCallEventDomainModel
+import pl.kamilszustak.callmonitor.domain.phonecallmonitor.model.OngoingPhoneCallDomainModel
+import pl.kamilszustak.callmonitor.domain.phonecallmonitor.model.PhoneCallEventDomainModel
 import pl.kamilszustak.callmonitor.model.PhoneCallLogEntryDataModel
-import pl.kamilszustak.callmonitor.model.PhoneCallLogEntryDomainModel
+import pl.kamilszustak.callmonitor.domain.phonecallmonitor.model.PhoneCallLogEntryDomainModel
+import pl.kamilszustak.callmonitor.domain.phonecallmonitor.repository.PhoneCallRepository
 
 class PhoneCallRepositoryImpl(
     private val ongoingPhoneCallDataSource: OngoingPhoneCallDataSource,

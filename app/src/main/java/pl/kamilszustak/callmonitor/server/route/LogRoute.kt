@@ -6,8 +6,8 @@ import io.ktor.server.routing.Route
 import io.ktor.server.routing.get
 import org.koin.ktor.ext.inject
 import pl.kamilszustak.callmonitor.mapper.toRemoteModel
-import pl.kamilszustak.callmonitor.model.PhoneCallLogEntryDomainModel
-import pl.kamilszustak.callmonitor.usecase.GetAllPhoneCallLogEntriesUseCase
+import pl.kamilszustak.callmonitor.domain.phonecallmonitor.model.PhoneCallLogEntryDomainModel
+import pl.kamilszustak.callmonitor.domain.phonecallmonitor.usecase.GetAllPhoneCallLogEntriesUseCase
 
 fun Route.logRoute() {
     val getAllPhoneCallLogEntriesUseCase by inject<GetAllPhoneCallLogEntriesUseCase>()

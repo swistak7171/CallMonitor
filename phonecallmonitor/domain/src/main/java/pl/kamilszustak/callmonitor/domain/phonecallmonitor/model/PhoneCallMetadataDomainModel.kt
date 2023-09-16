@@ -1,4 +1,4 @@
-package pl.kamilszustak.callmonitor.model
+package pl.kamilszustak.callmonitor.domain.phonecallmonitor.model
 
 @JvmInline
 value class PhoneCallMetadataDomainModel(

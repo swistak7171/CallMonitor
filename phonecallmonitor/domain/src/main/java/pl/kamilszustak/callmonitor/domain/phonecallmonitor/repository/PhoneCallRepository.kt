@@ -1,9 +1,9 @@
-package pl.kamilszustak.callmonitor.repository
+package pl.kamilszustak.callmonitor.domain.phonecallmonitor.repository
 
 import kotlinx.coroutines.flow.Flow
-import pl.kamilszustak.callmonitor.model.OngoingPhoneCallDomainModel
-import pl.kamilszustak.callmonitor.model.PhoneCallEventDomainModel
-import pl.kamilszustak.callmonitor.model.PhoneCallLogEntryDomainModel
+import pl.kamilszustak.callmonitor.domain.phonecallmonitor.model.OngoingPhoneCallDomainModel
+import pl.kamilszustak.callmonitor.domain.phonecallmonitor.model.PhoneCallEventDomainModel
+import pl.kamilszustak.callmonitor.domain.phonecallmonitor.model.PhoneCallLogEntryDomainModel
 
 interface PhoneCallRepository {
     suspend fun setStarted(event: PhoneCallEventDomainModel.PhoneCallStart)

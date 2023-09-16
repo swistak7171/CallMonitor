@@ -1,4 +1,4 @@
-package pl.kamilszustak.callmonitor.model
+package pl.kamilszustak.callmonitor.domain.phonecallmonitor.model
 
 sealed interface ServerStatusEventDomainModel {
     data object Started : ServerStatusEventDomainModel

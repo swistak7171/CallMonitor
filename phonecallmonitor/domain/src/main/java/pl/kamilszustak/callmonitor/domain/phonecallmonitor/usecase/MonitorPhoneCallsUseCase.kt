@@ -1,10 +1,14 @@
-package pl.kamilszustak.callmonitor.usecase
+package pl.kamilszustak.callmonitor.domain.phonecallmonitor.usecase
 
 import kotlinx.coroutines.coroutineScope
-import pl.kamilszustak.callmonitor.model.PhoneCallEventDomainModel
-import pl.kamilszustak.callmonitor.repository.PhoneCallRepository
+import pl.kamilszustak.callmonitor.domain.phonecallmonitor.model.PhoneCallEventDomainModel
+import pl.kamilszustak.callmonitor.domain.phonecallmonitor.repository.PhoneCallRepository
 
-class MonitorPhoneCallsUseCaseImpl(
+interface MonitorPhoneCallsUseCase {
+    suspend fun execute()
+}
+
+internal class MonitorPhoneCallsUseCaseImpl(
     private val getPhoneCallEventUseCase: GetPhoneCallEventUseCase,
     private val phoneCallRepository: PhoneCallRepository,
 ) : MonitorPhoneCallsUseCase {

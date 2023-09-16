@@ -1,7 +1,7 @@
 package pl.kamilszustak.callmonitor.mapper
 
 import pl.kamilszustak.callmonitor.model.PhoneCallLogEntryDataModel
-import pl.kamilszustak.callmonitor.model.PhoneCallLogEntryDomainModel
+import pl.kamilszustak.callmonitor.domain.phonecallmonitor.model.PhoneCallLogEntryDomainModel
 import pl.kamilszustak.callmonitor.model.PhoneCallMetadataDataModel
 
 fun PhoneCallLogEntryDataModel.toDomainModel(
