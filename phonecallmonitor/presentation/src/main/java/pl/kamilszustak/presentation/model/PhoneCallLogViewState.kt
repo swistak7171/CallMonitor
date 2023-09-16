@@ -1,4 +1,4 @@
-package pl.kamilszustak.callmonitor.model
+package pl.kamilszustak.presentation.model
 
 import kotlin.time.Duration
 

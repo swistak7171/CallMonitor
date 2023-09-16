@@ -29,8 +29,9 @@ import androidx.compose.ui.unit.dp
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import org.koin.androidx.compose.koinViewModel
-import pl.kamilszustak.callmonitor.model.LogEntryViewState
+import pl.kamilszustak.presentation.model.LogEntryViewState
 import pl.kamilszustak.callmonitor.ui.theme.MyApplicationTheme
+import pl.kamilszustak.presentation.viewmodel.PhoneCallLogViewModel
 
 class MainActivity : ComponentActivity() {
 
@@ -70,28 +71,7 @@ class MainActivity : ComponentActivity() {
 
         setContent {
             MyApplicationTheme {
-                val viewModel = koinViewModel<MainViewModel>()
-                val state by viewModel.viewState.collectAsStateWithLifecycle()
-
-                // A surface container using the 'background' color from the theme
-                Surface(
-                    modifier = Modifier.fillMaxSize(),
-                    color = MaterialTheme.colorScheme.background
-                ) {
-                    Column(
-                        modifier = Modifier
-                            .fillMaxSize()
-                            .padding(16.dp)
-                    ) {
-                        state.serverHost?.let { serverHost ->
-                            ServerHost(serverHost)
-                        }
-                        state.serverPort?.let { serverPort ->
-                            ServerPort(serverPort)
-                        }
-                        PhoneCallLog(state.logEntries)
-                    }
-                }
+                PhoneCallLogScreen()
             }
         }
     }
@@ -99,6 +79,32 @@ class MainActivity : ComponentActivity() {
     private fun startPhoneCallMonitorService() {
         val serviceIntent = Intent(application, PhoneCallMonitorService::class.java)
         ContextCompat.startForegroundService(application, serviceIntent)
+    }
+}
+
+@Composable
+private fun PhoneCallLogScreen() {
+    val viewModel = koinViewModel<PhoneCallLogViewModel>()
+    val state by viewModel.viewState.collectAsStateWithLifecycle()
+
+    // A surface container using the 'background' color from the theme
+    Surface(
+        modifier = Modifier.fillMaxSize(),
+        color = MaterialTheme.colorScheme.background
+    ) {
+        Column(
+            modifier = Modifier
+                .fillMaxSize()
+                .padding(16.dp)
+        ) {
+            state.serverHost?.let { serverHost ->
+                ServerHost(serverHost)
+            }
+            state.serverPort?.let { serverPort ->
+                ServerPort(serverPort)
+            }
+            PhoneCallLog(state.logEntries)
+        }
     }
 }
 
