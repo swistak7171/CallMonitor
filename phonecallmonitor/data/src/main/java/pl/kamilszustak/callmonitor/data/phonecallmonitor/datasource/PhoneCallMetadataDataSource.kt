@@ -1,6 +1,6 @@
-package pl.kamilszustak.callmonitor.datasource
+package pl.kamilszustak.callmonitor.data.phonecallmonitor.datasource
 
-import pl.kamilszustak.callmonitor.model.PhoneCallMetadataDataModel
+import pl.kamilszustak.callmonitor.data.phonecallmonitor.model.PhoneCallMetadataDataModel
 import java.util.UUID
 
 interface PhoneCallMetadataDataSource {

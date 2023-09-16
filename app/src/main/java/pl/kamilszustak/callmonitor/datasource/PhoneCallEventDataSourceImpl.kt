@@ -10,7 +10,8 @@ import kotlinx.coroutines.channels.awaitClose
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.callbackFlow
 import kotlinx.datetime.Clock
-import pl.kamilszustak.callmonitor.model.PhoneCallEventDataModel
+import pl.kamilszustak.callmonitor.data.phonecallmonitor.datasource.PhoneCallEventDataSource
+import pl.kamilszustak.callmonitor.data.phonecallmonitor.model.PhoneCallEventDataModel
 import java.util.UUID
 
 class PhoneCallEventDataSourceImpl(

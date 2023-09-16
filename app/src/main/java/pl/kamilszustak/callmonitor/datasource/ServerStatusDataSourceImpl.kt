@@ -2,7 +2,8 @@ package pl.kamilszustak.callmonitor.datasource
 
 import kotlinx.datetime.Clock
 import kotlinx.datetime.Instant
-import pl.kamilszustak.callmonitor.model.ServerStatusDataModel
+import pl.kamilszustak.callmonitor.data.phonecallmonitor.datasource.ServerStatusDataSource
+import pl.kamilszustak.callmonitor.data.phonecallmonitor.model.ServerStatusDataModel
 
 class ServerStatusDataSourceImpl(
     private val clock: Clock,

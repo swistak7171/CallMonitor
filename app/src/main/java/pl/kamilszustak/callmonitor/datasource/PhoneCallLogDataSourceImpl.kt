@@ -3,7 +3,8 @@ package pl.kamilszustak.callmonitor.datasource
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.update
-import pl.kamilszustak.callmonitor.model.PhoneCallLogEntryDataModel
+import pl.kamilszustak.callmonitor.data.phonecallmonitor.datasource.PhoneCallLogDataSource
+import pl.kamilszustak.callmonitor.data.phonecallmonitor.model.PhoneCallLogEntryDataModel
 
 class PhoneCallLogDataSourceImpl : PhoneCallLogDataSource {
 

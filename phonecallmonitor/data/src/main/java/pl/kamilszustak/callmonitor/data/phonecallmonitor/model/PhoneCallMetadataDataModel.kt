@@ -1,4 +1,4 @@
-package pl.kamilszustak.callmonitor.model
+package pl.kamilszustak.callmonitor.data.phonecallmonitor.model
 
 import java.util.UUID
 

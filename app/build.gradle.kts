@@ -49,6 +49,7 @@ android {
 
 dependencies {
     implementation(projects.phonecallmonitor.domain)
+    implementation(projects.phonecallmonitor.data)
 
     coreLibraryDesugaring(libs.desugarJdkLibs)
 
@@ -68,8 +69,6 @@ dependencies {
     implementation(libs.ktor.server.cio)
     implementation(libs.ktor.server.contentNegotiation)
     implementation(libs.ktor.serialization)
-
-    implementation(libs.logcat)
 
     implementation(platform(libs.androidx.compose.bom))
     implementation(libs.androidx.compose.runtime)

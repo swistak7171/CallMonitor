@@ -1,6 +1,7 @@
 package pl.kamilszustak.callmonitor.datasource
 
-import pl.kamilszustak.callmonitor.model.ServerConfigurationDataModel
+import pl.kamilszustak.callmonitor.data.phonecallmonitor.datasource.ServerConfigurationDataSource
+import pl.kamilszustak.callmonitor.data.phonecallmonitor.model.ServerConfigurationDataModel
 import java.net.InetAddress
 import java.net.NetworkInterface
 import java.net.SocketException

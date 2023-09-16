@@ -1,7 +1,7 @@
-package pl.kamilszustak.callmonitor.datasource
+package pl.kamilszustak.callmonitor.data.phonecallmonitor.datasource
 
 import kotlinx.coroutines.flow.Flow
-import pl.kamilszustak.callmonitor.model.OngoingPhoneCallDataModel
+import pl.kamilszustak.callmonitor.data.phonecallmonitor.model.OngoingPhoneCallDataModel
 
 interface OngoingPhoneCallDataSource {
     fun get(): OngoingPhoneCallDataModel?

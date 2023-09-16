@@ -1,22 +1,22 @@
-package pl.kamilszustak.callmonitor.repository
+package pl.kamilszustak.callmonitor.data.phonecallmonitor.repository
 
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
 import logcat.LogPriority.WARN
 import logcat.logcat
-import pl.kamilszustak.callmonitor.datasource.ContactNameDataSource
-import pl.kamilszustak.callmonitor.datasource.OngoingPhoneCallDataSource
-import pl.kamilszustak.callmonitor.datasource.PhoneCallLogDataSource
-import pl.kamilszustak.callmonitor.datasource.PhoneCallMetadataDataSource
-import pl.kamilszustak.callmonitor.mapper.toDomainModel
-import pl.kamilszustak.callmonitor.mapper.toOngoingPhoneCallDataModel
+import pl.kamilszustak.callmonitor.data.phonecallmonitor.datasource.ContactNameDataSource
+import pl.kamilszustak.callmonitor.data.phonecallmonitor.datasource.OngoingPhoneCallDataSource
+import pl.kamilszustak.callmonitor.data.phonecallmonitor.datasource.PhoneCallLogDataSource
+import pl.kamilszustak.callmonitor.data.phonecallmonitor.datasource.PhoneCallMetadataDataSource
+import pl.kamilszustak.callmonitor.data.phonecallmonitor.mapper.toDomainModel
+import pl.kamilszustak.callmonitor.data.phonecallmonitor.mapper.toOngoingPhoneCallDataModel
 import pl.kamilszustak.callmonitor.domain.phonecallmonitor.model.OngoingPhoneCallDomainModel
 import pl.kamilszustak.callmonitor.domain.phonecallmonitor.model.PhoneCallEventDomainModel
-import pl.kamilszustak.callmonitor.model.PhoneCallLogEntryDataModel
+import pl.kamilszustak.callmonitor.data.phonecallmonitor.model.PhoneCallLogEntryDataModel
 import pl.kamilszustak.callmonitor.domain.phonecallmonitor.model.PhoneCallLogEntryDomainModel
 import pl.kamilszustak.callmonitor.domain.phonecallmonitor.repository.PhoneCallRepository
 
-class PhoneCallRepositoryImpl(
+internal class PhoneCallRepositoryImpl(
     private val ongoingPhoneCallDataSource: OngoingPhoneCallDataSource,
     private val phoneCallLogDataSource: PhoneCallLogDataSource,
     private val contactNameDataSource: ContactNameDataSource,
@@ -29,6 +29,8 @@ class PhoneCallRepositoryImpl(
     }
 
     override suspend fun setEnded(event: PhoneCallEventDomainModel.PhoneCallEnd) {
+        java.util.logging.Logger
+
         val ongoingPhoneCall = ongoingPhoneCallDataSource.get()
         if (ongoingPhoneCall == null) {
             logcat(WARN) { "Cannot find an ongoing phone call" }

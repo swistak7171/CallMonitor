@@ -2,6 +2,7 @@ package pl.kamilszustak.callmonitor.datasource
 
 import android.content.Context
 import android.provider.ContactsContract
+import pl.kamilszustak.callmonitor.data.phonecallmonitor.datasource.ContactNameDataSource
 
 class ContactNameDataSourceImpl(
     private val context: Context,

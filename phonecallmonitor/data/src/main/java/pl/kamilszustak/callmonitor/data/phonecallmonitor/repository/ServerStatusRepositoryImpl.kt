@@ -1,11 +1,11 @@
-package pl.kamilszustak.callmonitor.repository
+package pl.kamilszustak.callmonitor.data.phonecallmonitor.repository
 
-import pl.kamilszustak.callmonitor.datasource.ServerStatusDataSource
-import pl.kamilszustak.callmonitor.mapper.toDomainModel
+import pl.kamilszustak.callmonitor.data.phonecallmonitor.datasource.ServerStatusDataSource
+import pl.kamilszustak.callmonitor.data.phonecallmonitor.mapper.toDomainModel
 import pl.kamilszustak.callmonitor.domain.phonecallmonitor.model.ServerStatusDomainModel
 import pl.kamilszustak.callmonitor.domain.phonecallmonitor.repository.ServerStatusRepository
 
-class ServerStatusRepositoryImpl(
+internal class ServerStatusRepositoryImpl(
     private val serverStatusDataSource: ServerStatusDataSource,
 ) : ServerStatusRepository {
 

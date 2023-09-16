@@ -1,7 +1,8 @@
 package pl.kamilszustak.callmonitor.datasource
 
 import android.annotation.SuppressLint
-import pl.kamilszustak.callmonitor.model.PhoneCallMetadataDataModel
+import pl.kamilszustak.callmonitor.data.phonecallmonitor.datasource.PhoneCallMetadataDataSource
+import pl.kamilszustak.callmonitor.data.phonecallmonitor.model.PhoneCallMetadataDataModel
 import java.util.UUID
 
 class PhoneCallMetadataDataSourceImpl : PhoneCallMetadataDataSource {

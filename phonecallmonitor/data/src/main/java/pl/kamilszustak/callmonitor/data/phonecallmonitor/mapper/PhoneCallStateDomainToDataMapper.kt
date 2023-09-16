@@ -1,6 +1,6 @@
-package pl.kamilszustak.callmonitor.mapper
+package pl.kamilszustak.callmonitor.data.phonecallmonitor.mapper
 
-import pl.kamilszustak.callmonitor.model.PhoneCallEventDataModel
+import pl.kamilszustak.callmonitor.data.phonecallmonitor.model.PhoneCallEventDataModel
 import pl.kamilszustak.callmonitor.domain.phonecallmonitor.model.PhoneCallEventDomainModel
 
 fun PhoneCallEventDomainModel.toDataModel(): PhoneCallEventDataModel {
