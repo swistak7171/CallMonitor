@@ -18,8 +18,7 @@ androidx_work = "2.8.1"
 androidx_dataStore = "1.0.0"
 sqlDelight = "2.0.0"
 ktor = "2.3.4"
-koin_core = "3.4.3"
-koin_android = "3.4.3"
+koin_bom = "3.5.1"
 logcat = "0.1"
 jUnit = "4.13.2"
 androidx_test_core = "1.5.2"
@@ -75,13 +74,14 @@ androidx_test_ext_jUnit = { module = "androidx.test.ext:junit-ktx", version.ref 
 androidx_test_ext_truth = { module = "androidx.test.ext:truth", version.ref = "androidx_test_core" }
 androidx_test_runner = { module = "androidx.test:runner", version.ref = "androidx_test_core" }
 androidx_test_rules = { module = "androidx.test:rules", version.ref = "androidx_test_core" }
-koin_core = { module = "io.insert-koin:koin-core", version.ref = "koin_core" }
-koin_android_core = { module = "io.insert-koin:koin-android", version.ref = "koin_android" }
-koin_android_compose = { module = "io.insert-koin:koin-androidx-compose", version.ref = "koin_android" }
-koin_android_workManager = { module = "io.insert-koin:koin-androidx-workmanager", version.ref = "koin_android" }
-koin_ktor = { module = "io.insert-koin:koin-ktor", version.ref = "koin_core" }
-koin_test_core = { module = "io.insert-koin:koin-test", version.ref = "koin_core" }
-koin_test_jUnit4 = { module = "io.insert-koin:koin-test-junit4", version.ref = "koin_core" }
+koin_bom = { module = "io.insert-koin:koin-bom", version.ref = "koin_bom" }
+koin_core = { module = "io.insert-koin:koin-core" }
+koin_android_core = { module = "io.insert-koin:koin-android" }
+koin_android_compose = { module = "io.insert-koin:koin-androidx-compose" }
+koin_android_workManager = { module = "io.insert-koin:koin-androidx-workmanager" }
+koin_ktor = { module = "io.insert-koin:koin-ktor" }
+koin_test_core = { module = "io.insert-koin:koin-test" }
+koin_test_jUnit4 = { module = "io.insert-koin:koin-test-junit4" }
 sqlDelight_androidDriver = { module = "com.squareup.sqldelight:android-driver", version.ref = "sqlDelight" }
 sqlDelight_coroutinesExtensions = { module = "com.squareup.sqldelight:coroutines-extensions", version.ref = "sqlDelight" }
 ktor_server_core = { module = "io.ktor:ktor-server-core", version.ref = "ktor" }
