@@ -20,21 +20,21 @@ sqlDelight = "2.0.0"
 ktor = "2.3.4"
 koin_bom = "3.5.1"
 logcat = "0.1"
-jUnit = "4.13.2"
+junit = "4.13.2"
 androidx_test_core = "1.5.2"
 androidx_test_extJUnit = "1.1.5"
 androidx_espresso = "3.5.1"
 dokka = "1.8.10"
 mockK = "1.13.7"
 robolectric = "4.10.3"
-org-jetbrains-kotlin-jvm = "1.9.10"
-junit = "1.1.5"
-material = "1.8.0"
+turbine = "1.0.0"
 
 [libraries]
 kotlin_standardLibrary = { module = "org.jetbrains.kotlin:kotlin-stdlib", version.ref = "kotlin" }
+kotlin_test = { module = "org.jetbrains.kotlin:kotlin-test", version.ref = "kotlin" }
 kotlinx_coroutines_core = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core", version.ref = "kotlinx_coroutines" }
 kotlinx_coroutines_android = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-android", version.ref = "kotlinx_coroutines" }
+kotlinx_coroutines_test = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-test", version.ref = "kotlinx_coroutines" }
 kotlinx_dateTime = { module = "org.jetbrains.kotlinx:kotlinx-datetime", version.ref = "kotlinx_dateTime" }
 kotlinx_serialization_core = { module = "org.jetbrains.kotlin:kotlin-serialization", version.ref = "kotlinx_serialization" }
 kotlinx_serialization_json = { module = "org.jetbrains.kotlinx:kotlinx-serialization-json", version.ref = "kotlinx_serialization" }
@@ -94,16 +94,15 @@ ktor_serialization = { module = "io.ktor:ktor-serialization-kotlinx-json", versi
 logcat = { module = "com.squareup.logcat:logcat", version.ref = "logcat" }
 mockk_core = { module = "io.mockk:mockk", version.ref = "mockK" }
 mockk_agentJvm = { module = "io.mockk:mockk-agent-jvm", version.ref = "mockK" }
-jUnit = { module = "junit:junit", version.ref = "jUnit" }
+junit = { module = "junit:junit", version.ref = "junit" }
 robolectric = { module = "org.robolectric:robolectric", version.ref = "robolectric" }
-junit = { group = "androidx.test.ext", name = "junit", version.ref = "junit" }
-material = { group = "com.google.android.material", name = "material", version.ref = "material" }
+turbine = { module = "app.cash.turbine:turbine", version.ref = "turbine" }
 
 [plugins]
 androidApplication = { id = "com.android.application", version.ref = "androidGradlePlugin" }
 kotlin_android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 kotlin_serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
-org-jetbrains-kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "org-jetbrains-kotlin-jvm" }
+org-jetbrains-kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }
 com-android-library = { id = "com.android.library", version.ref = "androidGradlePlugin" }
 
 [bundles]

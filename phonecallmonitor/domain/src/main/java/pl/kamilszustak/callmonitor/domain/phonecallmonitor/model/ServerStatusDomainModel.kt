@@ -4,8 +4,7 @@ import kotlinx.datetime.Instant
 
 sealed interface ServerStatusDomainModel {
 
-    @JvmInline
-    value class Running(
+    data class Running(
         val startTimestamp: Instant,
     ) : ServerStatusDomainModel
 

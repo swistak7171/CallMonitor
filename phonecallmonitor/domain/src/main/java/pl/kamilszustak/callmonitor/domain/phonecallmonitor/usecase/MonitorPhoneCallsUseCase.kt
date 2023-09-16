@@ -2,6 +2,7 @@ package pl.kamilszustak.callmonitor.domain.phonecallmonitor.usecase
 
 import kotlinx.coroutines.coroutineScope
 import pl.kamilszustak.callmonitor.domain.phonecallmonitor.model.PhoneCallEventDomainModel
+import pl.kamilszustak.callmonitor.domain.phonecallmonitor.repository.PhoneCallEventRepository
 import pl.kamilszustak.callmonitor.domain.phonecallmonitor.repository.PhoneCallRepository
 
 interface MonitorPhoneCallsUseCase {
@@ -9,13 +10,15 @@ interface MonitorPhoneCallsUseCase {
 }
 
 internal class MonitorPhoneCallsUseCaseImpl(
-    private val getPhoneCallEventUseCase: GetPhoneCallEventUseCase,
+    private val phoneCallEventRepository: PhoneCallEventRepository,
     private val phoneCallRepository: PhoneCallRepository,
 ) : MonitorPhoneCallsUseCase {
 
+    // region MonitorPhoneCallsUseCase Implementation
+
     override suspend fun execute() {
         coroutineScope {
-            getPhoneCallEventUseCase.executeRx()
+            phoneCallEventRepository.getRx()
                 .collect { event ->
                     when (event) {
                         is PhoneCallEventDomainModel.PhoneCallStart -> {
@@ -29,5 +32,7 @@ internal class MonitorPhoneCallsUseCaseImpl(
                 }
         }
     }
+
+    // endregion
 
 }

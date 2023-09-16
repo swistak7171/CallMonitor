@@ -8,8 +8,6 @@ import pl.kamilszustak.callmonitor.domain.phonecallmonitor.usecase.GetAllPhoneCa
 import pl.kamilszustak.callmonitor.domain.phonecallmonitor.usecase.GetAllPhoneCallLogEntriesUseCaseImpl
 import pl.kamilszustak.callmonitor.domain.phonecallmonitor.usecase.GetOngoingPhoneCallUseCase
 import pl.kamilszustak.callmonitor.domain.phonecallmonitor.usecase.GetOngoingPhoneCallUseCaseImpl
-import pl.kamilszustak.callmonitor.domain.phonecallmonitor.usecase.GetPhoneCallEventUseCase
-import pl.kamilszustak.callmonitor.domain.phonecallmonitor.usecase.GetPhoneCallEventUseCaseImpl
 import pl.kamilszustak.callmonitor.domain.phonecallmonitor.usecase.GetServerConfigurationUseCase
 import pl.kamilszustak.callmonitor.domain.phonecallmonitor.usecase.GetServerConfigurationUseCaseImpl
 import pl.kamilszustak.callmonitor.domain.phonecallmonitor.usecase.GetServerStatusUseCase
@@ -20,9 +18,6 @@ import pl.kamilszustak.callmonitor.domain.phonecallmonitor.usecase.SetServerStat
 import pl.kamilszustak.callmonitor.domain.phonecallmonitor.usecase.SetServerStatusUseCaseImpl
 
 val phoneCallMonitorDomainModule: Module = module {
-
-    factoryOf(::GetPhoneCallEventUseCaseImpl)
-        .bind<GetPhoneCallEventUseCase>()
     factoryOf(::MonitorPhoneCallsUseCaseImpl)
         .bind<MonitorPhoneCallsUseCase>()
     factoryOf(::GetAllPhoneCallLogEntriesUseCaseImpl)
@@ -35,5 +30,4 @@ val phoneCallMonitorDomainModule: Module = module {
         .bind<GetServerStatusUseCase>()
     factoryOf(::SetServerStatusUseCaseImpl)
         .bind<SetServerStatusUseCase>()
-
 }

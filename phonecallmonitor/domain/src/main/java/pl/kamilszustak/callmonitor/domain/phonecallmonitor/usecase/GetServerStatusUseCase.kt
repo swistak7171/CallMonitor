@@ -11,8 +11,12 @@ internal class GetServerStatusUseCaseImpl(
     private val serverStatusRepository: ServerStatusRepository,
 ) : GetServerStatusUseCase {
 
+    // region GetServerStatusUseCase Implementation
+
     override fun execute(): ServerStatusDomainModel {
         return serverStatusRepository.get()
     }
+
+    // endregion
 
 }

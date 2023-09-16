@@ -11,8 +11,12 @@ internal class GetOngoingPhoneCallUseCaseImpl(
     private val phoneCallRepository: PhoneCallRepository,
 ) : GetOngoingPhoneCallUseCase {
 
+    // region GetOngoingPhoneCallUseCase Implementation
+
     override suspend fun execute(): OngoingPhoneCallDomainModel? {
         return phoneCallRepository.getOngoing()
     }
+
+    // endregion
 
 }

@@ -11,6 +11,8 @@ internal class SetServerStatusUseCaseImpl(
     private val serverStatusRepository: ServerStatusRepository,
 ) : SetServerStatusUseCase {
 
+    // region SetServerStatusUseCase Implementation
+
     override fun execute(event: ServerStatusEventDomainModel) {
         when (event) {
             is ServerStatusEventDomainModel.Started -> {
@@ -22,5 +24,7 @@ internal class SetServerStatusUseCaseImpl(
             }
         }
     }
+
+    // endregion
 
 }

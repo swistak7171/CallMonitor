@@ -13,6 +13,8 @@ internal class GetAllPhoneCallLogEntriesUseCaseImpl(
     private val phoneCallRepository: PhoneCallRepository,
 ) : GetAllPhoneCallLogEntriesUseCase {
 
+    // region GetAllPhoneCallLogEntriesUseCase Implementation
+
     override suspend fun execute(): List<PhoneCallLogEntryDomainModel> {
         return phoneCallRepository.getAll()
     }
@@ -20,5 +22,7 @@ internal class GetAllPhoneCallLogEntriesUseCaseImpl(
     override fun executeRx(): Flow<List<PhoneCallLogEntryDomainModel>> {
         return phoneCallRepository.getAllRx()
     }
+
+    // endregion
 
 }

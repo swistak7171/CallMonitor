@@ -11,8 +11,12 @@ internal class GetServerConfigurationUseCaseImpl(
     private val serverConfigurationRepository: ServerConfigurationRepository,
 ) : GetServerConfigurationUseCase {
 
+    // region GetServerConfigurationUseCase Implementation
+
     override fun execute(): ServerConfigurationDomainModel {
         return serverConfigurationRepository.get()
     }
+
+    // endregion
 
 }
