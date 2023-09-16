@@ -9,7 +9,7 @@ class PhoneCallMetadataDataSourceImpl : PhoneCallMetadataDataSource {
 
     private val phoneCallMetadata: MutableMap<UUID, PhoneCallMetadataDataModel> = mutableMapOf()
 
-    override suspend fun getOrCreate(id: UUID): PhoneCallMetadataDataModel {
+    override suspend fun get(id: UUID): PhoneCallMetadataDataModel {
         return phoneCallMetadata.getOrPut(id) {
             PhoneCallMetadataDataModel(id)
         }

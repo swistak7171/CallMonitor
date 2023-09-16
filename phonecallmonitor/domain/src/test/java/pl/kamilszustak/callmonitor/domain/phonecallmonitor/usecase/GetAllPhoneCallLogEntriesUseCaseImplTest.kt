@@ -1,6 +1,7 @@
 package pl.kamilszustak.callmonitor.domain.phonecallmonitor.usecase
 
 import app.cash.turbine.test
+import io.mockk.Ordering
 import io.mockk.coEvery
 import io.mockk.coVerify
 import io.mockk.confirmVerified
@@ -40,7 +41,7 @@ class GetAllPhoneCallLogEntriesUseCaseImplTest {
         // then
         assertEquals(expectedResult, actualResult)
 
-        coVerify(exactly = 1) {
+        coVerify(ordering = Ordering.SEQUENCE) {
             phoneCallRepositoryMock.getAll()
         }
         confirmVerified(phoneCallRepositoryMock)
@@ -66,7 +67,7 @@ class GetAllPhoneCallLogEntriesUseCaseImplTest {
                 awaitComplete()
                 ensureAllEventsConsumed()
 
-                coVerify(exactly = 1) {
+                coVerify(ordering = Ordering.SEQUENCE) {
                     phoneCallRepositoryMock.getAllRx()
                 }
                 confirmVerified(phoneCallRepositoryMock)

@@ -1,5 +1,6 @@
 package pl.kamilszustak.callmonitor.domain.phonecallmonitor.usecase
 
+import io.mockk.Ordering
 import io.mockk.coEvery
 import io.mockk.coVerify
 import io.mockk.confirmVerified
@@ -10,6 +11,7 @@ import kotlinx.coroutines.test.runTest
 import org.junit.Test
 import pl.kamilszustak.callmonitor.domain.phonecallmonitor.model.OngoingPhoneCallDomainModel
 import pl.kamilszustak.callmonitor.domain.phonecallmonitor.repository.PhoneCallRepository
+import java.util.UUID
 
 class GetOngoingPhoneCallUseCaseImplTest {
 
@@ -30,6 +32,7 @@ class GetOngoingPhoneCallUseCaseImplTest {
     fun `'execute()' should return an ongoing phone call when there is one`() = runTest {
         // given
         val expectedResult = OngoingPhoneCallDomainModel(
+            id = UUID.randomUUID(),
             phoneNumber = "123456789",
             contactName = "John Smith"
         )
@@ -41,7 +44,7 @@ class GetOngoingPhoneCallUseCaseImplTest {
         // then
         assertEquals(expectedResult, actualResult)
 
-        coVerify(exactly = 1) {
+        coVerify(ordering = Ordering.SEQUENCE) {
             phoneCallRepositoryMock.getOngoing()
         }
         confirmVerified(phoneCallRepositoryMock)
@@ -58,7 +61,7 @@ class GetOngoingPhoneCallUseCaseImplTest {
         // then
         assertNull(actualResult)
 
-        coVerify(exactly = 1) {
+        coVerify(ordering = Ordering.SEQUENCE) {
             phoneCallRepositoryMock.getOngoing()
         }
         confirmVerified(phoneCallRepositoryMock)

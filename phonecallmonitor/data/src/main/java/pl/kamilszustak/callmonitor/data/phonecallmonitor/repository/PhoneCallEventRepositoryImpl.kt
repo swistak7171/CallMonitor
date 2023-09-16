@@ -12,9 +12,13 @@ internal class PhoneCallEventRepositoryImpl(
     private val phoneCallEventDataSource: PhoneCallEventDataSource,
 ) : PhoneCallEventRepository {
 
+    // region PhoneCallEventRepository Implementation
+
     override fun getRx(): Flow<PhoneCallEventDomainModel> {
         return phoneCallEventDataSource.getRx()
             .map(PhoneCallEventDataModel::toDomainModel)
     }
+
+    // endregion
 
 }

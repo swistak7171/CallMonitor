@@ -9,9 +9,13 @@ internal class ServerConfigurationRepositoryImpl(
     private val serverConfigurationDataSource: ServerConfigurationDataSource,
 ) : ServerConfigurationRepository {
 
+    // region ServerConfigurationRepository Implementation
+
     override fun get(): ServerConfigurationDomainModel {
         return serverConfigurationDataSource.get()
             .toDomainModel()
     }
+
+    // endregion
 
 }

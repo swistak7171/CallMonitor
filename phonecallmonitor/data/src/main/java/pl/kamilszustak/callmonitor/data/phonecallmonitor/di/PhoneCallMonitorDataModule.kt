@@ -14,7 +14,6 @@ import pl.kamilszustak.callmonitor.domain.phonecallmonitor.repository.ServerConf
 import pl.kamilszustak.callmonitor.domain.phonecallmonitor.repository.ServerStatusRepository
 
 val phoneCallMonitorDataModule: Module = module {
-
     factoryOf(::PhoneCallEventRepositoryImpl)
         .bind<PhoneCallEventRepository>()
     factoryOf(::PhoneCallRepositoryImpl)
@@ -23,5 +22,4 @@ val phoneCallMonitorDataModule: Module = module {
         .bind<ServerConfigurationRepository>()
     factoryOf(::ServerStatusRepositoryImpl)
         .bind<ServerStatusRepository>()
-
 }

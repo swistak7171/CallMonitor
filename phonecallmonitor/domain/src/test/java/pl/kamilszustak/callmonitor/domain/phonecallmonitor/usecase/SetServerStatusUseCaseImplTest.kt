@@ -1,5 +1,6 @@
 package pl.kamilszustak.callmonitor.domain.phonecallmonitor.usecase
 
+import io.mockk.Ordering
 import io.mockk.confirmVerified
 import io.mockk.justRun
 import io.mockk.mockk
@@ -31,7 +32,7 @@ class SetServerStatusUseCaseImplTest {
         setServerStatusUseCase.execute(ServerStatusEventDomainModel.Started)
 
         // then
-        verify(exactly = 1) {
+        verify(ordering = Ordering.SEQUENCE) {
             serverStatusRepositoryMock.setStarted()
         }
         confirmVerified(serverStatusRepositoryMock)
@@ -46,7 +47,7 @@ class SetServerStatusUseCaseImplTest {
         setServerStatusUseCase.execute(ServerStatusEventDomainModel.Stopped)
 
         // then
-        verify(exactly = 1) {
+        verify(ordering = Ordering.SEQUENCE) {
             serverStatusRepositoryMock.setStopped()
         }
         confirmVerified(serverStatusRepositoryMock)

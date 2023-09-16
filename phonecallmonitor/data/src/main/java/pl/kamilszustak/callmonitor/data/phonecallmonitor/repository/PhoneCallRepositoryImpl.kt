@@ -15,7 +15,11 @@ import pl.kamilszustak.callmonitor.domain.phonecallmonitor.model.PhoneCallLogEnt
 import pl.kamilszustak.callmonitor.domain.phonecallmonitor.repository.PhoneCallRepository
 import pl.kamilszustak.callmonitor.logger.Logger
 
+// region Constants
+
 private const val TAG: String = "PhoneCallRepositoryImpl"
+
+// endregion
 
 internal class PhoneCallRepositoryImpl(
     private val logger: Logger,
@@ -24,6 +28,8 @@ internal class PhoneCallRepositoryImpl(
     private val contactNameDataSource: ContactNameDataSource,
     private val phoneCallMetadataDataSource: PhoneCallMetadataDataSource,
 ) : PhoneCallRepository {
+
+    // region PhoneCallRepository Implementation
 
     override suspend fun setStarted(event: PhoneCallEventDomainModel.PhoneCallStart) {
         val ongoingPhoneCall = event.toOngoingPhoneCallDataModel()
@@ -60,10 +66,7 @@ internal class PhoneCallRepositoryImpl(
             phoneCallMetadataDataSource.incrementTimesQueried(ongoingPhoneCall.id)
             val contactName = contactNameDataSource.get(ongoingPhoneCall.phoneNumber)
 
-            OngoingPhoneCallDomainModel(
-                phoneNumber = ongoingPhoneCall.phoneNumber,
-                contactName = contactName,
-            )
+            ongoingPhoneCall.toDomainModel(contactName)
         } else {
             null
         }
@@ -79,13 +82,19 @@ internal class PhoneCallRepositoryImpl(
             .map { it.toDomainModels() }
     }
 
+    // endregion
+
+    // region Private Methods
+
     private suspend fun List<PhoneCallLogEntryDataModel>.toDomainModels(): List<PhoneCallLogEntryDomainModel> {
         return map { entry ->
-            val metadata = phoneCallMetadataDataSource.getOrCreate(entry.id)
+            val metadata = phoneCallMetadataDataSource.get(entry.id)
             val contactName = contactNameDataSource.get(entry.phoneNumber)
 
             entry.toDomainModel(metadata, contactName)
         }
     }
+
+    // endregion
 
 }

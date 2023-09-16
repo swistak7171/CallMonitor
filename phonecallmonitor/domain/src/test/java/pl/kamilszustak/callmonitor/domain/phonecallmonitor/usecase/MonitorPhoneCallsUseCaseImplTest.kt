@@ -1,5 +1,6 @@
 package pl.kamilszustak.callmonitor.domain.phonecallmonitor.usecase
 
+import io.mockk.Ordering
 import io.mockk.coJustRun
 import io.mockk.coVerify
 import io.mockk.confirmVerified
@@ -42,7 +43,7 @@ class MonitorPhoneCallsUseCaseImplTest {
             monitorPhoneCallsUseCase.execute()
 
             // then
-            coVerify(exactly = 1) {
+            coVerify(ordering = Ordering.SEQUENCE) {
                 phoneCallEventRepositoryMock.getRx()
                 phoneCallRepositoryMock.setStarted(event)
             }
@@ -62,7 +63,7 @@ class MonitorPhoneCallsUseCaseImplTest {
             monitorPhoneCallsUseCase.execute()
 
             // then
-            coVerify(exactly = 1) {
+            coVerify(ordering = Ordering.SEQUENCE) {
                 phoneCallEventRepositoryMock.getRx()
                 phoneCallRepositoryMock.setEnded(event)
             }
@@ -85,7 +86,7 @@ class MonitorPhoneCallsUseCaseImplTest {
             monitorPhoneCallsUseCase.execute()
 
             // then
-            coVerify(exactly = 1) {
+            coVerify(ordering = Ordering.SEQUENCE) {
                 phoneCallEventRepositoryMock.getRx()
                 phoneCallRepositoryMock.setStarted(startEvent)
                 phoneCallRepositoryMock.setEnded(endEvent)

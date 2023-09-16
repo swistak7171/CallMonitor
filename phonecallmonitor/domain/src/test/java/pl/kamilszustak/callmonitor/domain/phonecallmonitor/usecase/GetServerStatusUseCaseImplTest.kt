@@ -1,5 +1,6 @@
 package pl.kamilszustak.callmonitor.domain.phonecallmonitor.usecase
 
+import io.mockk.Ordering
 import io.mockk.confirmVerified
 import io.mockk.every
 import io.mockk.mockk
@@ -35,7 +36,7 @@ class GetServerStatusUseCaseImplTest {
         // then
         assertEquals(expectedResult, actualResult)
 
-        verify(exactly = 1) {
+        verify(ordering = Ordering.SEQUENCE) {
             serverStatusRepositoryMock.get()
         }
         confirmVerified(serverStatusRepositoryMock)

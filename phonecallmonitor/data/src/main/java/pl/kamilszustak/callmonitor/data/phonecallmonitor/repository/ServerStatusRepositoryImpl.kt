@@ -9,6 +9,8 @@ internal class ServerStatusRepositoryImpl(
     private val serverStatusDataSource: ServerStatusDataSource,
 ) : ServerStatusRepository {
 
+    // region ServerStatusRepository Implementation
+
     override fun setStarted() {
         serverStatusDataSource.setStarted()
     }
@@ -21,4 +23,7 @@ internal class ServerStatusRepositoryImpl(
         return serverStatusDataSource.get()
             .toDomainModel()
     }
+
+    // endregion
+
 }
