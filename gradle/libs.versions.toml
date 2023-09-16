@@ -28,6 +28,8 @@ dokka = "1.8.10"
 mockK = "1.13.7"
 robolectric = "4.10.3"
 org-jetbrains-kotlin-jvm = "1.9.10"
+junit = "1.1.5"
+material = "1.8.0"
 
 [libraries]
 kotlin_standardLibrary = { module = "org.jetbrains.kotlin:kotlin-stdlib", version.ref = "kotlin" }
@@ -94,12 +96,15 @@ mockk_core = { module = "io.mockk:mockk", version.ref = "mockK" }
 mockk_agentJvm = { module = "io.mockk:mockk-agent-jvm", version.ref = "mockK" }
 jUnit = { module = "junit:junit", version.ref = "jUnit" }
 robolectric = { module = "org.robolectric:robolectric", version.ref = "robolectric" }
+junit = { group = "androidx.test.ext", name = "junit", version.ref = "junit" }
+material = { group = "com.google.android.material", name = "material", version.ref = "material" }
 
 [plugins]
 androidApplication = { id = "com.android.application", version.ref = "androidGradlePlugin" }
 kotlin_android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 kotlin_serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
 org-jetbrains-kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "org-jetbrains-kotlin-jvm" }
+com-android-library = { id = "com.android.library", version.ref = "androidGradlePlugin" }
 
 [bundles]
 

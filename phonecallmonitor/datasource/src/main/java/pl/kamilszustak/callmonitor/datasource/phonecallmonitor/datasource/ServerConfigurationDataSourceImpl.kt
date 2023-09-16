@@ -1,4 +1,4 @@
-package pl.kamilszustak.callmonitor.datasource
+package pl.kamilszustak.callmonitor.datasource.phonecallmonitor.datasource
 
 import pl.kamilszustak.callmonitor.data.phonecallmonitor.datasource.ServerConfigurationDataSource
 import pl.kamilszustak.callmonitor.data.phonecallmonitor.model.ServerConfigurationDataModel

@@ -25,8 +25,8 @@ internal class PhoneCallRepositoryImpl(
     private val phoneCallMetadataDataSource: PhoneCallMetadataDataSource,
 ) : PhoneCallRepository {
 
-    override suspend fun setStarted(state: PhoneCallEventDomainModel.PhoneCallStart) {
-        val ongoingPhoneCall = state.toOngoingPhoneCallDataModel()
+    override suspend fun setStarted(event: PhoneCallEventDomainModel.PhoneCallStart) {
+        val ongoingPhoneCall = event.toOngoingPhoneCallDataModel()
         ongoingPhoneCallDataSource.setStarted(ongoingPhoneCall)
     }
 

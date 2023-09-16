@@ -1,4 +1,4 @@
-package pl.kamilszustak.callmonitor.datasource
+package pl.kamilszustak.callmonitor.datasource.phonecallmonitor.datasource
 
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow

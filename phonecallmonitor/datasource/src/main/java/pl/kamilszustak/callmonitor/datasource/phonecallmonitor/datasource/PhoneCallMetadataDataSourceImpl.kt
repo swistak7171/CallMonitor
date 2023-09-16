@@ -1,4 +1,4 @@
-package pl.kamilszustak.callmonitor.datasource
+package pl.kamilszustak.callmonitor.datasource.phonecallmonitor.datasource
 
 import android.annotation.SuppressLint
 import pl.kamilszustak.callmonitor.data.phonecallmonitor.datasource.PhoneCallMetadataDataSource

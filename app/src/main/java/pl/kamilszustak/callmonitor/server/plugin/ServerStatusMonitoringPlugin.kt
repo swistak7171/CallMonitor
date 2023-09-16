@@ -11,7 +11,7 @@ import pl.kamilszustak.callmonitor.domain.phonecallmonitor.usecase.SetServerStat
 val ServerStatusMonitoringPlugin = createApplicationPlugin("ServerStatusMonitoringPlugin") {
     val setServerStatusUseCase = application.get<SetServerStatusUseCase>()
 
-    on(MonitoringEvent(ApplicationStarted)) { application ->
+    on(MonitoringEvent(ApplicationStarted)) { _ ->
         setServerStatusUseCase.execute(ServerStatusEventDomainModel.Started)
     }
 

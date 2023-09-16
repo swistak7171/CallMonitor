@@ -28,10 +28,6 @@ android {
         }
     }
 
-    kotlin {
-        jvmToolchain(17)
-    }
-
     buildFeatures {
         compose = true
     }
@@ -47,10 +43,15 @@ android {
     }
 }
 
+kotlin {
+    jvmToolchain(17)
+}
+
 dependencies {
     implementation(projects.logger)
     implementation(projects.phonecallmonitor.domain)
     implementation(projects.phonecallmonitor.data)
+    implementation(projects.phonecallmonitor.datasource)
 
     coreLibraryDesugaring(libs.desugarJdkLibs)
 

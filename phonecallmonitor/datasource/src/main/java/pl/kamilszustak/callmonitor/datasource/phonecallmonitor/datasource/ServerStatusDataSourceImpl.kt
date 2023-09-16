@@ -1,4 +1,4 @@
-package pl.kamilszustak.callmonitor.datasource
+package pl.kamilszustak.callmonitor.datasource.phonecallmonitor.datasource
 
 import kotlinx.datetime.Clock
 import kotlinx.datetime.Instant

@@ -1,4 +1,4 @@
-package pl.kamilszustak.callmonitor.datasource
+package pl.kamilszustak.callmonitor.datasource.phonecallmonitor.datasource
 
 import android.content.BroadcastReceiver
 import android.content.Context
@@ -32,6 +32,7 @@ class PhoneCallEventDataSourceImpl(
         }
     }
 
+    @Suppress("DEPRECATION")
     private fun createBroadcastReceiver(
         onEvent: (event: PhoneCallEventDataModel) -> Unit,
     ): BroadcastReceiver {
