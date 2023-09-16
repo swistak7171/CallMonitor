@@ -29,9 +29,9 @@ import androidx.compose.ui.unit.dp
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import org.koin.androidx.compose.koinViewModel
-import pl.kamilszustak.presentation.model.LogEntryViewState
+import pl.kamilszustak.callmonitor.presentation.model.LogEntryViewState
 import pl.kamilszustak.callmonitor.ui.theme.MyApplicationTheme
-import pl.kamilszustak.presentation.viewmodel.PhoneCallLogViewModel
+import pl.kamilszustak.callmonitor.presentation.viewmodel.PhoneCallLogViewModel
 
 class MainActivity : ComponentActivity() {
 
