@@ -7,11 +7,11 @@ import io.ktor.server.routing.Route
 import io.ktor.server.routing.get
 import io.ktor.server.routing.getAllRoutes
 import org.koin.ktor.ext.get
-import pl.kamilszustak.callmonitor.model.RootRemoteModel
 import pl.kamilszustak.callmonitor.domain.phonecallmonitor.model.ServerStatusDomainModel
-import pl.kamilszustak.callmonitor.model.ServiceRemoteModel
 import pl.kamilszustak.callmonitor.domain.phonecallmonitor.usecase.GetServerConfigurationUseCase
 import pl.kamilszustak.callmonitor.domain.phonecallmonitor.usecase.GetServerStatusUseCase
+import pl.kamilszustak.callmonitor.server.model.RootRemoteModel
+import pl.kamilszustak.callmonitor.server.model.ServiceRemoteModel
 
 fun Route.rootRoute() {
     val getServerConfigurationUseCase = get<GetServerConfigurationUseCase>()

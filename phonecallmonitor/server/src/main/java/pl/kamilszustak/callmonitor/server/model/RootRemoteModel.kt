@@ -1,4 +1,4 @@
-package pl.kamilszustak.callmonitor.model
+package pl.kamilszustak.callmonitor.server.model
 
 import kotlinx.datetime.Instant
 import kotlinx.serialization.SerialName

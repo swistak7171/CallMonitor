@@ -1,4 +1,4 @@
-package pl.kamilszustak.callmonitor.model
+package pl.kamilszustak.callmonitor.server.model
 
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable

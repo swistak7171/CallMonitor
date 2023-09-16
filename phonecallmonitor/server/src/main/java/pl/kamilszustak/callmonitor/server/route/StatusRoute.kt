@@ -6,8 +6,8 @@ import io.ktor.server.response.respond
 import io.ktor.server.routing.Route
 import io.ktor.server.routing.get
 import org.koin.ktor.ext.inject
-import pl.kamilszustak.callmonitor.mapper.toRemoteModel
 import pl.kamilszustak.callmonitor.domain.phonecallmonitor.usecase.GetOngoingPhoneCallUseCase
+import pl.kamilszustak.callmonitor.server.mapper.toRemoteModel
 
 fun Route.statusRoute() {
     val getOngoingPhoneCallUseCase by inject<GetOngoingPhoneCallUseCase>()

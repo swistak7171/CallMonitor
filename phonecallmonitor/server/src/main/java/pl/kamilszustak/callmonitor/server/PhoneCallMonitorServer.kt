@@ -8,11 +8,11 @@ import io.ktor.server.plugins.contentnegotiation.ContentNegotiation
 import io.ktor.server.routing.routing
 import org.koin.core.component.KoinComponent
 import org.koin.core.component.get
-import pl.kamilszustak.server.plugin.ServerStatusMonitoringPlugin
-import pl.kamilszustak.server.route.logRoute
-import pl.kamilszustak.server.route.rootRoute
-import pl.kamilszustak.server.route.statusRoute
 import pl.kamilszustak.callmonitor.domain.phonecallmonitor.usecase.GetServerConfigurationUseCase
+import pl.kamilszustak.callmonitor.server.plugin.ServerStatusMonitoringPlugin
+import pl.kamilszustak.callmonitor.server.route.logRoute
+import pl.kamilszustak.callmonitor.server.route.rootRoute
+import pl.kamilszustak.callmonitor.server.route.statusRoute
 
 fun KoinComponent.startPhoneCallMonitorServer() {
     val getServerConfigurationUseCase = get<GetServerConfigurationUseCase>()
@@ -26,7 +26,7 @@ fun KoinComponent.startPhoneCallMonitorServer() {
         install(ContentNegotiation) {
             json()
         }
-        install(pl.kamilszustak.server.plugin.ServerStatusMonitoringPlugin)
+        install(ServerStatusMonitoringPlugin)
 
         routing {
             rootRoute()
