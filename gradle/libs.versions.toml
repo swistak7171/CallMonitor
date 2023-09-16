@@ -84,7 +84,7 @@ koin_android_compose = { module = "io.insert-koin:koin-androidx-compose" }
 koin_android_workManager = { module = "io.insert-koin:koin-androidx-workmanager" }
 koin_ktor = { module = "io.insert-koin:koin-ktor" }
 koin_test_core = { module = "io.insert-koin:koin-test" }
-koin_test_jUnit4 = { module = "io.insert-koin:koin-test-junit4" }
+koin_test_junit4 = { module = "io.insert-koin:koin-test-junit4" }
 sqlDelight_androidDriver = { module = "com.squareup.sqldelight:android-driver", version.ref = "sqlDelight" }
 sqlDelight_coroutinesExtensions = { module = "com.squareup.sqldelight:coroutines-extensions", version.ref = "sqlDelight" }
 ktor_server_core = { module = "io.ktor:ktor-server-core", version.ref = "ktor" }

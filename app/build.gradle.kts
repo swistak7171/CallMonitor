@@ -85,4 +85,9 @@ dependencies {
     implementation(libs.androidx.activity.compose)
 
     implementation(libs.logcat)
+
+    testImplementation(libs.junit)
+    testImplementation(libs.mockk.core)
+    testImplementation(libs.koin.test.core)
+    testImplementation(libs.koin.test.junit4)
 }
