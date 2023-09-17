@@ -1,4 +1,4 @@
-package pl.kamilszustak.callmonitor.ui.theme
+package pl.kamilszustak.callmonitor.ui
 
 import androidx.compose.ui.graphics.Color
 

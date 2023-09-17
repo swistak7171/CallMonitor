@@ -21,7 +21,8 @@ ktor = "2.3.4"
 koin_bom = "3.5.1"
 logcat = "0.1"
 junit = "4.13.2"
-androidx_test_core = "1.5.2"
+androidx_test = "1.5.2"
+androidx_test_core = "1.5.0"
 androidx_test_ext_junit = "1.1.5"
 androidx_espresso = "3.5.1"
 dokka = "1.8.10"
@@ -75,8 +76,8 @@ androidx_espresso_idlingResource = { module = "androidx.test.espresso:espresso-i
 androidx_espresso_idlingConcurrent = { module = "androidx.test.espresso.idling:idling-concurrent", version.ref = "androidx_espresso" }
 androidx_test_core = { module = "androidx.test:core-ktx", version.ref = "androidx_test_core" }
 androidx_test_ext_junit = { module = "androidx.test.ext:junit-ktx", version.ref = "androidx_test_ext_junit" }
-androidx_test_ext_truth = { module = "androidx.test.ext:truth", version.ref = "androidx_test_core" }
-androidx_test_runner = { module = "androidx.test:runner", version.ref = "androidx_test_core" }
+androidx_test_ext_truth = { module = "androidx.test.ext:truth", version.ref = "androidx_test" }
+androidx_test_runner = { module = "androidx.test:runner", version.ref = "androidx_test" }
 androidx_test_rules = { module = "androidx.test:rules", version.ref = "androidx_test_core" }
 koin_bom = { module = "io.insert-koin:koin-bom", version.ref = "koin_bom" }
 koin_core = { module = "io.insert-koin:koin-core" }

@@ -1,3 +1,6 @@
 <resources>
     <string name="app_name">CallMonitor</string>
+    <string name="phone_call_monitor_service_notification_channel_name">Phone call monitor</string>
+    <string name="phone_call_monitor_service_notification_channel_description">Monitors phone calls</string>
+    <string name="phone_call_monitor_service_notification_title">Phone call monitoring is on</string>
 </resources>

@@ -95,4 +95,14 @@ dependencies {
     testImplementation(libs.koin.test.core)
     testImplementation(libs.koin.test.junit4)
     testImplementation(libs.konsist)
+    testImplementation(libs.androidx.test.core)
+    testImplementation(libs.androidx.test.runner)
+    testImplementation(libs.androidx.test.ext.junit)
+    testImplementation(libs.robolectric)
+
+    androidTestImplementation(libs.junit)
+    androidTestImplementation(libs.androidx.test.core)
+    androidTestImplementation(libs.androidx.test.runner)
+    androidTestImplementation(libs.androidx.test.ext.junit)
+    androidTestImplementation(libs.androidx.test.rules)
 }

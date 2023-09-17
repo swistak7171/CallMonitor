@@ -1,4 +1,4 @@
-package pl.kamilszustak.callmonitor.ui.theme
+package pl.kamilszustak.callmonitor.ui
 
 import androidx.compose.material3.Typography
 import androidx.compose.ui.text.TextStyle
