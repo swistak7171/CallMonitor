@@ -9,21 +9,12 @@ class PhoneCallLogEntryDomainToViewStateMapperTest {
     // region Tests
 
     @Test
-    fun `'toViewState()' should return view state with contact name when available`() {
+    fun `'toViewState()' should return view state representation of phone call log entry`() {
         // when
         val actualResult = phoneCallLogEntryDomainModel.toViewState()
 
         // then
         assertEquals(phoneCallLogEntryViewState, actualResult)
-    }
-
-    @Test
-    fun `'toViewState()' should return view state with phone number when contact name is unavailable`() {
-        // when
-        val actualResult = phoneCallLogEntryDomainModelWithoutContactName.toViewState()
-
-        // then
-        assertEquals(phoneCallLogEntryViewStateWithPhoneNumber, actualResult)
     }
 
     // endregion

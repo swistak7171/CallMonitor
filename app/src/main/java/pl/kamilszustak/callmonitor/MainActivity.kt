@@ -9,7 +9,7 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.content.ContextCompat
-import pl.kamilszustak.callmonitor.ui.phonecallmonitor.PhoneCallLogScreen
+import pl.kamilszustak.callmonitor.ui.phonecallmonitor.view.PhoneCallLogScreen
 import pl.kamilszustak.callmonitor.ui.theme.MyApplicationTheme
 
 class MainActivity : ComponentActivity() {

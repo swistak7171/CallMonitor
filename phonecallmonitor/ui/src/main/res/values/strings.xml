@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="phone_call_log_screen_server_information_header">Server information</string>
+    <string name="phone_call_log_screen_server_information_icon_content_description">Server information icon</string>
+    <string name="phone_call_log_screen_server_host">Host: %s</string>
+    <string name="phone_call_log_screen_server_port">Port: %d</string>
+    <string name="phone_call_log_screen_phone_call_log_header">Phone call log</string>
+    <string name="phone_call_log_screen_phone_call_log_icon_content_description">Phone call log icon</string>
+    <string name="phone_call_log_screen_phone_call_log_empty">No history available</string>
+    <string name="phone_call_log_screen_phone_call_log_entry_icon_content_description">Phone call log entry icon</string>
+</resources>

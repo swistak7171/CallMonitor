@@ -2,6 +2,7 @@ package pl.kamilszustak.callmonitor.domain.phonecallmonitor.model
 
 import kotlinx.datetime.Instant
 import kotlin.time.Duration
+import kotlin.time.Duration.Companion.seconds
 
 data class PhoneCallLogEntryDomainModel(
     val id: String,
@@ -12,5 +13,7 @@ data class PhoneCallLogEntryDomainModel(
     val contactName: String?
 ) {
     val duration: Duration
-        get() = endTimestamp - startTimestamp
+        get() = (endTimestamp - startTimestamp)
+            .inWholeSeconds
+            .seconds
 }

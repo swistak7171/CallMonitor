@@ -4,6 +4,7 @@ import kotlinx.datetime.Instant
 import pl.kamilszustak.callmonitor.domain.phonecallmonitor.model.PhoneCallLogEntryDomainModel
 import pl.kamilszustak.callmonitor.domain.phonecallmonitor.model.PhoneCallMetadataDomainModel
 import pl.kamilszustak.callmonitor.domain.phonecallmonitor.model.ServerConfigurationDomainModel
+import pl.kamilszustak.callmonitor.presentation.phonecallmonitor.model.PhoneCallLogEntryViewState
 import pl.kamilszustak.callmonitor.presentation.phonecallmonitor.model.PhoneCallLogViewState
 import kotlin.time.Duration
 import kotlin.time.Duration.Companion.seconds
@@ -42,16 +43,12 @@ val phoneCallLogEntryDomainModelWithoutContactName: PhoneCallLogEntryDomainModel
         contactName = null
     )
 
-val phoneCallLogEntryViewState: PhoneCallLogViewState.Success.PhoneCallLogEntryViewState =
-    PhoneCallLogViewState.Success.PhoneCallLogEntryViewState(
-        text = contactName,
-        duration = duration
-    )
-val phoneCallLogEntryViewStateWithPhoneNumber: PhoneCallLogViewState.Success.PhoneCallLogEntryViewState =
-    PhoneCallLogViewState.Success.PhoneCallLogEntryViewState(
-        text = phoneNumber,
-        duration = duration
-    )
+val phoneCallLogEntryViewState: PhoneCallLogEntryViewState = PhoneCallLogEntryViewState(
+    id = id,
+    phoneNumber = phoneNumber,
+    contactName = contactName,
+    duration = duration
+)
 
 val phoneCallLogSuccessViewState: PhoneCallLogViewState.Success = PhoneCallLogViewState.Success(
     serverHost = serverConfigurationDomainModel.host,
