@@ -13,9 +13,8 @@ import pl.kamilszustak.callmonitor.domain.phonecallmonitor.model.PhoneCallLogEnt
 import pl.kamilszustak.callmonitor.domain.phonecallmonitor.model.PhoneCallMetadataDomainModel
 import pl.kamilszustak.callmonitor.domain.phonecallmonitor.model.ServerConfigurationDomainModel
 import pl.kamilszustak.callmonitor.domain.phonecallmonitor.model.ServerStatusDomainModel
-import java.util.UUID
 
-val id: UUID = UUID.randomUUID()
+val id: String = "eee144a0-553c-11ee-8c99-0242ac120002"
 val startTimestamp: Instant = Instant.fromEpochSeconds(100)
 val endTimestamp: Instant = Instant.fromEpochSeconds(200)
 const val phoneNumber: String = "123456789"

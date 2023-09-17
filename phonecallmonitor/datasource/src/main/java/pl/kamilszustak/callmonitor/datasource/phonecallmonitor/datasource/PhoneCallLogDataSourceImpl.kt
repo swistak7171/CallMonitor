@@ -8,8 +8,14 @@ import pl.kamilszustak.callmonitor.data.phonecallmonitor.model.PhoneCallLogEntry
 
 class PhoneCallLogDataSourceImpl : PhoneCallLogDataSource {
 
+    // region Fields
+
     private val logEntries: MutableStateFlow<List<PhoneCallLogEntryDataModel>> =
         MutableStateFlow(emptyList())
+
+    // endregion
+
+    // region PhoneCallLogDataSource implementation
 
     override fun add(entry: PhoneCallLogEntryDataModel) {
         logEntries.update { entries ->
@@ -24,5 +30,7 @@ class PhoneCallLogDataSourceImpl : PhoneCallLogDataSource {
     override fun getAllRx(): Flow<List<PhoneCallLogEntryDataModel>> {
         return logEntries
     }
+
+    // endregion
 
 }

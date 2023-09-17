@@ -1,12 +1,11 @@
 package pl.kamilszustak.callmonitor.data.phonecallmonitor.model
 
 import kotlinx.datetime.Instant
-import java.util.UUID
 
 sealed interface PhoneCallEventDataModel {
 
     data class PhoneCallStart(
-        val id: UUID,
+        val id: String,
         val timestamp: Instant,
         val phoneNumber: String,
     ) : PhoneCallEventDataModel

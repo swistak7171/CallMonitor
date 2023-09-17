@@ -12,12 +12,22 @@ import kotlinx.coroutines.flow.callbackFlow
 import kotlinx.datetime.Clock
 import pl.kamilszustak.callmonitor.data.phonecallmonitor.datasource.PhoneCallEventDataSource
 import pl.kamilszustak.callmonitor.data.phonecallmonitor.model.PhoneCallEventDataModel
+import pl.kamilszustak.callmonitor.logger.Logger
 import java.util.UUID
 
+// region Constants
+
+private const val TAG: String = "PhoneCallEventDataSourceImpl"
+
+// endregion
+
 class PhoneCallEventDataSourceImpl(
+    private val logger: Logger,
     private val context: Context,
     private val clock: Clock,
 ) : PhoneCallEventDataSource {
+
+    // region PhoneCallEventDataSource implementation
 
     override fun getRx(): Flow<PhoneCallEventDataModel> {
         return callbackFlow {
@@ -32,42 +42,58 @@ class PhoneCallEventDataSourceImpl(
         }
     }
 
+    // endregion
+
+    // region Private Methods
+
     @Suppress("DEPRECATION")
     private fun createBroadcastReceiver(
         onEvent: (event: PhoneCallEventDataModel) -> Unit,
     ): BroadcastReceiver {
         return object : BroadcastReceiver() {
 
+            // region BroadcastReceiver Implementation
+
             override fun onReceive(context: Context?, intent: Intent?) {
                 if (intent?.action != TelephonyManager.ACTION_PHONE_STATE_CHANGED) {
+                    logger.warn(TAG) { "Received an unexpected intent action: ${intent?.action}" }
+                    return
+                }
+
+                val state = intent.extras?.getString(TelephonyManager.EXTRA_STATE)
+                if (state.isNullOrBlank()) {
+                    logger.warn(TAG) { "Received an intent with null or blank extras state" }
                     return
                 }
 
                 val phoneNumber = intent.extras?.getString(TelephonyManager.EXTRA_INCOMING_NUMBER)
-                val state = intent.extras?.getString(TelephonyManager.EXTRA_STATE)
-                if (phoneNumber.isNullOrBlank() || state.isNullOrBlank()) {
+                if (phoneNumber.isNullOrBlank()) {
+                    logger.warn(TAG) { "Received an intent with null or blank extras phone number" }
                     return
                 }
 
                 when (state) {
                     TelephonyManager.EXTRA_STATE_OFFHOOK -> {
                         val event = PhoneCallEventDataModel.PhoneCallStart(
-                            id = UUID.randomUUID(),
-                            phoneNumber = phoneNumber,
-                            timestamp = clock.now()
+                            id = UUID.randomUUID()
+                                .toString(),
+                            timestamp = clock.now(),
+                            phoneNumber = phoneNumber
                         )
                         onEvent(event)
                     }
 
                     TelephonyManager.EXTRA_STATE_IDLE -> {
                         val event = PhoneCallEventDataModel.PhoneCallEnd(
-                            phoneNumber = phoneNumber,
-                            timestamp = clock.now()
+                            timestamp = clock.now(),
+                            phoneNumber = phoneNumber
                         )
                         onEvent(event)
                     }
                 }
             }
+
+            // endregion
 
         }
     }
@@ -75,6 +101,14 @@ class PhoneCallEventDataSourceImpl(
     private fun registerBroadcastReceiver(receiver: BroadcastReceiver) {
         val filter = IntentFilter(TelephonyManager.ACTION_PHONE_STATE_CHANGED)
         val flags = ContextCompat.RECEIVER_EXPORTED
-        ContextCompat.registerReceiver(context, receiver, filter, flags)
+        ContextCompat.registerReceiver(
+            /* context = */ context,
+            /* receiver = */ receiver,
+            /* filter = */ filter,
+            /* flags = */ flags
+        )
     }
+
+    // endregion
+
 }

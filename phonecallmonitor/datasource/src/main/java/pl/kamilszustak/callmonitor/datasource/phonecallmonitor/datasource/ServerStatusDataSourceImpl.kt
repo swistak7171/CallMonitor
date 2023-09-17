@@ -9,7 +9,13 @@ class ServerStatusDataSourceImpl(
     private val clock: Clock,
 ) : ServerStatusDataSource {
 
+    // region Fields
+
     private var startTimestamp: Instant? = null
+
+    // endregion
+
+    // region ServerStatusDataSource implementation
 
     override fun setStarted() {
         startTimestamp = clock.now()
@@ -30,5 +36,7 @@ class ServerStatusDataSourceImpl(
             ServerStatusDataModel.Stopped
         }
     }
+
+    // endregion
 
 }

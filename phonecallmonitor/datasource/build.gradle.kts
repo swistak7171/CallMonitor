@@ -28,4 +28,13 @@ dependencies {
     implementation(libs.koin.core)
 
     implementation(libs.androidx.core)
+
+    testImplementation(libs.junit)
+    testImplementation(libs.mockk.core)
+    testImplementation(libs.kotlin.test)
+    testImplementation(libs.kotlinx.coroutines.test)
+    testImplementation(libs.turbine)
+    testImplementation(libs.androidx.test.runner)
+    testImplementation(libs.androidx.test.ext.junit)
+    testImplementation(libs.robolectric)
 }

@@ -2,7 +2,6 @@ package pl.kamilszustak.callmonitor.domain.phonecallmonitor.model
 
 import kotlinx.datetime.Instant
 import org.junit.Test
-import java.util.UUID
 import kotlin.test.assertEquals
 import kotlin.time.Duration.Companion.seconds
 
@@ -14,7 +13,7 @@ class PhoneCallLogEntryDomainModelTest {
     fun `'duration' should return a duration representing a time between the start and the end of the phone call`() {
         // given
         val logEntry = PhoneCallLogEntryDomainModel(
-            id = UUID.randomUUID(),
+            id = "eee144a0-553c-11ee-8c99-0242ac120002",
             metadata = PhoneCallMetadataDomainModel(
                 timesQueried = 0
             ),

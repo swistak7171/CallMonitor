@@ -8,20 +8,21 @@ class ContactNameDataSourceImpl(
     private val context: Context,
 ) : ContactNameDataSource {
 
+    // region ContactNameDataSource Implementation
+
     override fun get(phoneNumber: String): String? {
-        val contentResolver = context.contentResolver
         val projection = arrayOf(ContactsContract.CommonDataKinds.Phone.DISPLAY_NAME)
-        val cursor = contentResolver.query(
-            ContactsContract.CommonDataKinds.Phone.CONTENT_URI,
-            projection,
-            "${ContactsContract.CommonDataKinds.Phone.NUMBER} = ?",
-            arrayOf(phoneNumber),
-            null
+        val cursor = context.contentResolver.query(
+            /* uri = */ ContactsContract.CommonDataKinds.Phone.CONTENT_URI,
+            /* projection = */ projection,
+            /* selection = */ "${ContactsContract.CommonDataKinds.Phone.NUMBER} = ?",
+            /* selectionArgs = */ arrayOf(phoneNumber),
+            /* sortOrder = */ null
         )
 
         return if (cursor != null && cursor.moveToFirst()) {
-            val nameIndex = cursor.getColumnIndex(ContactsContract.Contacts.DISPLAY_NAME)
-            val name = cursor.getString(nameIndex)
+            val index = cursor.getColumnIndex(ContactsContract.CommonDataKinds.Phone.DISPLAY_NAME)
+            val name = cursor.getString(index)
             cursor.close()
 
             name
@@ -29,5 +30,7 @@ class ContactNameDataSourceImpl(
             null
         }
     }
+
+    // endregion
 
 }

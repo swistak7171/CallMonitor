@@ -11,7 +11,6 @@ import kotlinx.coroutines.test.runTest
 import org.junit.Test
 import pl.kamilszustak.callmonitor.domain.phonecallmonitor.model.OngoingPhoneCallDomainModel
 import pl.kamilszustak.callmonitor.domain.phonecallmonitor.repository.PhoneCallRepository
-import java.util.UUID
 
 class GetOngoingPhoneCallUseCaseImplTest {
 
@@ -32,7 +31,7 @@ class GetOngoingPhoneCallUseCaseImplTest {
     fun `'execute()' should return an ongoing phone call when there is one`() = runTest {
         // given
         val expectedResult = OngoingPhoneCallDomainModel(
-            id = UUID.randomUUID(),
+            id = "eee144a0-553c-11ee-8c99-0242ac120002",
             phoneNumber = "123456789",
             contactName = "John Smith"
         )
