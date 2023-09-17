@@ -7,6 +7,7 @@ import io.mockk.justRun
 import io.mockk.mockk
 import io.mockk.mockkStatic
 import io.mockk.verify
+import org.junit.After
 import org.junit.Test
 import pl.kamilszustak.callmonitor.data.phonecallmonitor.datasource.ServerStatusDataSource
 import pl.kamilszustak.callmonitor.data.phonecallmonitor.mapper.toDomainModel
@@ -27,6 +28,15 @@ class ServerStatusRepositoryImplTest {
 
     // endregion
 
+    // region Setup
+
+    @After
+    fun tearDown() {
+        confirmVerified(serverStatusDataSourceMock)
+    }
+
+    // endregion
+
     // region Tests
 
     @Test
@@ -41,7 +51,6 @@ class ServerStatusRepositoryImplTest {
         verify(ordering = Ordering.SEQUENCE) {
             serverStatusDataSourceMock.setStarted()
         }
-        confirmVerified(serverStatusDataSourceMock)
     }
 
     @Test
@@ -56,7 +65,6 @@ class ServerStatusRepositoryImplTest {
         verify(ordering = Ordering.SEQUENCE) {
             serverStatusDataSourceMock.setStopped()
         }
-        confirmVerified(serverStatusDataSourceMock)
     }
 
     @Test
@@ -77,7 +85,6 @@ class ServerStatusRepositoryImplTest {
             verify(ordering = Ordering.SEQUENCE) {
                 serverStatusDataSourceMock.get()
             }
-            confirmVerified(serverStatusDataSourceMock)
         }
     }
 

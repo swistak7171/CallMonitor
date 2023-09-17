@@ -6,8 +6,8 @@ import io.mockk.every
 import io.mockk.mockk
 import io.mockk.verify
 import org.junit.Test
-import pl.kamilszustak.callmonitor.domain.phonecallmonitor.model.ServerConfigurationDomainModel
 import pl.kamilszustak.callmonitor.domain.phonecallmonitor.repository.ServerConfigurationRepository
+import pl.kamilszustak.callmonitor.domain.phonecallmonitor.serverConfigurationDomainModel
 import kotlin.test.assertEquals
 
 class GetServerConfigurationUseCaseImplTest {
@@ -28,17 +28,13 @@ class GetServerConfigurationUseCaseImplTest {
     @Test
     fun `'execute()' should return a server configuration`() {
         // given
-        val expectedResult = ServerConfigurationDomainModel(
-            host = "123.123.123.123",
-            port = 9090
-        )
-        every { serverConfigurationRepositoryMock.get() } returns expectedResult
+        every { serverConfigurationRepositoryMock.get() } returns serverConfigurationDomainModel
 
         // when
         val actualResult = getServerConfigurationUseCase.execute()
 
         // then
-        assertEquals(expectedResult, actualResult)
+        assertEquals(serverConfigurationDomainModel, actualResult)
 
         verify(ordering = Ordering.SEQUENCE) {
             serverConfigurationRepositoryMock.get()

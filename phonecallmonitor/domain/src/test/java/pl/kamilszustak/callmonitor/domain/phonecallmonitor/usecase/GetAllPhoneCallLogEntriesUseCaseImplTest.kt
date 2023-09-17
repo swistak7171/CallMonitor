@@ -9,8 +9,9 @@ import io.mockk.every
 import io.mockk.mockk
 import kotlinx.coroutines.flow.asFlow
 import kotlinx.coroutines.test.runTest
+import org.junit.After
 import org.junit.Test
-import pl.kamilszustak.callmonitor.domain.phonecallmonitor.model.PhoneCallLogEntryDomainModel
+import pl.kamilszustak.callmonitor.domain.phonecallmonitor.phoneCallLogEntryDomainModel
 import pl.kamilszustak.callmonitor.domain.phonecallmonitor.repository.PhoneCallRepository
 import kotlin.test.assertEquals
 
@@ -27,12 +28,21 @@ class GetAllPhoneCallLogEntriesUseCaseImplTest {
 
     // endregion
 
+    // region Setup
+
+    @After
+    fun tearDown() {
+        confirmVerified(phoneCallRepositoryMock)
+    }
+
+    // endregion
+
     // region Tests
 
     @Test
     fun `'execute()' should return a list of phone call log entries`() = runTest {
         // given
-        val expectedResult = listOf<PhoneCallLogEntryDomainModel>(mockk(), mockk())
+        val expectedResult = listOf(phoneCallLogEntryDomainModel)
         coEvery { phoneCallRepositoryMock.getAll() } returns expectedResult
 
         // when
@@ -44,16 +54,14 @@ class GetAllPhoneCallLogEntriesUseCaseImplTest {
         coVerify(ordering = Ordering.SEQUENCE) {
             phoneCallRepositoryMock.getAll()
         }
-        confirmVerified(phoneCallRepositoryMock)
     }
 
     @Test
     fun `'executeRx()' should emit a list of phone call log entries`() = runTest {
         // given
-        val expectedResults = listOf<List<PhoneCallLogEntryDomainModel>>(
+        val expectedResults = listOf(
             emptyList(),
-            listOf(mockk()),
-            listOf(mockk(), mockk()),
+            listOf(phoneCallLogEntryDomainModel),
         )
         every { phoneCallRepositoryMock.getAllRx() } returns expectedResults.asFlow()
 
@@ -70,7 +78,6 @@ class GetAllPhoneCallLogEntriesUseCaseImplTest {
                 coVerify(ordering = Ordering.SEQUENCE) {
                     phoneCallRepositoryMock.getAllRx()
                 }
-                confirmVerified(phoneCallRepositoryMock)
             }
     }
 

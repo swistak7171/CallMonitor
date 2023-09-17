@@ -5,6 +5,7 @@ import io.mockk.confirmVerified
 import io.mockk.justRun
 import io.mockk.mockk
 import io.mockk.verify
+import org.junit.After
 import org.junit.Test
 import pl.kamilszustak.callmonitor.domain.phonecallmonitor.model.ServerStatusEventDomainModel
 import pl.kamilszustak.callmonitor.domain.phonecallmonitor.repository.ServerStatusRepository
@@ -18,6 +19,15 @@ class SetServerStatusUseCaseImplTest {
     private val setServerStatusUseCase: SetServerStatusUseCaseImpl = SetServerStatusUseCaseImpl(
         serverStatusRepository = serverStatusRepositoryMock
     )
+
+    // endregion
+
+    // region Setup
+
+    @After
+    fun tearDown() {
+        confirmVerified(serverStatusRepositoryMock)
+    }
 
     // endregion
 
@@ -35,7 +45,6 @@ class SetServerStatusUseCaseImplTest {
         verify(ordering = Ordering.SEQUENCE) {
             serverStatusRepositoryMock.setStarted()
         }
-        confirmVerified(serverStatusRepositoryMock)
     }
 
     @Test
@@ -50,7 +59,6 @@ class SetServerStatusUseCaseImplTest {
         verify(ordering = Ordering.SEQUENCE) {
             serverStatusRepositoryMock.setStopped()
         }
-        confirmVerified(serverStatusRepositoryMock)
     }
 
     // endregion

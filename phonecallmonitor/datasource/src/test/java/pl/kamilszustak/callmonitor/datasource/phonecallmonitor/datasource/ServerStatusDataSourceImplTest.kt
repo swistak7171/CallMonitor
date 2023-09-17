@@ -6,6 +6,7 @@ import io.mockk.every
 import io.mockk.mockk
 import io.mockk.verify
 import kotlinx.datetime.Clock
+import org.junit.After
 import org.junit.Test
 import pl.kamilszustak.callmonitor.data.phonecallmonitor.model.ServerStatusDataModel
 import pl.kamilszustak.callmonitor.datasource.phonecallmonitor.serverStartTimestamp
@@ -23,6 +24,15 @@ class ServerStatusDataSourceImplTest {
 
     // endregion
 
+    // region Setup
+
+    @After
+    fun tearDown() {
+        confirmVerified(clockMock)
+    }
+
+    // endregion
+
     // region Tests
 
     @Test
@@ -35,7 +45,6 @@ class ServerStatusDataSourceImplTest {
 
         // then
         assertEquals(expectedResult, actualResult)
-        confirmVerified(clockMock)
     }
 
     @Test
@@ -57,7 +66,6 @@ class ServerStatusDataSourceImplTest {
         verify(ordering = Ordering.SEQUENCE) {
             clockMock.now()
         }
-        confirmVerified(clockMock)
     }
 
     @Test
@@ -78,7 +86,6 @@ class ServerStatusDataSourceImplTest {
         verify(ordering = Ordering.SEQUENCE) {
             clockMock.now()
         }
-        confirmVerified(clockMock)
     }
 
     // endregion

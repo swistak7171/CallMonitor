@@ -9,6 +9,7 @@ import io.mockk.every
 import io.mockk.justRun
 import io.mockk.mockk
 import io.mockk.verify
+import org.junit.After
 import org.junit.Test
 import pl.kamilszustak.callmonitor.datasource.phonecallmonitor.contactName
 import pl.kamilszustak.callmonitor.datasource.phonecallmonitor.phoneNumber
@@ -24,6 +25,15 @@ class ContactNameDataSourceImplTest {
     private val contactNameDataSource: ContactNameDataSourceImpl = ContactNameDataSourceImpl(
         context = contextMock
     )
+
+    // endregion
+
+    // region Setup
+
+    @After
+    fun tearDown() {
+        confirmVerified(contextMock)
+    }
 
     // endregion
 
@@ -70,7 +80,7 @@ class ContactNameDataSourceImplTest {
             cursorMock.getString(columnIndex)
             cursorMock.close()
         }
-        confirmVerified(contextMock, cursorMock)
+        confirmVerified(cursorMock)
     }
 
     @Test
@@ -135,6 +145,7 @@ class ContactNameDataSourceImplTest {
             )
             cursorMock.moveToFirst()
         }
+        confirmVerified(cursorMock)
     }
 
     // endregion

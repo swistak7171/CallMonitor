@@ -13,6 +13,7 @@ import io.mockk.mockkStatic
 import io.mockk.verify
 import kotlinx.coroutines.flow.flowOf
 import kotlinx.coroutines.test.runTest
+import org.junit.After
 import org.junit.Test
 import pl.kamilszustak.callmonitor.data.phonecallmonitor.contactName
 import pl.kamilszustak.callmonitor.data.phonecallmonitor.datasource.ContactNameDataSource
@@ -58,6 +59,21 @@ class PhoneCallRepositoryImplTest {
 
     // endregion
 
+    // region Setup
+
+    @After
+    fun tearDown() {
+        confirmVerified(
+            loggerMock,
+            ongoingPhoneCallDataSourceMock,
+            phoneCallLogDataSourceMock,
+            contactNameDataSourceMock,
+            phoneCallMetadataDataSourceMock,
+        )
+    }
+
+    // endregion
+
     // region Tests
 
     @Test
@@ -77,7 +93,6 @@ class PhoneCallRepositoryImplTest {
                 phoneCallStartEventDomainModel.toOngoingPhoneCallDataModel()
                 ongoingPhoneCallDataSourceMock.setStarted(ongoingPhoneCallDataModel)
             }
-            confirmAllMocksVerified()
         }
     }
 
@@ -98,7 +113,6 @@ class PhoneCallRepositoryImplTest {
                 ongoingPhoneCallDataSourceMock.setEnded()
                 phoneCallLogDataSourceMock.add(phoneCallLogEntryDataModel)
             }
-            confirmAllMocksVerified()
         }
 
     @Test
@@ -116,7 +130,6 @@ class PhoneCallRepositoryImplTest {
                 ongoingPhoneCallDataSourceMock.get()
                 loggerMock.warn(any(), any())
             }
-            confirmAllMocksVerified()
         }
 
     @Test
@@ -134,7 +147,6 @@ class PhoneCallRepositoryImplTest {
                 ongoingPhoneCallDataSourceMock.get()
                 loggerMock.warn(any(), any())
             }
-            confirmAllMocksVerified()
         }
 
     @Test
@@ -159,7 +171,6 @@ class PhoneCallRepositoryImplTest {
                     contactNameDataSourceMock.get(phoneNumber)
                     ongoingPhoneCallDataModel.toDomainModel(contactName)
                 }
-                confirmAllMocksVerified()
             }
         }
 
@@ -195,7 +206,6 @@ class PhoneCallRepositoryImplTest {
                 )
             }
         }
-        confirmAllMocksVerified()
     }
 
     @Test
@@ -237,20 +247,6 @@ class PhoneCallRepositoryImplTest {
                     }
                 }
         }
-    }
-
-    // endregion
-
-    // region Private Methods
-
-    private fun confirmAllMocksVerified() {
-        confirmVerified(
-            loggerMock,
-            ongoingPhoneCallDataSourceMock,
-            phoneCallLogDataSourceMock,
-            contactNameDataSourceMock,
-            phoneCallMetadataDataSourceMock,
-        )
     }
 
     // endregion

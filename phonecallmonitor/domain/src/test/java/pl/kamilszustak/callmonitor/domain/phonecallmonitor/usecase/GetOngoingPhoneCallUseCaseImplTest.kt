@@ -8,8 +8,9 @@ import io.mockk.mockk
 import junit.framework.TestCase.assertEquals
 import junit.framework.TestCase.assertNull
 import kotlinx.coroutines.test.runTest
+import org.junit.After
 import org.junit.Test
-import pl.kamilszustak.callmonitor.domain.phonecallmonitor.model.OngoingPhoneCallDomainModel
+import pl.kamilszustak.callmonitor.domain.phonecallmonitor.ongoingPhoneCallDomainModel
 import pl.kamilszustak.callmonitor.domain.phonecallmonitor.repository.PhoneCallRepository
 
 class GetOngoingPhoneCallUseCaseImplTest {
@@ -25,28 +26,31 @@ class GetOngoingPhoneCallUseCaseImplTest {
 
     // endregion
 
+    // region Setup
+
+    @After
+    fun tearDown() {
+        confirmVerified(phoneCallRepositoryMock)
+    }
+
+    // endregion
+
     // region Tests
 
     @Test
     fun `'execute()' should return an ongoing phone call when there is one`() = runTest {
         // given
-        val expectedResult = OngoingPhoneCallDomainModel(
-            id = "eee144a0-553c-11ee-8c99-0242ac120002",
-            phoneNumber = "123456789",
-            contactName = "John Smith"
-        )
-        coEvery { phoneCallRepositoryMock.getOngoing() } returns expectedResult
+        coEvery { phoneCallRepositoryMock.getOngoing() } returns ongoingPhoneCallDomainModel
 
         // when
         val actualResult = getOngoingPhoneCallUseCase.execute()
 
         // then
-        assertEquals(expectedResult, actualResult)
+        assertEquals(ongoingPhoneCallDomainModel, actualResult)
 
         coVerify(ordering = Ordering.SEQUENCE) {
             phoneCallRepositoryMock.getOngoing()
         }
-        confirmVerified(phoneCallRepositoryMock)
     }
 
     @Test
@@ -63,7 +67,6 @@ class GetOngoingPhoneCallUseCaseImplTest {
         coVerify(ordering = Ordering.SEQUENCE) {
             phoneCallRepositoryMock.getOngoing()
         }
-        confirmVerified(phoneCallRepositoryMock)
     }
 
     // endregion
