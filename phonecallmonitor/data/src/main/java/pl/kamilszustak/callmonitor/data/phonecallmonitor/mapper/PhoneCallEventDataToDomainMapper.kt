@@ -3,7 +3,7 @@ package pl.kamilszustak.callmonitor.data.phonecallmonitor.mapper
 import pl.kamilszustak.callmonitor.data.phonecallmonitor.model.PhoneCallEventDataModel
 import pl.kamilszustak.callmonitor.domain.phonecallmonitor.model.PhoneCallEventDomainModel
 
-fun PhoneCallEventDataModel.toDomainModel(): PhoneCallEventDomainModel {
+internal fun PhoneCallEventDataModel.toDomainModel(): PhoneCallEventDomainModel {
     return when (this) {
         is PhoneCallEventDataModel.PhoneCallStart -> {
             PhoneCallEventDomainModel.PhoneCallStart(

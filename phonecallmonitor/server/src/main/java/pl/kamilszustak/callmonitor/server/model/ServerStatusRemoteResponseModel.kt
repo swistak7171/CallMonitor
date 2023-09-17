@@ -5,15 +5,15 @@ import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 @Serializable
-data class RootRemoteModel(
+internal data class ServerStatusRemoteResponseModel(
     @SerialName("start")
     val startTimestamp: Instant,
     @SerialName("services")
-    val services: List<ServiceRemoteModel>,
+    val services: List<ServiceRemoteResponseModel>,
 )
 
 @Serializable
-data class ServiceRemoteModel(
+internal data class ServiceRemoteResponseModel(
     @SerialName("name")
     val name: String,
     @SerialName("uri")

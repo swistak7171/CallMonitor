@@ -21,7 +21,7 @@ private const val TAG: String = "PhoneCallEventDataSourceImpl"
 
 // endregion
 
-class PhoneCallEventDataSourceImpl(
+internal class PhoneCallEventDataSourceImpl(
     private val logger: Logger,
     private val context: Context,
     private val clock: Clock,

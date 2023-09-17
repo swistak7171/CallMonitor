@@ -11,7 +11,7 @@ import org.koin.core.component.get
 import pl.kamilszustak.callmonitor.domain.phonecallmonitor.usecase.GetServerConfigurationUseCase
 import pl.kamilszustak.callmonitor.server.plugin.ServerStatusMonitoringPlugin
 import pl.kamilszustak.callmonitor.server.route.logRoute
-import pl.kamilszustak.callmonitor.server.route.rootRoute
+import pl.kamilszustak.callmonitor.server.route.serverStatusRoute
 import pl.kamilszustak.callmonitor.server.route.statusRoute
 
 fun KoinComponent.startPhoneCallMonitorServer() {
@@ -29,7 +29,7 @@ fun KoinComponent.startPhoneCallMonitorServer() {
         install(ServerStatusMonitoringPlugin)
 
         routing {
-            rootRoute()
+            serverStatusRoute()
             statusRoute()
             logRoute()
         }

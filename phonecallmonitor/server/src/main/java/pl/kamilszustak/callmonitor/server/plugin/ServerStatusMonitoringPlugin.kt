@@ -8,7 +8,7 @@ import org.koin.ktor.ext.get
 import pl.kamilszustak.callmonitor.domain.phonecallmonitor.model.ServerStatusEventDomainModel
 import pl.kamilszustak.callmonitor.domain.phonecallmonitor.usecase.SetServerStatusUseCase
 
-val ServerStatusMonitoringPlugin = createApplicationPlugin("ServerStatusMonitoringPlugin") {
+internal val ServerStatusMonitoringPlugin = createApplicationPlugin("ServerStatusMonitoringPlugin") {
     val setServerStatusUseCase = application.get<SetServerStatusUseCase>()
 
     on(MonitoringEvent(ApplicationStarted)) { _ ->

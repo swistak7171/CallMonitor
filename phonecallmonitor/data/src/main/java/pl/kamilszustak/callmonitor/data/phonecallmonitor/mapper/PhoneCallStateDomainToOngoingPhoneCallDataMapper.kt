@@ -3,7 +3,7 @@ package pl.kamilszustak.callmonitor.data.phonecallmonitor.mapper
 import pl.kamilszustak.callmonitor.data.phonecallmonitor.model.OngoingPhoneCallDataModel
 import pl.kamilszustak.callmonitor.domain.phonecallmonitor.model.PhoneCallEventDomainModel
 
-fun PhoneCallEventDomainModel.PhoneCallStart.toOngoingPhoneCallDataModel(): OngoingPhoneCallDataModel {
+internal fun PhoneCallEventDomainModel.PhoneCallStart.toOngoingPhoneCallDataModel(): OngoingPhoneCallDataModel {
     return OngoingPhoneCallDataModel(
         id = id,
         startTimestamp = timestamp,

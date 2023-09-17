@@ -1,10 +1,10 @@
 package pl.kamilszustak.callmonitor.data.phonecallmonitor.mapper
 
 import pl.kamilszustak.callmonitor.data.phonecallmonitor.model.PhoneCallLogEntryDataModel
-import pl.kamilszustak.callmonitor.domain.phonecallmonitor.model.PhoneCallLogEntryDomainModel
 import pl.kamilszustak.callmonitor.data.phonecallmonitor.model.PhoneCallMetadataDataModel
+import pl.kamilszustak.callmonitor.domain.phonecallmonitor.model.PhoneCallLogEntryDomainModel
 
-fun PhoneCallLogEntryDataModel.toDomainModel(
+internal fun PhoneCallLogEntryDataModel.toDomainModel(
     metadata: PhoneCallMetadataDataModel,
     contactName: String?
 ): PhoneCallLogEntryDomainModel {

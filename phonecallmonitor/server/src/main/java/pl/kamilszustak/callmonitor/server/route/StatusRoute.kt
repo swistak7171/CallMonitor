@@ -7,16 +7,16 @@ import io.ktor.server.routing.Route
 import io.ktor.server.routing.get
 import org.koin.ktor.ext.inject
 import pl.kamilszustak.callmonitor.domain.phonecallmonitor.usecase.GetOngoingPhoneCallUseCase
-import pl.kamilszustak.callmonitor.server.mapper.toRemoteModel
+import pl.kamilszustak.callmonitor.server.mapper.toRemoteResponseModel
 
-fun Route.statusRoute() {
+internal fun Route.statusRoute() {
     val getOngoingPhoneCallUseCase by inject<GetOngoingPhoneCallUseCase>()
 
     get("/status") {
         val ongoingPhoneCall = getOngoingPhoneCallUseCase.execute()
 
         if (ongoingPhoneCall != null) {
-            val remoteModel = ongoingPhoneCall.toRemoteModel()
+            val remoteModel = ongoingPhoneCall.toRemoteResponseModel()
             call.respond(remoteModel)
         } else {
             call.respond(HttpStatusCode.NotFound, "No ongoing phone call found")

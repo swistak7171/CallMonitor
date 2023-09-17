@@ -16,4 +16,11 @@ dependencies {
     implementation(libs.ktor.server.cio)
     implementation(libs.ktor.server.contentNegotiation)
     implementation(libs.ktor.serialization)
+
+    testImplementation(libs.junit)
+    testImplementation(libs.mockk.core)
+    testImplementation(libs.kotlin.test)
+    testImplementation(libs.ktor.server.test)
+    testImplementation(libs.koin.test.core)
+    testImplementation(libs.koin.test.junit4)
 }

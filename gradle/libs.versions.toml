@@ -91,6 +91,7 @@ ktor_server_core = { module = "io.ktor:ktor-server-core", version.ref = "ktor" }
 ktor_server_cio = { module = "io.ktor:ktor-server-cio", version.ref = "ktor" }
 ktor_server_contentNegotiation = { module = "io.ktor:ktor-server-content-negotiation", version.ref = "ktor" }
 ktor_serialization = { module = "io.ktor:ktor-serialization-kotlinx-json", version.ref = "ktor" }
+ktor_server_test = { module = "io.ktor:ktor-server-test-host", version.ref = "ktor" }
 logcat = { module = "com.squareup.logcat:logcat", version.ref = "logcat" }
 mockk_core = { module = "io.mockk:mockk", version.ref = "mockK" }
 mockk_agentJvm = { module = "io.mockk:mockk-agent-jvm", version.ref = "mockK" }

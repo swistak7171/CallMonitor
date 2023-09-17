@@ -4,7 +4,7 @@ import android.content.Context
 import android.provider.ContactsContract
 import pl.kamilszustak.callmonitor.data.phonecallmonitor.datasource.ContactNameDataSource
 
-class ContactNameDataSourceImpl(
+internal class ContactNameDataSourceImpl(
     private val context: Context,
 ) : ContactNameDataSource {
 

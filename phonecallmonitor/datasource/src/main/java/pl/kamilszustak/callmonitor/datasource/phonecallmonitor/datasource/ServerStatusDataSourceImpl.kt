@@ -5,7 +5,7 @@ import kotlinx.datetime.Instant
 import pl.kamilszustak.callmonitor.data.phonecallmonitor.datasource.ServerStatusDataSource
 import pl.kamilszustak.callmonitor.data.phonecallmonitor.model.ServerStatusDataModel
 
-class ServerStatusDataSourceImpl(
+internal class ServerStatusDataSourceImpl(
     private val clock: Clock,
 ) : ServerStatusDataSource {
 

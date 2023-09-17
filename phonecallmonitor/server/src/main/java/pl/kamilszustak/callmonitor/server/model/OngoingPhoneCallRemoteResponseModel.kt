@@ -4,7 +4,7 @@ import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 @Serializable
-data class OngoingPhoneCallRemoteModel(
+internal data class OngoingPhoneCallRemoteResponseModel(
     @SerialName("number")
     val phoneNumber: String,
     @SerialName("name")

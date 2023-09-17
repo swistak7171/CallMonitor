@@ -3,7 +3,7 @@ package pl.kamilszustak.callmonitor.datasource.phonecallmonitor.datasource
 import pl.kamilszustak.callmonitor.data.phonecallmonitor.datasource.OngoingPhoneCallDataSource
 import pl.kamilszustak.callmonitor.data.phonecallmonitor.model.OngoingPhoneCallDataModel
 
-class OngoingPhoneCallDataSourceImpl : OngoingPhoneCallDataSource {
+internal class OngoingPhoneCallDataSourceImpl : OngoingPhoneCallDataSource {
 
     // region Fields
 

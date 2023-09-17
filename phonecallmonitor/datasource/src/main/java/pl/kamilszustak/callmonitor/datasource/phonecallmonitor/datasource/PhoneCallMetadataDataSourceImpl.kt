@@ -4,7 +4,7 @@ import android.annotation.SuppressLint
 import pl.kamilszustak.callmonitor.data.phonecallmonitor.datasource.PhoneCallMetadataDataSource
 import pl.kamilszustak.callmonitor.data.phonecallmonitor.model.PhoneCallMetadataDataModel
 
-class PhoneCallMetadataDataSourceImpl : PhoneCallMetadataDataSource {
+internal class PhoneCallMetadataDataSourceImpl : PhoneCallMetadataDataSource {
 
     // region Fields
 
