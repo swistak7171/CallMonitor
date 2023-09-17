@@ -19,6 +19,16 @@ android {
     composeOptions {
         kotlinCompilerExtensionVersion = libs.versions.androidx.compose.compiler.get()
     }
+
+    packaging {
+        resources {
+            excludes += setOf(
+                "/META-INF/{AL2.0,LGPL2.1}",
+                "/META-INF/LICENSE.md",
+                "/META-INF/LICENSE-notice.md"
+            )
+        }
+    }
 }
 
 kotlin {
@@ -44,4 +54,8 @@ dependencies {
     implementation(libs.androidx.compose.foundationLayout)
     implementation(libs.androidx.compose.material3)
     implementation(libs.androidx.compose.materialIconsExtended)
+
+    androidTestImplementation(libs.mockk.android)
+    androidTestImplementation(libs.androidx.compose.uiTestJunit4)
+    debugImplementation(libs.androidx.compose.uiTestManifest)
 }

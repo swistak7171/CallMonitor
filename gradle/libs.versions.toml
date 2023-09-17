@@ -25,7 +25,7 @@ androidx_test_core = "1.5.2"
 androidx_test_ext_junit = "1.1.5"
 androidx_espresso = "3.5.1"
 dokka = "1.8.10"
-mockK = "1.13.7"
+mockK = "1.13.2"
 robolectric = "4.10.3"
 turbine = "1.0.0"
 
@@ -95,6 +95,7 @@ ktor_server_test = { module = "io.ktor:ktor-server-test-host", version.ref = "kt
 logcat = { module = "com.squareup.logcat:logcat", version.ref = "logcat" }
 mockk_core = { module = "io.mockk:mockk", version.ref = "mockK" }
 mockk_agentJvm = { module = "io.mockk:mockk-agent-jvm", version.ref = "mockK" }
+mockk_android = { module = "io.mockk:mockk-android", version.ref = "mockK" }
 junit = { module = "junit:junit", version.ref = "junit" }
 robolectric = { module = "org.robolectric:robolectric", version.ref = "robolectric" }
 turbine = { module = "app.cash.turbine:turbine", version.ref = "turbine" }

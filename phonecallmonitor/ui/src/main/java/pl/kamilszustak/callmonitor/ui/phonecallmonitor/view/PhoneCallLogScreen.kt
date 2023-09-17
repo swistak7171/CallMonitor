@@ -1,3 +1,5 @@
+@file:OptIn(ExperimentalComposeUiApi::class, ExperimentalComposeUiApi::class)
+
 package pl.kamilszustak.callmonitor.ui.phonecallmonitor.view
 
 import androidx.compose.foundation.background
@@ -28,8 +30,12 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
+import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.semantics.semantics
+import androidx.compose.ui.semantics.testTagsAsResourceId
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
@@ -54,7 +60,11 @@ fun PhoneCallLogScreen(
 @Composable
 private fun Content(state: PhoneCallLogViewState) {
     Surface(
-        modifier = Modifier.fillMaxSize(),
+        modifier = Modifier
+            .fillMaxSize()
+            .semantics {
+                testTagsAsResourceId = true
+            },
         color = MaterialTheme.colorScheme.background
     ) {
         when (state) {
@@ -75,7 +85,9 @@ private fun LoadingContent() {
         modifier = Modifier.fillMaxSize(),
         contentAlignment = Alignment.Center
     ) {
-        CircularProgressIndicator()
+        CircularProgressIndicator(
+            modifier = Modifier.testTag("loading_indicator")
+        )
     }
 }
 
@@ -103,6 +115,7 @@ private fun SuccessContent(state: PhoneCallLogViewState.Success) {
 private fun ServerInformation(serverHost: String, serverPort: Int) {
     Card(
         modifier = Modifier
+            .testTag("server_information_card")
             .fillMaxWidth()
             .wrapContentHeight()
     ) {
@@ -131,13 +144,17 @@ private fun ServerInformation(serverHost: String, serverPort: Int) {
 
             Text(
                 text = stringResource(R.string.phone_call_log_screen_server_host, serverHost),
-                modifier = Modifier.fillMaxWidth(),
+                modifier = Modifier
+                    .testTag("server_host_text")
+                    .fillMaxWidth(),
                 style = MaterialTheme.typography.bodyLarge
             )
 
             Text(
                 text = stringResource(R.string.phone_call_log_screen_server_port, serverPort),
-                modifier = Modifier.fillMaxWidth(),
+                modifier = Modifier
+                    .testTag("server_port_text")
+                    .fillMaxWidth(),
                 style = MaterialTheme.typography.bodyLarge
             )
         }
@@ -148,6 +165,7 @@ private fun ServerInformation(serverHost: String, serverPort: Int) {
 private fun PhoneCallLog(logEntries: List<PhoneCallLogEntryViewState>) {
     Card(
         modifier = Modifier
+            .testTag("phone_call_log_card")
             .fillMaxWidth()
             .wrapContentHeight()
     ) {
@@ -179,11 +197,15 @@ private fun PhoneCallLog(logEntries: List<PhoneCallLogEntryViewState>) {
             if (logEntries.isEmpty()) {
                 Text(
                     text = stringResource(R.string.phone_call_log_screen_phone_call_log_empty),
-                    modifier = Modifier.fillMaxWidth(),
+                    modifier = Modifier
+                        .testTag("empty_phone_call_log_text")
+                        .fillMaxWidth(),
                     style = MaterialTheme.typography.bodyLarge
                 )
             } else {
-                LazyColumn {
+                LazyColumn(
+                    modifier = Modifier.testTag("phone_call_log")
+                ) {
                     items(
                         items = logEntries,
                         key = { it.id }
@@ -226,6 +248,7 @@ private fun PhoneCallLogEntry(logEntry: PhoneCallLogEntryViewState) {
         ) {
             Text(
                 text = logEntry.contactName ?: logEntry.phoneNumber,
+                modifier = Modifier.testTag("phone_call_log_entry_primary_text_${logEntry.id}"),
                 maxLines = 1,
                 overflow = TextOverflow.Ellipsis,
                 style = MaterialTheme.typography.bodyLarge
@@ -234,6 +257,7 @@ private fun PhoneCallLogEntry(logEntry: PhoneCallLogEntryViewState) {
             if (logEntry.contactName != null) {
                 Text(
                     text = logEntry.phoneNumber,
+                    modifier = Modifier.testTag("phone_call_log_entry_secondary_text_${logEntry.id}"),
                     maxLines = 1,
                     overflow = TextOverflow.Ellipsis,
                     style = MaterialTheme.typography.bodyMedium
@@ -247,6 +271,7 @@ private fun PhoneCallLogEntry(logEntry: PhoneCallLogEntryViewState) {
 
         Text(
             text = logEntry.duration.toString(),
+            modifier = Modifier.testTag("phone_call_log_entry_duration_text_${logEntry.id}"),
             style = MaterialTheme.typography.bodyLarge
         )
     }
