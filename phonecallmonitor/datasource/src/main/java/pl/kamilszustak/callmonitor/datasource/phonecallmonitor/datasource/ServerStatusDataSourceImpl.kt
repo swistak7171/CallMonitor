@@ -17,15 +17,15 @@ internal class ServerStatusDataSourceImpl(
 
     // region ServerStatusDataSource implementation
 
-    override fun setStarted() {
+    override suspend fun setStarted() {
         startTimestamp = clock.now()
     }
 
-    override fun setStopped() {
+    override suspend fun setStopped() {
         startTimestamp = null
     }
 
-    override fun get(): ServerStatusDataModel {
+    override suspend fun get(): ServerStatusDataModel {
         val timestamp = startTimestamp
 
         return if (timestamp != null) {

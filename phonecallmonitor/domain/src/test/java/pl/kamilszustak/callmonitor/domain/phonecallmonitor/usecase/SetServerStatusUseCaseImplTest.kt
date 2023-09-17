@@ -1,10 +1,11 @@
 package pl.kamilszustak.callmonitor.domain.phonecallmonitor.usecase
 
 import io.mockk.Ordering
+import io.mockk.coJustRun
+import io.mockk.coVerify
 import io.mockk.confirmVerified
-import io.mockk.justRun
 import io.mockk.mockk
-import io.mockk.verify
+import kotlinx.coroutines.test.runTest
 import org.junit.After
 import org.junit.Test
 import pl.kamilszustak.callmonitor.domain.phonecallmonitor.model.ServerStatusEventDomainModel
@@ -34,32 +35,34 @@ class SetServerStatusUseCaseImplTest {
     // region Tests
 
     @Test
-    fun `'execute()' should change server status to started after receiving a started event`() {
-        // given
-        justRun { serverStatusRepositoryMock.setStarted() }
+    fun `'execute()' should change server status to started after receiving a started event`() =
+        runTest {
+            // given
+            coJustRun { serverStatusRepositoryMock.setStarted() }
 
-        // when
-        setServerStatusUseCase.execute(ServerStatusEventDomainModel.Started)
+            // when
+            setServerStatusUseCase.execute(ServerStatusEventDomainModel.Started)
 
-        // then
-        verify(ordering = Ordering.SEQUENCE) {
-            serverStatusRepositoryMock.setStarted()
+            // then
+            coVerify(ordering = Ordering.SEQUENCE) {
+                serverStatusRepositoryMock.setStarted()
+            }
         }
-    }
 
     @Test
-    fun `'execute()' should change server status to stopped after receiving a stopped event`() {
-        // given
-        justRun { serverStatusRepositoryMock.setStopped() }
+    fun `'execute()' should change server status to stopped after receiving a stopped event`() =
+        runTest {
+            // given
+            coJustRun { serverStatusRepositoryMock.setStopped() }
 
-        // when
-        setServerStatusUseCase.execute(ServerStatusEventDomainModel.Stopped)
+            // when
+            setServerStatusUseCase.execute(ServerStatusEventDomainModel.Stopped)
 
-        // then
-        verify(ordering = Ordering.SEQUENCE) {
-            serverStatusRepositoryMock.setStopped()
+            // then
+            coVerify(ordering = Ordering.SEQUENCE) {
+                serverStatusRepositoryMock.setStopped()
+            }
         }
-    }
 
     // endregion
 

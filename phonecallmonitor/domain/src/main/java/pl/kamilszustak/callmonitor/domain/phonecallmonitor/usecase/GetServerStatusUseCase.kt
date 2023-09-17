@@ -4,7 +4,7 @@ import pl.kamilszustak.callmonitor.domain.phonecallmonitor.model.ServerStatusDom
 import pl.kamilszustak.callmonitor.domain.phonecallmonitor.repository.ServerStatusRepository
 
 interface GetServerStatusUseCase {
-    fun execute(): ServerStatusDomainModel
+    suspend fun execute(): ServerStatusDomainModel
 }
 
 internal class GetServerStatusUseCaseImpl(
@@ -13,7 +13,7 @@ internal class GetServerStatusUseCaseImpl(
 
     // region GetServerStatusUseCase Implementation
 
-    override fun execute(): ServerStatusDomainModel {
+    override suspend fun execute(): ServerStatusDomainModel {
         return serverStatusRepository.get()
     }
 

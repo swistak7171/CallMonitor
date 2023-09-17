@@ -4,7 +4,7 @@ import pl.kamilszustak.callmonitor.domain.phonecallmonitor.model.ServerStatusEve
 import pl.kamilszustak.callmonitor.domain.phonecallmonitor.repository.ServerStatusRepository
 
 interface SetServerStatusUseCase {
-    fun execute(event: ServerStatusEventDomainModel)
+    suspend fun execute(event: ServerStatusEventDomainModel)
 }
 
 internal class SetServerStatusUseCaseImpl(
@@ -13,7 +13,7 @@ internal class SetServerStatusUseCaseImpl(
 
     // region SetServerStatusUseCase Implementation
 
-    override fun execute(event: ServerStatusEventDomainModel) {
+    override suspend fun execute(event: ServerStatusEventDomainModel) {
         when (event) {
             is ServerStatusEventDomainModel.Started -> {
                 serverStatusRepository.setStarted()

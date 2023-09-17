@@ -5,6 +5,7 @@ import io.mockk.confirmVerified
 import io.mockk.every
 import io.mockk.mockk
 import io.mockk.verify
+import kotlinx.coroutines.test.runTest
 import kotlinx.datetime.Clock
 import org.junit.After
 import org.junit.Test
@@ -36,7 +37,7 @@ class ServerStatusDataSourceImplTest {
     // region Tests
 
     @Test
-    fun `'get()' should return server status stopped when it has not been started`() {
+    fun `'get()' should return server status stopped when it has not been started`() = runTest {
         // given
         val expectedResult = ServerStatusDataModel.Stopped
 
@@ -48,7 +49,7 @@ class ServerStatusDataSourceImplTest {
     }
 
     @Test
-    fun `'get()' should return server status started when it has been started`() {
+    fun `'get()' should return server status started when it has been started`() = runTest {
         // given
         val expectedResult = ServerStatusDataModel.Running(
             startTimestamp = serverStartTimestamp
@@ -69,7 +70,7 @@ class ServerStatusDataSourceImplTest {
     }
 
     @Test
-    fun `'get()' should return server status stopped when it has not been stopped`() {
+    fun `'get()' should return server status stopped when it has not been stopped`() = runTest {
         // given
         val expectedResult = ServerStatusDataModel.Stopped
 

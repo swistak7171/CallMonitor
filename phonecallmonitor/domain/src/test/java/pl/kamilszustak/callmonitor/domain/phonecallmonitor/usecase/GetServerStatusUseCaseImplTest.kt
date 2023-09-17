@@ -1,10 +1,11 @@
 package pl.kamilszustak.callmonitor.domain.phonecallmonitor.usecase
 
 import io.mockk.Ordering
+import io.mockk.coEvery
+import io.mockk.coVerify
 import io.mockk.confirmVerified
-import io.mockk.every
 import io.mockk.mockk
-import io.mockk.verify
+import kotlinx.coroutines.test.runTest
 import org.junit.Test
 import pl.kamilszustak.callmonitor.domain.phonecallmonitor.model.ServerStatusDomainModel
 import pl.kamilszustak.callmonitor.domain.phonecallmonitor.repository.ServerStatusRepository
@@ -25,10 +26,10 @@ class GetServerStatusUseCaseImplTest {
     // region Tests
 
     @Test
-    fun `'execute()' should return a current server status`() {
+    fun `'execute()' should return a current server status`() = runTest {
         // given
         val expectedResult = ServerStatusDomainModel.Stopped
-        every { serverStatusRepositoryMock.get() } returns expectedResult
+        coEvery { serverStatusRepositoryMock.get() } returns expectedResult
 
         // when
         val actualResult = getServerStatusUseCase.execute()
@@ -36,7 +37,7 @@ class GetServerStatusUseCaseImplTest {
         // then
         assertEquals(expectedResult, actualResult)
 
-        verify(ordering = Ordering.SEQUENCE) {
+        coVerify(ordering = Ordering.SEQUENCE) {
             serverStatusRepositoryMock.get()
         }
         confirmVerified(serverStatusRepositoryMock)

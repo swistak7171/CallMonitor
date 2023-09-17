@@ -9,11 +9,12 @@ import io.ktor.server.routing.get
 import io.ktor.server.testing.TestApplicationBuilder
 import io.ktor.server.testing.testApplication
 import io.mockk.Ordering
+import io.mockk.coEvery
+import io.mockk.coVerify
 import io.mockk.confirmVerified
 import io.mockk.every
 import io.mockk.mockk
 import io.mockk.mockkClass
-import io.mockk.verify
 import org.junit.After
 import org.junit.Before
 import org.junit.Rule
@@ -59,7 +60,7 @@ class ServerStatusRouteTest {
     @Before
     fun setUp() {
         every { getServerConfigurationUseCaseMock.execute() } returns serverConfigurationDomainModel
-        every { getServerStatusUseCaseMock.execute() } returns serverStatusRunningDomainModel
+        coEvery { getServerStatusUseCaseMock.execute() } returns serverStatusRunningDomainModel
     }
 
     @After
@@ -87,7 +88,7 @@ class ServerStatusRouteTest {
             assertEquals(HttpStatusCode.OK, response.status)
             assertEquals(serverStatusJsonResponse, response.bodyAsText())
 
-            verify(ordering = Ordering.SEQUENCE) {
+            coVerify(ordering = Ordering.SEQUENCE) {
                 getServerConfigurationUseCaseMock.execute()
                 getServerStatusUseCaseMock.execute()
             }

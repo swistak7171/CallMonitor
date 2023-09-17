@@ -11,15 +11,15 @@ internal class ServerStatusRepositoryImpl(
 
     // region ServerStatusRepository Implementation
 
-    override fun setStarted() {
+    override suspend fun setStarted() {
         serverStatusDataSource.setStarted()
     }
 
-    override fun setStopped() {
+    override suspend fun setStopped() {
         serverStatusDataSource.setStopped()
     }
 
-    override fun get(): ServerStatusDomainModel {
+    override suspend fun get(): ServerStatusDomainModel {
         return serverStatusDataSource.get()
             .toDomainModel()
     }

@@ -1,10 +1,10 @@
 package pl.kamilszustak.callmonitor.server.phonecallmonitor.plugin
 
 import io.ktor.server.testing.testApplication
-import io.mockk.Ordering
+import io.mockk.coJustRun
+import io.mockk.coVerify
 import io.mockk.mockk
 import io.mockk.mockkClass
-import io.mockk.verify
 import org.junit.Rule
 import org.junit.Test
 import org.koin.dsl.module
@@ -40,13 +40,17 @@ class ServerStatusMonitoringPluginTest {
 
     @Test
     fun `'Ktor application should send server started event on its start and server stopped event on its stop'`() {
+        // given
+        coJustRun { setServerStatusUseCaseMock.execute(ServerStatusEventDomainModel.Started) }
+        coJustRun { setServerStatusUseCaseMock.execute(ServerStatusEventDomainModel.Stopped) }
+
         // when
         testApplication {
             install(ServerStatusMonitoringPlugin)
         }
 
         // then
-        verify(ordering = Ordering.SEQUENCE) {
+        coVerify {
             setServerStatusUseCaseMock.execute(ServerStatusEventDomainModel.Started)
             setServerStatusUseCaseMock.execute(ServerStatusEventDomainModel.Stopped)
         }
