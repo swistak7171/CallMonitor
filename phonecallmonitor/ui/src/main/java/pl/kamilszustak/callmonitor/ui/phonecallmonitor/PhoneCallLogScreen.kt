@@ -20,7 +20,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import org.koin.androidx.compose.koinViewModel
-import pl.kamilszustak.callmonitor.presentation.phonecallmonitor.model.LogEntryViewState
+import pl.kamilszustak.callmonitor.presentation.phonecallmonitor.model.PhoneCallLogEntryViewState
 import pl.kamilszustak.callmonitor.presentation.phonecallmonitor.viewmodel.PhoneCallLogViewModel
 
 @Composable
@@ -44,7 +44,7 @@ fun PhoneCallLogScreen() {
             state.serverPort?.let { serverPort ->
                 ServerPort(serverPort)
             }
-            PhoneCallLog(state.logEntries)
+            PhoneCallLog(state.entries)
         }
     }
 }
@@ -68,7 +68,7 @@ private fun ServerPort(port: Int) {
 }
 
 @Composable
-private fun PhoneCallLog(logEntries: List<LogEntryViewState>) {
+private fun PhoneCallLog(logEntries: List<PhoneCallLogEntryViewState>) {
     Column(
         modifier = Modifier.fillMaxSize()
     ) {
@@ -89,7 +89,7 @@ private fun PhoneCallLog(logEntries: List<LogEntryViewState>) {
 }
 
 @Composable
-private fun PhoneCallLogEntry(logEntry: LogEntryViewState) {
+private fun PhoneCallLogEntry(logEntry: PhoneCallLogEntryViewState) {
     Row(
         modifier = Modifier
             .fillMaxWidth()
