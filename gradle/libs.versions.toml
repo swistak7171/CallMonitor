@@ -25,7 +25,7 @@ androidx_test = "1.5.2"
 androidx_test_core = "1.5.0"
 androidx_test_ext_junit = "1.1.5"
 androidx_espresso = "3.5.1"
-dokka = "1.8.10"
+dokka = "1.9.0"
 mockK = "1.13.2"
 robolectric = "4.10.3"
 turbine = "1.0.0"
@@ -109,6 +109,8 @@ kotlin_android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 kotlin_serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
 org-jetbrains-kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }
 com-android-library = { id = "com.android.library", version.ref = "androidGradlePlugin" }
+dokka = { id = "org.jetbrains.dokka", version.ref = "dokka" }
+dokka_android = { id = "org.jetbrains.dokka:android-documentation-plugin", version.ref = "dokka" }
 
 [bundles]
 
