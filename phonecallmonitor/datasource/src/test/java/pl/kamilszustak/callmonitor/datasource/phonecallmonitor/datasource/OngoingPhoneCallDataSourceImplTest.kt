@@ -1,5 +1,6 @@
 package pl.kamilszustak.callmonitor.datasource.phonecallmonitor.datasource
 
+import kotlinx.coroutines.test.runTest
 import org.junit.Test
 import pl.kamilszustak.callmonitor.data.phonecallmonitor.datasource.OngoingPhoneCallDataSource
 import pl.kamilszustak.callmonitor.datasource.phonecallmonitor.ongoingPhoneCallDataModel
@@ -18,7 +19,7 @@ class OngoingPhoneCallDataSourceImplTest {
     // region Tests
 
     @Test
-    fun `'get()' should return 'null' when there is no ongoing phone call`() {
+    fun `'get()' should return 'null' when there is no ongoing phone call`() = runTest {
         // when
         val actualResult = ongoingPhoneCallDataSource.get()
 
@@ -27,7 +28,7 @@ class OngoingPhoneCallDataSourceImplTest {
     }
 
     @Test
-    fun `'get()' should return ongoing phone call when it has been started`() {
+    fun `'get()' should return ongoing phone call when it has been started`() = runTest {
         // given
         ongoingPhoneCallDataSource.setStarted(ongoingPhoneCallDataModel)
 
@@ -39,7 +40,7 @@ class OngoingPhoneCallDataSourceImplTest {
     }
 
     @Test
-    fun `'get()' should return 'null' when phone call has been ended`() {
+    fun `'get()' should return 'null' when phone call has been ended`() = runTest {
         // given
         ongoingPhoneCallDataSource.setEnded()
 

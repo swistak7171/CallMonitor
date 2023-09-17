@@ -1,5 +1,7 @@
 package pl.kamilszustak.callmonitor.datasource.phonecallmonitor.datasource
 
+import kotlinx.coroutines.sync.Mutex
+import kotlinx.coroutines.sync.withLock
 import kotlinx.datetime.Clock
 import kotlinx.datetime.Instant
 import pl.kamilszustak.callmonitor.data.phonecallmonitor.datasource.ServerStatusDataSource
@@ -11,6 +13,7 @@ internal class ServerStatusDataSourceImpl(
 
     // region Fields
 
+    private val mutex: Mutex = Mutex()
     private var startTimestamp: Instant? = null
 
     // endregion
@@ -18,22 +21,28 @@ internal class ServerStatusDataSourceImpl(
     // region ServerStatusDataSource implementation
 
     override suspend fun setStarted() {
-        startTimestamp = clock.now()
+        mutex.withLock {
+            startTimestamp = clock.now()
+        }
     }
 
     override suspend fun setStopped() {
-        startTimestamp = null
+        mutex.withLock {
+            startTimestamp = null
+        }
     }
 
     override suspend fun get(): ServerStatusDataModel {
-        val timestamp = startTimestamp
+        return mutex.withLock {
+            val timestamp = startTimestamp
 
-        return if (timestamp != null) {
-            ServerStatusDataModel.Running(
-                startTimestamp = timestamp
-            )
-        } else {
-            ServerStatusDataModel.Stopped
+            if (timestamp != null) {
+                ServerStatusDataModel.Running(
+                    startTimestamp = timestamp
+                )
+            } else {
+                ServerStatusDataModel.Stopped
+            }
         }
     }
 

@@ -10,7 +10,6 @@ import io.mockk.every
 import io.mockk.justRun
 import io.mockk.mockk
 import io.mockk.mockkStatic
-import io.mockk.verify
 import kotlinx.coroutines.flow.flowOf
 import kotlinx.coroutines.test.runTest
 import org.junit.After
@@ -83,13 +82,13 @@ class PhoneCallRepositoryImplTest {
             every {
                 phoneCallStartEventDomainModel.toOngoingPhoneCallDataModel()
             } returns ongoingPhoneCallDataModel
-            justRun { ongoingPhoneCallDataSourceMock.setStarted(ongoingPhoneCallDataModel) }
+            coJustRun { ongoingPhoneCallDataSourceMock.setStarted(ongoingPhoneCallDataModel) }
 
             // when
             phoneCallRepository.setStarted(phoneCallStartEventDomainModel)
 
             // then
-            verify(ordering = Ordering.SEQUENCE) {
+            coVerify(ordering = Ordering.SEQUENCE) {
                 phoneCallStartEventDomainModel.toOngoingPhoneCallDataModel()
                 ongoingPhoneCallDataSourceMock.setStarted(ongoingPhoneCallDataModel)
             }
@@ -100,15 +99,15 @@ class PhoneCallRepositoryImplTest {
     fun `'setEnded()' should change phone call status to ended and save it in phone call log`() =
         runTest {
             // given
-            every { ongoingPhoneCallDataSourceMock.get() } returns ongoingPhoneCallDataModel
-            justRun { ongoingPhoneCallDataSourceMock.setEnded() }
+            coEvery { ongoingPhoneCallDataSourceMock.get() } returns ongoingPhoneCallDataModel
+            coJustRun { ongoingPhoneCallDataSourceMock.setEnded() }
             justRun { phoneCallLogDataSourceMock.add(phoneCallLogEntryDataModel) }
 
             // when
             phoneCallRepository.setEnded(phoneCallEndEventDomainModel)
 
             // then
-            verify(ordering = Ordering.SEQUENCE) {
+            coVerify(ordering = Ordering.SEQUENCE) {
                 ongoingPhoneCallDataSourceMock.get()
                 ongoingPhoneCallDataSourceMock.setEnded()
                 phoneCallLogDataSourceMock.add(phoneCallLogEntryDataModel)
@@ -119,14 +118,14 @@ class PhoneCallRepositoryImplTest {
     fun `'setEnded()' should not save phone call in log when there is no ongoing phone call currently`() =
         runTest {
             // given
-            every { ongoingPhoneCallDataSourceMock.get() } returns null
+            coEvery { ongoingPhoneCallDataSourceMock.get() } returns null
             justRun { loggerMock.warn(any(), any()) }
 
             // when
             phoneCallRepository.setEnded(phoneCallEndEventDomainModel)
 
             // then
-            verify(ordering = Ordering.SEQUENCE) {
+            coVerify(ordering = Ordering.SEQUENCE) {
                 ongoingPhoneCallDataSourceMock.get()
                 loggerMock.warn(any(), any())
             }
@@ -136,14 +135,14 @@ class PhoneCallRepositoryImplTest {
     fun `'setEnded()' should not save phone call in log when the ended phone call has a different phone number than the ongoing phone call`() =
         runTest {
             // given
-            every { ongoingPhoneCallDataSourceMock.get() } returns ongoingPhoneCallDataModel
+            coEvery { ongoingPhoneCallDataSourceMock.get() } returns ongoingPhoneCallDataModel
             justRun { loggerMock.warn(any(), any()) }
 
             // when
             phoneCallRepository.setEnded(phoneCallEndEventDomainModelWithUnknownPhoneNumber)
 
             // then
-            verify(ordering = Ordering.SEQUENCE) {
+            coVerify(ordering = Ordering.SEQUENCE) {
                 ongoingPhoneCallDataSourceMock.get()
                 loggerMock.warn(any(), any())
             }
@@ -154,7 +153,7 @@ class PhoneCallRepositoryImplTest {
         runTest {
             mockkStatic(OngoingPhoneCallDataModel::toDomainModel) {
                 // given
-                every { ongoingPhoneCallDataSourceMock.get() } returns ongoingPhoneCallDataModel
+                coEvery { ongoingPhoneCallDataSourceMock.get() } returns ongoingPhoneCallDataModel
                 coJustRun { phoneCallMetadataDataSourceMock.incrementTimesQueried(id) }
                 every { contactNameDataSourceMock.get(phoneNumber) } returns contactName
                 every { ongoingPhoneCallDataModel.toDomainModel(contactName) } returns ongoingPhoneCallDomainModel
