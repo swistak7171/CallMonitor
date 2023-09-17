@@ -28,6 +28,7 @@ dokka = "1.8.10"
 mockK = "1.13.2"
 robolectric = "4.10.3"
 turbine = "1.0.0"
+konsist = "0.12.1"
 
 [libraries]
 kotlin_standardLibrary = { module = "org.jetbrains.kotlin:kotlin-stdlib", version.ref = "kotlin" }
@@ -99,6 +100,7 @@ mockk_android = { module = "io.mockk:mockk-android", version.ref = "mockK" }
 junit = { module = "junit:junit", version.ref = "junit" }
 robolectric = { module = "org.robolectric:robolectric", version.ref = "robolectric" }
 turbine = { module = "app.cash.turbine:turbine", version.ref = "turbine" }
+konsist = { module = "com.lemonappdev:konsist", version.ref = "konsist" }
 
 [plugins]
 androidApplication = { id = "com.android.application", version.ref = "androidGradlePlugin" }

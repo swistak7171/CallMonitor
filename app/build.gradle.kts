@@ -94,4 +94,5 @@ dependencies {
     testImplementation(libs.mockk.core)
     testImplementation(libs.koin.test.core)
     testImplementation(libs.koin.test.junit4)
+    testImplementation(libs.konsist)
 }
