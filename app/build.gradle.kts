@@ -77,4 +77,5 @@ dependencies {
     testImplementation(libs.junit)
     testImplementation(libs.konsist)
     testImplementation(libs.koin.test.core)
+    testImplementation(libs.kotlinx.serialization.json)
 }
