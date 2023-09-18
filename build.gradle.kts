@@ -1,4 +1,6 @@
 import org.jetbrains.dokka.DokkaConfiguration.Visibility
+import org.jetbrains.dokka.base.DokkaBase
+import org.jetbrains.dokka.base.DokkaBaseConfiguration
 import org.jetbrains.dokka.gradle.DokkaTaskPartial
 
 plugins {
@@ -26,9 +28,25 @@ subprojects {
     }
 }
 
+buildscript {
+    dependencies {
+        classpath(libs.dokka.base)
+    }
+}
+
 tasks.dokkaHtmlMultiModule {
     outputDirectory = layout.projectDirectory.dir("docs")
     includes.from("README.md")
+
+    pluginConfiguration<DokkaBase, DokkaBaseConfiguration> {
+        customAssets = layout.projectDirectory.file("images")
+            .asFile
+            .takeIf { it.exists() && it.isDirectory }
+            ?.walk()
+            ?.filter { it.isFile }
+            ?.toList()
+            ?: DokkaBaseConfiguration.defaultCustomAssets
+    }
 }
 
 dependencies {
