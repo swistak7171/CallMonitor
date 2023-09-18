@@ -2,7 +2,6 @@ $dokka.format:html-v1
 $dokka.linkExtension:html
 
 module:app
-pl.kamilszustak.callmonitor
 pl.kamilszustak.callmonitor.activity
 pl.kamilszustak.callmonitor.di
 pl.kamilszustak.callmonitor.initializer

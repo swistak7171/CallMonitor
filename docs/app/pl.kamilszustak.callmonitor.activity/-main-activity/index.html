@@ -62,7 +62,7 @@
   <div class="breadcrumbs"><a href="../../index.html">app</a><span class="delimiter">/</span><a href="../index.html">pl.kamilszustak.callmonitor.activity</a><span class="delimiter">/</span><span class="current">MainActivity</span></div>
   <div class="cover ">
     <h1 class="cover"><span>Main</span><wbr><span><span>Activity</span></span></h1>
-    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":app:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">class </span><a href="index.html">MainActivity</a> : <a href="https://developer.android.com/reference/kotlin/androidx/activity/ComponentActivity.html">ComponentActivity</a></div><p class="paragraph">An <a href="https://developer.android.com/reference/kotlin/android/app/Activity.html">Activity</a> responsible for requesting required permissions and starting the <a href="../../pl.kamilszustak.callmonitor.service/-phone-call-monitor-service/index.html">PhoneCallMonitorService</a>. If the required permissions are not granted, a <a href="https://developer.android.com/reference/kotlin/android/widget/Toast.html">Toast</a> is shown. If the permissions are granted, the <a href="../../pl.kamilszustak.callmonitor.service/-phone-call-monitor-service/index.html">PhoneCallMonitorService</a> is started in foreground. This <a href="https://developer.android.com/reference/kotlin/android/app/Activity.html">Activity</a> also hosts the <a href="../../../phonecallmonitor/ui/pl.kamilszustak.callmonitor.ui.phonecallmonitor.view/index.html">PhoneCallLogScreen</a> composable.</p></div></div>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":app:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">class </span><a href="index.html">MainActivity</a> : <a href="https://developer.android.com/reference/kotlin/androidx/activity/ComponentActivity.html">ComponentActivity</a></div><p class="paragraph">An <a href="https://developer.android.com/reference/kotlin/android/app/Activity.html">Activity</a> responsible for requesting required permissions and starting/stopping the <a href="../../pl.kamilszustak.callmonitor.service/-phone-call-monitor-service/index.html">PhoneCallMonitorService</a>. If the required permissions are not granted, a <a href="https://developer.android.com/reference/kotlin/android/widget/Toast.html">Toast</a> is shown. If the permissions are granted, the <a href="../../pl.kamilszustak.callmonitor.service/-phone-call-monitor-service/index.html">PhoneCallMonitorService</a> is started in foreground. This <a href="https://developer.android.com/reference/kotlin/android/app/Activity.html">Activity</a> also hosts the <a href="../../../phonecallmonitor/ui/pl.kamilszustak.callmonitor.ui.phonecallmonitor.view/index.html">PhoneCallLogScreen</a> composable.</p></div></div>
   </div>
   <div class="tabbedcontent">
     <div class="tabs-section" tabs-section="tabs-section"><button class="section-tab" data-active="" data-togglable="CONSTRUCTOR,TYPE,PROPERTY,FUNCTION">Members</button></div>
@@ -504,6 +504,21 @@
               <div>
                 <div class="title">
                   <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":app:dokkaHtmlPartial/release"><div class="symbol monospace"><div class="block"><div class="block"><span class="token annotation builtin">@get:</span><a href="https://developer.android.com/reference/kotlin/androidx/annotation/NonNull.html"><span class="token annotation builtin">NonNull</span></a></div></div><span class="token keyword">override </span><span class="token keyword">val </span><a href="index.html#-1476592360%2FProperties%2F1711373860">savedStateRegistry</a><span class="token operator">: </span><a href="https://developer.android.com/reference/kotlin/androidx/savedstate/SavedStateRegistry.html">SavedStateRegistry</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-579358110%2FProperties%2F1711373860" anchor-label="serviceIntent" id="-579358110%2FProperties%2F1711373860" data-filterable-set=":app:dokkaHtmlPartial/release"></a>
+          <div class="table-row" data-filterable-current=":app:dokkaHtmlPartial/release" data-filterable-set=":app:dokkaHtmlPartial/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="service-intent.html"><span>service</span><wbr><span><span>Intent</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-579358110%2FProperties%2F1711373860"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":app:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">private </span><span class="token keyword"></span><span class="token keyword">val </span><a href="service-intent.html">serviceIntent</a><span class="token operator">: </span><a href="https://developer.android.com/reference/kotlin/android/content/Intent.html">Intent</a></div><div class="brief "><p class="paragraph">An <a href="https://developer.android.com/reference/kotlin/android/content/Intent.html">Intent</a> used to start and stop the <a href="../../pl.kamilszustak.callmonitor.service/-phone-call-monitor-service/index.html">PhoneCallMonitorService</a>.</p></div></div></div>
                 </div>
               </div>
             </div>
@@ -3572,17 +3587,17 @@
               </div>
             </div>
           </div>
-<a data-name="1524872565%2FFunctions%2F1711373860" anchor-label="onDestroy" id="1524872565%2FFunctions%2F1711373860" data-filterable-set=":app:dokkaHtmlPartial/release"></a>
+<a data-name="-2067712712%2FFunctions%2F1711373860" anchor-label="onDestroy" id="-2067712712%2FFunctions%2F1711373860" data-filterable-set=":app:dokkaHtmlPartial/release"></a>
           <div class="table-row" data-filterable-current=":app:dokkaHtmlPartial/release" data-filterable-set=":app:dokkaHtmlPartial/release">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
-                  <div><a href="index.html#1524872565%2FFunctions%2F1711373860"><span>on</span><wbr><span><span>Destroy</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1524872565%2FFunctions%2F1711373860"></span>
+                  <div><a href="on-destroy.html"><span>on</span><wbr><span><span>Destroy</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-2067712712%2FFunctions%2F1711373860"></span>
                     <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":app:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">protected </span><span class="token keyword">open </span><span class="token keyword"></span><span class="token keyword">fun </span><a href="index.html#1524872565%2FFunctions%2F1711373860"><span class="token function">onDestroy</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":app:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">protected </span><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">fun </span><a href="on-destroy.html"><span class="token function">onDestroy</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span></div></div></div>
                 </div>
               </div>
             </div>

@@ -2,7 +2,7 @@
 <html class="no-js">
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8">
-    <title>startPhoneCallMonitorServer</title>
+    <title>serviceIntent</title>
 <link href="../../../images/logo-icon.svg" rel="icon" type="image/svg">    <script>var pathToRoot = "../../../";</script>
     <script>document.documentElement.classList.replace("no-js","js");</script>
     <script>const storage = localStorage.getItem("dokka-dark-mode")
@@ -45,7 +45,7 @@
             </div>
         </div>
         <div class="filter-section" id="filter-section">
-                <button class="platform-tag platform-selector jvm-like" data-active="" data-filter=":phonecallmonitor:server:dokkaHtmlPartial/main">jvm</button>
+                <button class="platform-tag platform-selector jvm-like" data-active="" data-filter=":app:dokkaHtmlPartial/release">androidJvm</button>
         </div>
     </div>
     <div class="navigation-controls">
@@ -58,12 +58,12 @@
                 <div class="sidebar--inner" id="sideMenu"></div>
             </div>
             <div id="main">
-<div class="main-content" data-page-type="member" id="content" pageids="server::pl.kamilszustak.callmonitor.server//startPhoneCallMonitorServer/#pl.kamilszustak.callmonitor.domain.phonecallmonitor.model.ServerConfigurationDomainModel/PointingToDeclaration//1651244875">
-  <div class="breadcrumbs"><a href="../index.html">server</a><span class="delimiter">/</span><a href="index.html">pl.kamilszustak.callmonitor.server</a><span class="delimiter">/</span><span class="current">startPhoneCallMonitorServer</span></div>
+<div class="main-content" data-page-type="member" id="content" pageids="app::pl.kamilszustak.callmonitor.activity/MainActivity/serviceIntent/#/PointingToDeclaration//1711373860">
+  <div class="breadcrumbs"><a href="../../index.html">app</a><span class="delimiter">/</span><a href="../index.html">pl.kamilszustak.callmonitor.activity</a><span class="delimiter">/</span><a href="index.html">MainActivity</a><span class="delimiter">/</span><span class="current">serviceIntent</span></div>
   <div class="cover ">
-    <h1 class="cover"><span>start</span><wbr><span>Phone</span><wbr><span>Call</span><wbr><span>Monitor</span><wbr><span><span>Server</span></span></h1>
+    <h1 class="cover"><span>service</span><wbr><span><span>Intent</span></span></h1>
   </div>
-  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":phonecallmonitor:server:dokkaHtmlPartial/main"><div class="symbol monospace"><span class="token keyword">suspend </span><span class="token keyword">fun </span><a href="start-phone-call-monitor-server.html"><span class="token function">startPhoneCallMonitorServer</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">configuration<span class="token operator">: </span><a href="../../../phonecallmonitor/domain/pl.kamilszustak.callmonitor.domain.phonecallmonitor.model/-server-configuration-domain-model/index.html">ServerConfigurationDomainModel</a></span></span><span class="token punctuation">)</span></div><p class="paragraph">Starts the phone call monitor server. It provides a REST API for retrieving information about:</p><ul><li><p class="paragraph">the server current status and the services it provides via <a href="../pl.kamilszustak.callmonitor.server.route/server-status-route.html">serverStatusRoute</a>.</p></li><li><p class="paragraph">the current status of the currently ongoing phone call via <a href="../pl.kamilszustak.callmonitor.server.route/status-route.html">statusRoute</a>.</p></li><li><p class="paragraph">the phone call log via <a href="../pl.kamilszustak.callmonitor.server.route/log-route.html">logRoute</a>.</p></li></ul><p class="paragraph">It uses the <span data-unresolved-link="io.ktor.server.cio/CIO///PointingToDeclaration/">CIO</span> engine and JSON as the default content type. The server is stopped when the the <span data-unresolved-link="kotlinx.coroutines/CoroutineScope///PointingToDeclaration/">CoroutineScope</span> is cancelled.</p></div></div>
+  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":app:dokkaHtmlPartial/release"><div class="symbol monospace"><span class="token keyword">private </span><span class="token keyword"></span><span class="token keyword">val </span><a href="service-intent.html">serviceIntent</a><span class="token operator">: </span><a href="https://developer.android.com/reference/kotlin/android/content/Intent.html">Intent</a></div><p class="paragraph">An <a href="https://developer.android.com/reference/kotlin/android/content/Intent.html">Intent</a> used to start and stop the <a href="../../pl.kamilszustak.callmonitor.service/-phone-call-monitor-service/index.html">PhoneCallMonitorService</a>.</p></div></div>
 </div>
       <div class="footer">
         <span class="go-to-top-icon"><a href="#content" id="go-to-top-link"></a></span><span>© 2023 Copyright</span><span class="pull-right"><span>Generated by </span><a href="https://github.com/Kotlin/dokka"><span>dokka</span><span class="padded-icon"></span></a></span>
