@@ -14,6 +14,9 @@ import pl.kamilszustak.callmonitor.domain.phonecallmonitor.usecase.GetServerStat
 import pl.kamilszustak.callmonitor.server.model.ServerStatusRemoteResponseModel
 import pl.kamilszustak.callmonitor.server.model.ServiceRemoteResponseModel
 
+/**
+ * A route returning the server current status and its services.
+ */
 internal fun Route.serverStatusRoute() {
     val getServerConfigurationUseCase by inject<GetServerConfigurationUseCase>()
     val getServerStatusUseCase by inject<GetServerStatusUseCase>()
@@ -36,6 +39,11 @@ internal fun Route.serverStatusRoute() {
     }
 }
 
+/**
+ * Returns a response model containing the server status and its services. The services are
+ * determined by the routes registered in the application. The result response does not contain
+ * the root route.
+ */
 private fun createResponse(
     allRoutes: List<Route>,
     serverStatus: ServerStatusDomainModel.Running,

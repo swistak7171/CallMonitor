@@ -9,6 +9,9 @@ import org.koin.ktor.ext.inject
 import pl.kamilszustak.callmonitor.domain.phonecallmonitor.usecase.GetOngoingPhoneCallUseCase
 import pl.kamilszustak.callmonitor.server.mapper.toRemoteResponseModel
 
+/**
+ * A route returning the ongoing phone call or an HTTP 404 error if there is no ongoing phone call.
+ */
 internal fun Route.statusRoute() {
     val getOngoingPhoneCallUseCase by inject<GetOngoingPhoneCallUseCase>()
 

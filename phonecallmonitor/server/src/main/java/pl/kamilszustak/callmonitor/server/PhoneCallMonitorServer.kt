@@ -14,6 +14,14 @@ import pl.kamilszustak.callmonitor.server.route.logRoute
 import pl.kamilszustak.callmonitor.server.route.serverStatusRoute
 import pl.kamilszustak.callmonitor.server.route.statusRoute
 
+/**
+ * Starts the phone call monitor server. It provides a REST API for retrieving information about:
+ * - the server current status and the services it provides via [serverStatusRoute].
+ * - the current status of the currently ongoing phone call via [statusRoute].
+ * - the phone call log via [logRoute].
+ *
+ * It uses the [CIO] engine and JSON as the default content type.
+ */
 fun KoinComponent.startPhoneCallMonitorServer() {
     val getServerConfigurationUseCase = get<GetServerConfigurationUseCase>()
     val configuration = getServerConfigurationUseCase.execute()

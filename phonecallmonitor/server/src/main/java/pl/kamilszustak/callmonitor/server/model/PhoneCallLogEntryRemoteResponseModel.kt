@@ -4,6 +4,10 @@ import kotlinx.datetime.Instant
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
+/**
+ * A model representing a response from the REST API `/log` endpoint containing information about
+ * a phone call log entry.
+ */
 @Serializable
 internal data class PhoneCallLogEntryRemoteResponseModel(
     @SerialName("beginning")

@@ -9,6 +9,9 @@ import pl.kamilszustak.callmonitor.domain.phonecallmonitor.model.PhoneCallLogEnt
 import pl.kamilszustak.callmonitor.domain.phonecallmonitor.usecase.GetAllPhoneCallLogEntriesUseCase
 import pl.kamilszustak.callmonitor.server.mapper.toRemoteResponseModel
 
+/**
+ * A route returning all phone call log entries.
+ */
 internal fun Route.logRoute() {
     val getAllPhoneCallLogEntriesUseCase by inject<GetAllPhoneCallLogEntriesUseCase>()
 
