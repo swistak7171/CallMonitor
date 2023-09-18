@@ -18,6 +18,10 @@ dividing the codebase into distinct layers (UI, Presentation, Domain, Data and D
 scalability and maintainability. The MVI pattern enhances the user interface by emphasizing a
 unidirectional data flow and enabling a reactive approach to handle UI updates.
 
+## Supported Android versions
+
+The application is compatible with Android 6.0 (API level 23) and higher.
+
 ## Screenshots
 
 <div>
