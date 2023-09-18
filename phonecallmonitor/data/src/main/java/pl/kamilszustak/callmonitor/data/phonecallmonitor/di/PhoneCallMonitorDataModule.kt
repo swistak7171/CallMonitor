@@ -1,5 +1,6 @@
 package pl.kamilszustak.callmonitor.data.phonecallmonitor.di
 
+import org.koin.core.Koin
 import org.koin.core.module.Module
 import org.koin.core.module.dsl.factoryOf
 import org.koin.dsl.bind
@@ -13,6 +14,9 @@ import pl.kamilszustak.callmonitor.domain.phonecallmonitor.repository.PhoneCallR
 import pl.kamilszustak.callmonitor.domain.phonecallmonitor.repository.ServerConfigurationRepository
 import pl.kamilszustak.callmonitor.domain.phonecallmonitor.repository.ServerStatusRepository
 
+/**
+ * A [Koin] module containing all dependencies for the data layer.
+ */
 val phoneCallMonitorDataModule: Module = module {
     factoryOf(::PhoneCallEventRepositoryImpl)
         .bind<PhoneCallEventRepository>()

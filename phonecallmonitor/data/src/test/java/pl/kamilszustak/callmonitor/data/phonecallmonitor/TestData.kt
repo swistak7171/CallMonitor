@@ -14,6 +14,10 @@ import pl.kamilszustak.callmonitor.domain.phonecallmonitor.model.PhoneCallMetada
 import pl.kamilszustak.callmonitor.domain.phonecallmonitor.model.ServerConfigurationDomainModel
 import pl.kamilszustak.callmonitor.domain.phonecallmonitor.model.ServerStatusDomainModel
 
+/**
+ * This file contains data models used for testing purposes.
+ */
+
 val id: String = "eee144a0-553c-11ee-8c99-0242ac120002"
 val startTimestamp: Instant = Instant.fromEpochSeconds(100)
 val endTimestamp: Instant = Instant.fromEpochSeconds(200)

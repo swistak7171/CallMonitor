@@ -8,6 +8,9 @@ import pl.kamilszustak.callmonitor.data.phonecallmonitor.model.PhoneCallEventDat
 import pl.kamilszustak.callmonitor.domain.phonecallmonitor.model.PhoneCallEventDomainModel
 import pl.kamilszustak.callmonitor.domain.phonecallmonitor.repository.PhoneCallEventRepository
 
+/**
+ * A repository for phone call events.
+ */
 internal class PhoneCallEventRepositoryImpl(
     private val phoneCallEventDataSource: PhoneCallEventDataSource,
 ) : PhoneCallEventRepository {

@@ -21,6 +21,10 @@ private const val TAG: String = "PhoneCallRepositoryImpl"
 
 // endregion
 
+/**
+ * A repository for managing phone calls. It handles the current phone call events, as well as
+ * the history of phone calls.
+ */
 internal class PhoneCallRepositoryImpl(
     private val logger: Logger,
     private val ongoingPhoneCallDataSource: OngoingPhoneCallDataSource,

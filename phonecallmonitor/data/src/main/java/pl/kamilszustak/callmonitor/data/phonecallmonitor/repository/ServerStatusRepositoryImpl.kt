@@ -5,6 +5,9 @@ import pl.kamilszustak.callmonitor.data.phonecallmonitor.mapper.toDomainModel
 import pl.kamilszustak.callmonitor.domain.phonecallmonitor.model.ServerStatusDomainModel
 import pl.kamilszustak.callmonitor.domain.phonecallmonitor.repository.ServerStatusRepository
 
+/**
+ * A repository for managing the server current status.
+ */
 internal class ServerStatusRepositoryImpl(
     private val serverStatusDataSource: ServerStatusDataSource,
 ) : ServerStatusRepository {
