@@ -49,6 +49,11 @@ import pl.kamilszustak.callmonitor.ui.phonecallmonitor.R
 import kotlin.time.Duration.Companion.minutes
 import kotlin.time.Duration.Companion.seconds
 
+/**
+ * A [Composable] screen that displays the phone call log and the server information. It has two
+ * states: loading and success. The loading state is displayed when the data is being loaded and the
+ * success state is displayed when the data has been loaded successfully.
+ */
 @Composable
 fun PhoneCallLogScreen(
     viewModel: PhoneCallLogViewModel = koinViewModel()
@@ -79,6 +84,9 @@ private fun Content(state: PhoneCallLogViewState) {
     }
 }
 
+/**
+ * A [Composable] screen content that is displayed when the data is being loaded.
+ */
 @Composable
 private fun LoadingContent() {
     Box(
@@ -91,6 +99,9 @@ private fun LoadingContent() {
     }
 }
 
+/**
+ * A [Composable] screen content that is displayed when the data has been loaded successfully.
+ */
 @Composable
 private fun SuccessContent(state: PhoneCallLogViewState.Success) {
     Column(
@@ -111,6 +122,10 @@ private fun SuccessContent(state: PhoneCallLogViewState.Success) {
     }
 }
 
+/**
+ * A [Composable] component that displays the server information based on the given [serverHost]
+ * and [serverPort].
+ */
 @Composable
 private fun ServerInformation(serverHost: String, serverPort: Int) {
     Card(
@@ -161,6 +176,9 @@ private fun ServerInformation(serverHost: String, serverPort: Int) {
     }
 }
 
+/**
+ * A [Composable] component that displays the phone call log based on the given [logEntries].
+ */
 @Composable
 private fun PhoneCallLog(logEntries: List<PhoneCallLogEntryViewState>) {
     Card(
@@ -218,6 +236,10 @@ private fun PhoneCallLog(logEntries: List<PhoneCallLogEntryViewState>) {
     }
 }
 
+/**
+ * A [Composable] component that displays a single phone call log entry based on the given
+ * [logEntry].
+ */
 @Composable
 private fun PhoneCallLogEntry(logEntry: PhoneCallLogEntryViewState) {
     Row(
@@ -232,7 +254,7 @@ private fun PhoneCallLogEntry(logEntry: PhoneCallLogEntryViewState) {
             modifier = Modifier
                 .size(40.dp)
                 .background(
-                    color = phoneCallLogEntryBackgroundColors.random(),
+                    color = phoneCallLogEntryIconBackgroundColors.random(),
                     shape = RoundedCornerShape(50)
                 )
                 .padding(4.dp),

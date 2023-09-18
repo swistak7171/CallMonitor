@@ -4,6 +4,10 @@ import pl.kamilszustak.callmonitor.presentation.phonecallmonitor.model.PhoneCall
 import pl.kamilszustak.callmonitor.presentation.phonecallmonitor.model.PhoneCallLogViewState
 import kotlin.time.Duration.Companion.minutes
 
+/**
+ * This file contains data models used for testing purposes.
+ */
+
 const val serverHost: String = "123.123.123.123"
 const val serverPort: Int = 9090
 

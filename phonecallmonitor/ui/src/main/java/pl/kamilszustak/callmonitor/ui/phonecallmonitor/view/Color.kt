@@ -2,7 +2,10 @@ package pl.kamilszustak.callmonitor.ui.phonecallmonitor.view
 
 import androidx.compose.ui.graphics.Color
 
-val phoneCallLogEntryBackgroundColors = listOf(
+/**
+ * A [List] of [Color]s used to display a background of a phone call log entry icon.
+ */
+val phoneCallLogEntryIconBackgroundColors: List<Color> = listOf(
     Color(0xFFA5DADA),
     Color(0xFFA5DAA5),
     Color(0xFFB7BEEA),
