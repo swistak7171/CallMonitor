@@ -6,6 +6,10 @@ import androidx.startup.Initializer
 import logcat.AndroidLogcatLogger
 import logcat.LogPriority
 
+/**
+ * An [Initializer] of the [logcat] library. It is used to initialize the library at the application
+ * startup.
+ */
 class LogcatInitializer : Initializer<Unit> {
 
     // region Initializer Implementation
