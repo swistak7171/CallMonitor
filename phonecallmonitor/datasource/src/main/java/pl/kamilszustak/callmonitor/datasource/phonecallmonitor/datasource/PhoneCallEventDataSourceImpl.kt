@@ -21,9 +21,26 @@ private const val TAG: String = "PhoneCallEventDataSourceImpl"
 
 // endregion
 
+/**
+ * A data source for capturing phone call events and providing them.
+ *
+ * This class listens for phone call events using a [BroadcastReceiver] and emits relevant call
+ * information, such as call start and end events.
+ */
 internal class PhoneCallEventDataSourceImpl(
+    /**
+     * An instance of [Logger] used for logging events.
+     */
     private val logger: Logger,
+
+    /**
+     * An instance of [Context] used for registering and unregistering the [BroadcastReceiver].
+     */
     private val context: Context,
+
+    /**
+     * An instance of [Clock] used for timestamping the phone call events.
+     */
     private val clock: Clock,
 ) : PhoneCallEventDataSource {
 
@@ -46,6 +63,10 @@ internal class PhoneCallEventDataSourceImpl(
 
     // region Private Methods
 
+    /**
+     * Returns a BroadcastReceiver for listening to phone call events. The events are emitted via
+     * the [onEvent] callback.
+     */
     @Suppress("DEPRECATION")
     private fun createBroadcastReceiver(
         onEvent: (event: PhoneCallEventDataModel) -> Unit,
@@ -98,6 +119,9 @@ internal class PhoneCallEventDataSourceImpl(
         }
     }
 
+    /**
+     * Registers the [receiver] for listening to phone call events.
+     */
     private fun registerBroadcastReceiver(receiver: BroadcastReceiver) {
         val filter = IntentFilter(TelephonyManager.ACTION_PHONE_STATE_CHANGED)
         val flags = ContextCompat.RECEIVER_EXPORTED

@@ -7,13 +7,23 @@ import kotlinx.datetime.Instant
 import pl.kamilszustak.callmonitor.data.phonecallmonitor.datasource.ServerStatusDataSource
 import pl.kamilszustak.callmonitor.data.phonecallmonitor.model.ServerStatusDataModel
 
+/**
+ * A data source for managing the current server status.
+ */
 internal class ServerStatusDataSourceImpl(
+    /**
+     * An instance of [Clock] used for timestamping the server status changes.
+     */
     private val clock: Clock,
 ) : ServerStatusDataSource {
 
     // region Fields
 
     private val mutex: Mutex = Mutex()
+
+    /**
+     * The timestamp of the server last start.
+     */
     private var startTimestamp: Instant? = null
 
     // endregion

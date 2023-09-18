@@ -6,6 +6,9 @@ import kotlinx.coroutines.flow.update
 import pl.kamilszustak.callmonitor.data.phonecallmonitor.datasource.PhoneCallLogDataSource
 import pl.kamilszustak.callmonitor.data.phonecallmonitor.model.PhoneCallLogEntryDataModel
 
+/**
+ * A data source for managing a phone call log.
+ */
 internal class PhoneCallLogDataSourceImpl : PhoneCallLogDataSource {
 
     // region Fields

@@ -6,6 +6,10 @@ import pl.kamilszustak.callmonitor.data.phonecallmonitor.model.PhoneCallEventDat
 import pl.kamilszustak.callmonitor.data.phonecallmonitor.model.PhoneCallLogEntryDataModel
 import pl.kamilszustak.callmonitor.data.phonecallmonitor.model.ServerConfigurationDataModel
 
+/**
+ * This file contains data models used for testing purposes.
+ */
+
 const val id: String = "eee144a0-553c-11ee-8c99-0242ac120002"
 const val phoneNumber: String = "123123123"
 const val contactName: String = "John Smith"

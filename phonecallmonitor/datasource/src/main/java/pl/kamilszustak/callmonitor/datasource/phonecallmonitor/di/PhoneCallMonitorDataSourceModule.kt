@@ -1,6 +1,7 @@
 package pl.kamilszustak.callmonitor.datasource.phonecallmonitor.di
 
 import kotlinx.datetime.Clock
+import org.koin.core.Koin
 import org.koin.core.module.Module
 import org.koin.core.module.dsl.factoryOf
 import org.koin.core.module.dsl.singleOf
@@ -21,8 +22,10 @@ import pl.kamilszustak.callmonitor.datasource.phonecallmonitor.datasource.PhoneC
 import pl.kamilszustak.callmonitor.datasource.phonecallmonitor.datasource.ServerConfigurationDataSourceImpl
 import pl.kamilszustak.callmonitor.datasource.phonecallmonitor.datasource.ServerStatusDataSourceImpl
 
+/**
+ * A [Koin] module containing all dependencies for the data source layer.
+ */
 val phoneCallMonitorDataSourceModule: Module = module {
-
     factory<Clock> {
         Clock.System
     }

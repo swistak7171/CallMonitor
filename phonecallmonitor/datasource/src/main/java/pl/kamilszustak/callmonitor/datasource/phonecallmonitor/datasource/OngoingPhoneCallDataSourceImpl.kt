@@ -5,6 +5,9 @@ import kotlinx.coroutines.sync.withLock
 import pl.kamilszustak.callmonitor.data.phonecallmonitor.datasource.OngoingPhoneCallDataSource
 import pl.kamilszustak.callmonitor.data.phonecallmonitor.model.OngoingPhoneCallDataModel
 
+/**
+ * A memory data source for managing ongoing phone calls.
+ */
 internal class OngoingPhoneCallDataSourceImpl : OngoingPhoneCallDataSource {
 
     // region Fields
