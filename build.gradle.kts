@@ -28,6 +28,7 @@ subprojects {
 
 tasks.dokkaHtmlMultiModule {
     outputDirectory = layout.projectDirectory.dir("docs")
+    includes.from("README.md")
 }
 
 dependencies {
