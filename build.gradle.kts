@@ -22,6 +22,7 @@ subprojects {
             val readmeFileExists = file("README.md")
                 .exists()
             if (readmeFileExists) {
+                println(path)
                 includes.from("README.md")
             }
         }

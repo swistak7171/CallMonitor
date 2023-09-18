@@ -10,6 +10,14 @@ application provides a simple user interface to view the call log and the server
 More detailed information about the application can be
 found [here](https://swistak7171.github.io/CallMonitor/index.html).
 
+## Architecture
+
+The project uses **Clean Architecture** and **Model-View-Intent (MVI)** architectural patterns to
+design and structure the application. Clean Architecture provides a clear separation of concerns,
+dividing the codebase into distinct layers (UI, Presentation, Domain, Data and Data Source) ensuring
+scalability and maintainability. The MVI pattern enhances the user interface by emphasizing a
+unidirectional data flow and enabling a reactive approach to handle UI updates.
+
 ## Screenshots
 
 <div>

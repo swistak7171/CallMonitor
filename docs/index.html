@@ -69,6 +69,8 @@
       <h2 class=""> Description</h2>
       <p class="paragraph"><strong>CallMonitor</strong> is an Android application that monitors incoming and outgoing calls and stores the details in phone call log in the background. At launch it also starts a REST API server that can be used to view the call log, current call status and server status. Beside of that the application provides a simple user interface to view the call log and the server configuration.</p>
       <p class="paragraph">More detailed information about the application can be found <a href="https://swistak7171.github.io/CallMonitor/index.html">here</a>.</p>
+      <h2 class=""> Architecture</h2>
+      <p class="paragraph">The project uses <strong>Clean Architecture</strong> and <strong>Model-View-Intent (MVI)</strong> architectural patterns to design and structure the application. Clean Architecture provides a clear separation of concerns, dividing the codebase into distinct layers (UI, Presentation, Domain, Data and Data Source) ensuring scalability and maintainability. The MVI pattern enhances the user interface by emphasizing a unidirectional data flow and enabling a reactive approach to handle UI updates.</p>
       <h2 class=""> Screenshots</h2>
 <div>
     <div>
@@ -89,7 +91,9 @@
 <span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1551721612%2FMain%2F0"></span>
                 <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
               </span></span></div>
-          <div><span class="brief-comment"></span></div>
+          <div><span class="brief-comment">
+              <p class="paragraph">This is the main module of the application. It contains the main activity and the application class. It also contains the dependency injection configuration.</p>
+            </span></div>
         </div>
       </div>
 <a data-name="1376130027%2FMain%2F0" anchor-label="data" id="1376130027%2FMain%2F0" data-filterable-set=""></a>
@@ -100,7 +104,9 @@
 <span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1376130027%2FMain%2F0"></span>
                 <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
               </span></span></div>
-          <div><span class="brief-comment"></span></div>
+          <div><span class="brief-comment">
+              <p class="paragraph">This module contains the data objects of the phone call monitor feature. It is a pure Kotlin module which implements the repository interfaces defined in the &quot;domain&quot; module. It also contains data sources interfaces which are implemented in the &quot;datasource&quot; module.</p>
+            </span></div>
         </div>
       </div>
 <a data-name="-1377059664%2FMain%2F0" anchor-label="datasource" id="-1377059664%2FMain%2F0" data-filterable-set=""></a>
@@ -111,7 +117,9 @@
 <span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1377059664%2FMain%2F0"></span>
                 <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
               </span></span></div>
-          <div><span class="brief-comment"></span></div>
+          <div><span class="brief-comment">
+              <p class="paragraph">This module contains data sources for the functionalities of the application. The data sources are responsible for retrieving, saving or modifying data. Thanks to the layered architecture, the data sources are independent of the rest of the application. This allows the data sources to be easily replaced by other data sources. For example, the current data sources are mostly &quot;in memory&quot; data sources. This means that the data is stored in memory and is therefore not persistent. Such decision was made to meet the requirements of the project. However, if the requirements change, the data sources can be easily replaced by other data sources, such as &quot;database&quot; data sources.</p>
+            </span></div>
         </div>
       </div>
 <a data-name="-269400303%2FMain%2F0" anchor-label="domain" id="-269400303%2FMain%2F0" data-filterable-set=""></a>
@@ -122,7 +130,9 @@
 <span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-269400303%2FMain%2F0"></span>
                 <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
               </span></span></div>
-          <div><span class="brief-comment"></span></div>
+          <div><span class="brief-comment">
+              <p class="paragraph">This module contains the domain objects of the phone call monitor feature. It is a pure Kotlin module which does not depend on any other module. It contains use case classes responsible for the business logic of the application. It also defined repository interfaces which are implemented in the &quot;data&quot; module.</p>
+            </span></div>
         </div>
       </div>
 <a data-name="1717527493%2FMain%2F0" anchor-label="logger" id="1717527493%2FMain%2F0" data-filterable-set=""></a>
@@ -133,7 +143,9 @@
 <span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1717527493%2FMain%2F0"></span>
                 <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
               </span></span></div>
-          <div><span class="brief-comment"></span></div>
+          <div><span class="brief-comment">
+              <p class="paragraph">This module contains the logger component allowing to log messages. This is a shared module which can be used by other modules.</p>
+            </span></div>
         </div>
       </div>
 <a data-name="964877947%2FMain%2F0" anchor-label="presentation" id="964877947%2FMain%2F0" data-filterable-set=""></a>
@@ -144,7 +156,9 @@
 <span class="anchor-wrapper"><span class="anchor-icon" pointing-to="964877947%2FMain%2F0"></span>
                 <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
               </span></span></div>
-          <div><span class="brief-comment"></span></div>
+          <div><span class="brief-comment">
+              <p class="paragraph">This module represents the presentation layer of the phone call monitor feature. It contains view models and view state classes that are used by the &quot;ui&quot; module to display data.</p>
+            </span></div>
         </div>
       </div>
 <a data-name="-726898318%2FMain%2F0" anchor-label="server" id="-726898318%2FMain%2F0" data-filterable-set=""></a>
@@ -155,7 +169,9 @@
 <span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-726898318%2FMain%2F0"></span>
                 <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
               </span></span></div>
-          <div><span class="brief-comment"></span></div>
+          <div><span class="brief-comment">
+              <p class="paragraph">This module contains the server part of the phone call monitor feature. It is a simple Ktor REST server that listens for incoming requests from clients and responses with proper data. The server uses HTTP as the communication protocol and JSON as the data format.</p>
+            </span></div>
         </div>
       </div>
 <a data-name="505473345%2FMain%2F0" anchor-label="ui" id="505473345%2FMain%2F0" data-filterable-set=""></a>
@@ -166,7 +182,9 @@
 <span class="anchor-wrapper"><span class="anchor-icon" pointing-to="505473345%2FMain%2F0"></span>
                 <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
               </span></span></div>
-          <div><span class="brief-comment"></span></div>
+          <div><span class="brief-comment">
+              <p class="paragraph">This module represents the UI layer of the phone call monitor feature. It contains the UI components that are used to display data to the user. The UI components are implemented using the Jetpack Compose library. The UI components are connected to the view models from the &quot;presentation&quot; module.</p>
+            </span></div>
         </div>
       </div>
     </div>
