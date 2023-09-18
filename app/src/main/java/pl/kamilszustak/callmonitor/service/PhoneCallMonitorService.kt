@@ -14,7 +14,9 @@ import kotlinx.coroutines.cancel
 import kotlinx.coroutines.launch
 import org.koin.android.ext.android.inject
 import pl.kamilszustak.callmonitor.R
+import pl.kamilszustak.callmonitor.domain.phonecallmonitor.usecase.GetServerConfigurationUseCase
 import pl.kamilszustak.callmonitor.domain.phonecallmonitor.usecase.MonitorPhoneCallsUseCase
+import pl.kamilszustak.callmonitor.server.startPhoneCallMonitorServer
 
 // region Constants
 
@@ -25,7 +27,7 @@ private const val NOTIFICATION_CHANNEL_ID = "phone-call-monitor"
 
 /**
  * A [Service] that monitors phone calls. It is responsible for starting the
- * [MonitorPhoneCallsUseCase] and displaying a notification in the foreground.
+ * [MonitorPhoneCallsUseCase], starting the server and displaying a notification in the foreground.
  */
 class PhoneCallMonitorService : Service() {
 
@@ -37,6 +39,7 @@ class PhoneCallMonitorService : Service() {
      */
     private val coroutineScope: CoroutineScope = CoroutineScope(Dispatchers.Default)
     private val monitorPhoneCallsUseCase: MonitorPhoneCallsUseCase by inject()
+    private val getServerConfigurationUseCase: GetServerConfigurationUseCase by inject()
 
     // endregion
 
@@ -49,6 +52,10 @@ class PhoneCallMonitorService : Service() {
 
         coroutineScope.launch {
             monitorPhoneCallsUseCase.execute()
+        }
+        coroutineScope.launch {
+            val configuration = getServerConfigurationUseCase.execute()
+            startPhoneCallMonitorServer(configuration)
         }
 
         return super.onStartCommand(intent, flags, startId)

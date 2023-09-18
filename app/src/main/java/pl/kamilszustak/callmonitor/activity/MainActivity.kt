@@ -15,11 +15,10 @@ import pl.kamilszustak.callmonitor.ui.ApplicationTheme
 import pl.kamilszustak.callmonitor.ui.phonecallmonitor.view.PhoneCallLogScreen
 
 /**
- * An [Activity] responsible for requesting required permissions and starting the
+ * An [Activity] responsible for requesting required permissions and starting/stopping the
  * [PhoneCallMonitorService]. If the required permissions are not granted, a [Toast] is shown. If
  * the permissions are granted, the [PhoneCallMonitorService] is started in foreground. This
  * [Activity] also hosts the [PhoneCallLogScreen] composable.
- *
  */
 class MainActivity : ComponentActivity() {
 
@@ -33,6 +32,12 @@ class MainActivity : ComponentActivity() {
         Manifest.permission.READ_CALL_LOG,
         Manifest.permission.READ_CONTACTS,
     )
+
+    /**
+     * An [Intent] used to start and stop the [PhoneCallMonitorService].
+     */
+    private val serviceIntent: Intent
+        get() = Intent(application, PhoneCallMonitorService::class.java)
 
     // endregion
 
@@ -48,6 +53,12 @@ class MainActivity : ComponentActivity() {
                 PhoneCallLogScreen()
             }
         }
+    }
+
+    override fun onDestroy() {
+        stopService(serviceIntent)
+
+        super.onDestroy()
     }
 
     // endregion
