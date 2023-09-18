@@ -1,7 +1,8 @@
-package pl.kamilszustak.callmonitor.presentation.phonecallmonitor
+package pl.kamilszustak.callmonitor.presentation.phonecallmonitor.mapper
 
 import org.junit.Test
-import pl.kamilszustak.callmonitor.presentation.phonecallmonitor.mapper.toViewState
+import pl.kamilszustak.callmonitor.presentation.phonecallmonitor.phoneCallLogEntryDomainModel
+import pl.kamilszustak.callmonitor.presentation.phonecallmonitor.phoneCallLogEntryViewState
 import kotlin.test.assertEquals
 
 class PhoneCallLogEntryDomainToViewStateMapperTest {

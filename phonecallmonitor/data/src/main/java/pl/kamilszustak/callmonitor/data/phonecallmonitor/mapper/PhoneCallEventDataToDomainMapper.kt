@@ -4,7 +4,7 @@ import pl.kamilszustak.callmonitor.data.phonecallmonitor.model.PhoneCallEventDat
 import pl.kamilszustak.callmonitor.domain.phonecallmonitor.model.PhoneCallEventDomainModel
 
 /**
- * Maps a [PhoneCallEventDataModel] instance to the [PhoneCallEventDomainModel] instance.
+ * Maps a [PhoneCallEventDataModel] instance to a [PhoneCallEventDomainModel] instance.
  */
 internal fun PhoneCallEventDataModel.toDomainModel(): PhoneCallEventDomainModel {
     return when (this) {

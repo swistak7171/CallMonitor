@@ -4,7 +4,7 @@ import pl.kamilszustak.callmonitor.data.phonecallmonitor.model.OngoingPhoneCallD
 import pl.kamilszustak.callmonitor.domain.phonecallmonitor.model.OngoingPhoneCallDomainModel
 
 /**
- * Maps a [OngoingPhoneCallDataModel] instance to the [OngoingPhoneCallDomainModel] instance with
+ * Maps a [OngoingPhoneCallDataModel] instance to an [OngoingPhoneCallDomainModel] instance with
  * the given [contactName].
  */
 internal fun OngoingPhoneCallDataModel.toDomainModel(contactName: String?): OngoingPhoneCallDomainModel {

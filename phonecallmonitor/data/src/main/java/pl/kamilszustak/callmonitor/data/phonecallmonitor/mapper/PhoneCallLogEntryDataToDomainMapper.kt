@@ -5,7 +5,7 @@ import pl.kamilszustak.callmonitor.data.phonecallmonitor.model.PhoneCallMetadata
 import pl.kamilszustak.callmonitor.domain.phonecallmonitor.model.PhoneCallLogEntryDomainModel
 
 /**
- * Maps a [PhoneCallLogEntryDataModel] instance to the [PhoneCallLogEntryDomainModel] instance with
+ * Maps a [PhoneCallLogEntryDataModel] instance to a [PhoneCallLogEntryDomainModel] instance with
  * the given [metadata] and [contactName].
  */
 internal fun PhoneCallLogEntryDataModel.toDomainModel(

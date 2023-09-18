@@ -9,6 +9,10 @@ import pl.kamilszustak.callmonitor.presentation.phonecallmonitor.model.PhoneCall
 import kotlin.time.Duration
 import kotlin.time.Duration.Companion.seconds
 
+/**
+ * This file contains data models used for testing purposes.
+ */
+
 val serverConfigurationDomainModel: ServerConfigurationDomainModel = ServerConfigurationDomainModel(
     host = "123.123.123.123",
     port = 9090

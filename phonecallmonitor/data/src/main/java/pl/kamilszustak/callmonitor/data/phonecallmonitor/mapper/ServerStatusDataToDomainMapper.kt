@@ -4,7 +4,7 @@ import pl.kamilszustak.callmonitor.data.phonecallmonitor.model.ServerStatusDataM
 import pl.kamilszustak.callmonitor.domain.phonecallmonitor.model.ServerStatusDomainModel
 
 /**
- * Maps a [ServerStatusDataModel] instance to the [ServerStatusDomainModel] instance.
+ * Maps a [ServerStatusDataModel] instance to a [ServerStatusDomainModel] instance.
  */
 internal fun ServerStatusDataModel.toDomainModel(): ServerStatusDomainModel {
     return when (this) {
