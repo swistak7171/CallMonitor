@@ -9,6 +9,10 @@ import pl.kamilszustak.callmonitor.domain.phonecallmonitor.model.ServerConfigura
 import kotlin.time.Duration
 import kotlin.time.Duration.Companion.seconds
 
+/**
+ * This file contains data models used for testing purposes.
+ */
+
 const val id: String = "eee144a0-553c-11ee-8c99-0242ac120002"
 val startTimestamp: Instant = Instant.fromEpochSeconds(10)
 val endTimestamp: Instant = Instant.fromEpochSeconds(20)

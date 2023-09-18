@@ -1,5 +1,6 @@
 package pl.kamilszustak.callmonitor.domain.phonecallmonitor.di
 
+import org.koin.core.Koin
 import org.koin.core.module.Module
 import org.koin.core.module.dsl.factoryOf
 import org.koin.dsl.bind
@@ -17,6 +18,9 @@ import pl.kamilszustak.callmonitor.domain.phonecallmonitor.usecase.MonitorPhoneC
 import pl.kamilszustak.callmonitor.domain.phonecallmonitor.usecase.SetServerStatusUseCase
 import pl.kamilszustak.callmonitor.domain.phonecallmonitor.usecase.SetServerStatusUseCaseImpl
 
+/**
+ * A [Koin] module containing all dependencies for the domain layer.
+ */
 val phoneCallMonitorDomainModule: Module = module {
     factoryOf(::MonitorPhoneCallsUseCaseImpl)
         .bind<MonitorPhoneCallsUseCase>()

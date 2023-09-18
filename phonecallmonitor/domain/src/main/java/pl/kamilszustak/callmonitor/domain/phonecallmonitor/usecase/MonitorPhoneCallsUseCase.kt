@@ -5,10 +5,20 @@ import pl.kamilszustak.callmonitor.domain.phonecallmonitor.model.PhoneCallEventD
 import pl.kamilszustak.callmonitor.domain.phonecallmonitor.repository.PhoneCallEventRepository
 import pl.kamilszustak.callmonitor.domain.phonecallmonitor.repository.PhoneCallRepository
 
+/**
+ * A use case for monitoring phone calls and managing their state.
+ */
 interface MonitorPhoneCallsUseCase {
+
+    /**
+     * Starts monitoring phone calls and managing their state.
+     */
     suspend fun execute()
 }
 
+/**
+ * A use case for monitoring phone calls and managing their state.
+ */
 internal class MonitorPhoneCallsUseCaseImpl(
     private val phoneCallEventRepository: PhoneCallEventRepository,
     private val phoneCallRepository: PhoneCallRepository,
